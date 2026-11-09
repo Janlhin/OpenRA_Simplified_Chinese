@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  payload:
-    name: 载荷与文档校验
+  verify:
+    name: 聚合校验
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,47 +16,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: 安装字体工具（字符覆盖检查用）
+      - name: 安装字体工具（字形覆盖检查用）
         run: pip install fonttools
 
-      - name: 载荷与 manifest.json 是否逐字节一致
-        run: python tools/verify_manifest.py
-
-      - name: Fluent 文件规范（BOM / 换行 / 缩进 / 花括号 / 字面转义）
-        run: python tools/lint_ftl.py files/mods
-
-      - name: 地图文案结构自检
-        run: python tools/struct_check_maps.py files/mods
-
-      - name: Markdown 相对链接与锚点（docs/ 引用根目录文件须用 ../）
-        run: python tools/check_links.py .
-
-      - name: 安装说明.txt 必须与 安装说明.md 的生成结果一致（txt 是生成物）
-        run: python tools/build_install_txt.py --check
-
-      - name: README 附录的文件清单与 manifest.json 一致
-        run: python tools/build_readme_inventory.py --check
-
-      - name: 载荷里的每个字符，随包字体都画得出来
-        run: python tools/check_font_coverage.py
-
-      - name: 载荷里不得出现字体（字体只放 fonts/）
-        run: |
-          if find files -iname '*.tt[fc]' -o -iname '*.otf' | grep -q .; then
-            echo "::error::files/ 里出现了字体文件；字体属于 fonts/，不参与覆盖与地图 UID"
-            exit 1
-          fi
-          echo "files/ 内无字体 ✓"
-
-      - name: 仓库内不得出现 .bat / .cmd（Windows 侧一律 .ps1）
-        run: |
-          extra=$(git ls-files '*.bat' '*.cmd' || true)
-          if [ -n "$extra" ]; then
-            echo "::error::不允许 .bat / .cmd；Windows 侧脚本一律 .ps1"
-            echo "$extra"
-            exit 1
-          fi
-          echo "无 bat/cmd ✓"
-
-      - name: 发布包自校验（白名单 / bin 映射 / 字体哈希 / 载荷哈希）
-        run: python tools/build_release.py --verify
+      # 检查项只在 scripts/verify.ps1 维护一份；这里不再逐条罗列
+      - name: 全量校验
+        shell: pwsh
+        run: ./scripts/verify.ps1
