@@ -139,7 +139,7 @@ src/PACKAGE-README.md                        ← 改名成包内的 README.md
 fonts/NotoSansSC-Regular.ttf  fonts/NotoSansSC-Bold.ttf  files/**
 ```
 
-`src/安装说明.txt` 是**生成物**：手改会在 CI 第 5 步被 `build_install_txt.py --check` 挡下来。
+`src/安装说明.txt` 是**生成物**：手改会在 CI 第 9 步被 `build_install_txt.py --check` 挡下来。
 
 `tools/`、`docs/`（含 CONTRIBUTING / CHANGELOG）、`.github/`、`.gitattributes`
 都留在仓库里，不进包——C 端解压后应该只看到一个入口、一份说明和 `files/`。
@@ -213,29 +213,41 @@ python tools/check_font_coverage.py
 
 ## CI
 
-`.github/workflows/validate.yml` 在 `push` / `pull_request` 时跑九步（Linux runner）：
+`.github/workflows/validate.yml` 在 `push` / `pull_request` 时只做一件事：在 Linux runner 上先
+`pip install fonttools`，再跑**唯一验收入口**
 
-1. `verify_manifest.py` —— 载荷与 `manifest.json` 逐字节一致；
-2. `lint_ftl.py files/mods` —— Fluent 规范（BOM / 换行 / 缩进 / 花括号）；
-3. `struct_check_maps.py files/mods` —— 地图文案结构自检；
-4. `check_links.py .` —— Markdown 相对链接与锚点（`docs/` 引用根目录文件必须写 `../`）；
-5. `build_install_txt.py --check` —— `安装说明.txt` 必须等于 `安装说明.md` 的生成结果；
-6. `build_readme_inventory.py --check` —— 包内 README 的附录 A 与 `manifest.json` 一致；
-7. `check_font_coverage.py` —— 载荷里的每个字符，随包字体都画得出来；
-8. 守卫：`files/` 中不得出现 `.ttf` / `.ttc` / `.otf`，仓库内不得出现 `.bat` / `.cmd`；
-9. `build_release.py --verify` —— 打包自校验：入口齐全、`bin/manifest.json` 一致、
-   载荷与字体的 size+sha256、**包内 Markdown 的相对链接必须落在包里**。
+```bash
+pwsh -NoLogo -NoProfile -File scripts/verify.ps1
+```
 
-> 第 4 步只保证链接"在仓库里"能解析。README 一旦打进 zip，指向 `CONTRIBUTING.md` /
-> `docs/` 的链接就会全变成死链，而仓库侧完全看不出来——所以第 9 步另做一次包内链接检查。
+检查项清单只在 `scripts/verify.ps1` 维护一份，避免"新增一步漏改三处"。当前覆盖：
+
+1. 版本号 SemVer 合法 + `manifest.json` / `CHANGELOG` / `安装说明` 三处一致（`scripts/check-versions.ps1`）；
+2. 五个治理文档字段完整、`AGENTS.md` ≤150 行、规则单一载体（`scripts/check-docs.ps1`）；
+3. 顶层结构白名单（`scripts/check-layout.ps1`）；
+4. 脚本基线：零 `.bat` / `.cmd`、`.ps1` 可被解析、`files/` 内无字体（`scripts/check-scripts.ps1`）；
+5. `verify_manifest.py` —— 载荷与 `manifest.json` 逐字节一致；
+6. `lint_ftl.py files/mods` —— Fluent 规范（BOM / 换行 / 缩进 / 花括号）；
+7. `struct_check_maps.py files/mods` —— 地图文案结构自检；
+8. `check_links.py .` —— Markdown 相对链接与锚点（`docs/` 引用根目录文件必须写 `../`）；
+9. `build_install_txt.py --check` —— `安装说明.txt` 必须等于 `安装说明.md` 的生成结果；
+10. `build_readme_inventory.py --check` —— 包内 README 的附录 A 与 `manifest.json` 一致；
+11. `check_font_coverage.py` —— 载荷里的每个字符，随包字体都画得出来；
+12. `build_release.py --verify` —— 打包自校验：入口齐全、`bin/manifest.json` 一致、
+    载荷与字体的 size+sha256、**包内 Markdown 的相对链接必须落在包里**。
+
+> 本地提交前用 `scripts/verify.ps1 -Fast`：跳过第 11、12 两项慢检查，其余等价。
+
+> 第 8 步只保证链接"在仓库里"能解析。README 一旦打进 zip，指向 `CONTRIBUTING.md` /
+> `docs/` 的链接就会全变成死链，而仓库侧完全看不出来——所以第 12 步另做一次包内链接检查。
 > 这也正是**仓库首页 `README.md` 与包内 `PACKAGE-README.md` 必须分开**的原因：读者不同，
 > 能引用的文件也不同。
 
-> 第 5 步挡的是"改了 md 忘了同步 txt"这类漂移。这份说明早先由手写维护两份，
+> 第 9 步挡的是"改了 md 忘了同步 txt"这类漂移。这份说明早先由手写维护两份，
 > 结果 txt 里漏进了字面 `**`，所有校验都没报错，只有人眼能发现。现在 txt 是生成物：
 > 改说明只改 `src/安装说明.md`，然后 `python tools/build_install_txt.py`。
 
-> 第 2 步对 **CRLF 换行**判错并返回退出码 1。`.gitattributes` 已声明 `files/** -text`（不转换换行），
+> 第 6 步对 **CRLF 换行**判错并返回退出码 1。`.gitattributes` 已声明 `files/** -text`（不转换换行），
 > 所以载荷在本地就必须是 LF——不要用编辑器批量转换换行，否则 `manifest.json` 的哈希会全部失效。
 
 ## 端到端验证记录

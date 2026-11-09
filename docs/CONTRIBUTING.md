@@ -97,4 +97,9 @@ Python 工具只用标准库；Windows 侧脚本统一 `.ps1`（5.1 兼容、UTF
 | `tools/port_translations.py` | 维护者:引擎升级时把旧译文迁到新版英文目录,并产出"待翻译 / 英文变更 / 占位符不一致"报告 |
 | `tools/build_release.py` | 维护者:构建发布包 zip(默认白名单只打玩家文件,`--dev` 打全量;`--verify` 在包内自校验) |
 
-脚本的调用示例、CI 的五步检查、以及端到端验证记录,都在 [MAINTAINING.md](MAINTAINING.md)。
+脚本的调用示例、CI 的检查项与端到端验证记录，都在 [MAINTAINING.md](MAINTAINING.md)。
+提交前跑一次聚合校验即可，不必逐条调用：
+
+```powershell
+pwsh -NoLogo -NoProfile -File scripts/verify.ps1 -Fast
+```

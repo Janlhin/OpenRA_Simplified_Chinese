@@ -88,6 +88,10 @@ OpenRA_Simplified_Chinese\
 ```text
 .
 ├─ 📄 README.md                       你正在看的
+├─ 🤖 AGENTS.md                       AI 协作入口（目录，≤150 行）
+├─ 🧾 DECISIONS.md                    决策日志（含被否决方案与理由）
+├─ 📋 TASKS.md                       任务队列（含可机器判定的完成判据）
+├─ 📦 MANIFEST.md                    第三方字体/源码的来源、SHA256 与许可
 ├─ ⚖️ LICENSE · LICENSE-OFL.txt       补丁 GPL-3.0 / 字体 SIL OFL 1.1
 ├─ 📦 src\                            打包源（进 zip 的就是这里）
 │   ├─ setup.ps1 · install.ps1 · manifest.json
@@ -96,7 +100,10 @@ OpenRA_Simplified_Chinese\
 ├─ 📚 files\mods\                     208 个载荷（覆盖树）
 ├─ 🔤 fonts\                          Noto Sans SC 两个字重
 ├─ 🛠️ tools\                          校验、载荷重建、打包、文档生成
+├─ 🧪 scripts\                        唯一验收入口 verify.ps1 与各项守卫
+├─ 🪝 .githooks\                      pre-commit / commit-msg 薄壳
 ├─ 📘 docs\                           ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
+│   ├─ VERSIONING.md · COMPLIANCE.md  版本号规则 / 规范落地矩阵
 │   └─ archive\rasc-ref\              译名对齐的历史资料（已归档）
 └─ ⚙️ .github\                        CI 与 issue / PR 模板
 ```
@@ -107,21 +114,43 @@ OpenRA_Simplified_Chinese\
 | 🔧 怎么重建载荷、怎么发版、CI 有哪些门禁 | [`docs/MAINTAINING.md`](docs/MAINTAINING.md) |
 | ✍️ 想改一句译文 | [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) |
 | 🕒 每个版本改了什么 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
+| 🔢 版本号怎么定、怎么发版 | [`docs/VERSIONING.md`](docs/VERSIONING.md) |
+| 🧭 工程规范条款在本仓库如何落地 | [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) |
+| 🌐 引擎侧本地化（多语言）的现状、路线与待办 | [`docs/LOCALIZATION-ROADMAP.md`](docs/LOCALIZATION-ROADMAP.md) |
+| 🧾 为什么这样设计、否决过什么 | [`DECISIONS.md`](DECISIONS.md) |
+| 📋 还有哪些事没做、怎样算做完 | [`TASKS.md`](TASKS.md) |
+| 📦 第三方字体与源码的来源与许可 | [`MANIFEST.md`](MANIFEST.md) |
+| 🤖 AI 协作者先读哪 | [`AGENTS.md`](AGENTS.md) |
 
-## 🛠️ 本地校验
+## 🧪 技术栈与验收
 
-CI 跑同样的步骤，本地先跑能省一轮往返：
+| 项 | 值 |
+|---|---|
+| 运行时 | PowerShell **7.4+**（`pwsh`）；Python **3.11+**（`fonttools`） |
+| 数据格式 | Fluent `.ftl`、YAML、JSON；无编译产物 |
+| 目标平台 | Windows 10 / 11（安装器）；校验脚本跨平台 |
+| 第三方来源 | 见 [`MANIFEST.md`](MANIFEST.md) |
 
-```bash
-python tools/verify_manifest.py        # 载荷 ↔ src/manifest.json 逐字节一致
-python tools/lint_ftl.py files/mods    # Fluent 规范（BOM/换行/缩进/字面转义）
-python tools/struct_check_maps.py files/mods
-python tools/check_links.py .          # Markdown 链接与锚点
-python tools/build_install_txt.py --check  # 安装说明.txt 与 md 的生成结果一致
-python tools/build_readme_inventory.py --check   # 附录 A 与 manifest 一致
-python tools/check_font_coverage.py    # 载荷里的每个字，随包字体都画得出来
-python tools/build_release.py --verify # 打包自校验（含包内死链）
+**验收标准（可机器判定）**：以下命令退出码为 `0`。
+
+```powershell
+pwsh -NoLogo -NoProfile -File scripts/verify.ps1        # 全量
+pwsh -NoLogo -NoProfile -File scripts/verify.ps1 -Fast  # 提交前快检
 ```
+
+检查项只在 `scripts/verify.ps1` 维护一份：载荷与 `manifest.json` 逐字节一致、Fluent 规范、
+地图文案结构、文档链接与锚点、生成物（`安装说明.txt`、README 附录）未被手改、字形覆盖、
+发布包自校验、版本号三处一致、五个治理文档字段完整。CI 调用的也是同一条命令。
+
+首次参与贡献：建本地校验环境并装钩子。
+
+```powershell
+uv venv .venv                                                    # 或 python -m venv .venv
+uv pip install --python .venv\Scripts\python.exe fonttools        # 字形覆盖检查需要
+pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
+```
+
+`scripts/verify.ps1` 的解释器优先级：仓库内 `.venv` → `PYTHON` 环境变量 → PATH 上的 `python`/`python3`。
 
 ## ❓ 常见问题
 
