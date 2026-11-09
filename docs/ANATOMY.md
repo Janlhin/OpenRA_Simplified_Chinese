@@ -56,6 +56,7 @@ OpenRA_Simplified_Chinese/
 │   ├─ ANATOMY.md                     本文档
 │   ├─ MAINTAINING.md                 维护者操作手册
 │   ├─ CONTRIBUTING.md                贡献者文档
+│   ├─ LOCALIZATION-ROADMAP.md        引擎侧本地化（多语言）路线图与待办
 │   ├─ CHANGELOG.md                   版本历史
 │   └─ archive/rasc-ref/              译名对齐工作的历史脚本与产物（已归档，代码不引用）
 ├─ .github/
@@ -66,7 +67,7 @@ OpenRA_Simplified_Chinese/
 └─ .gitignore
 ```
 
-仓库共 267 个文件（不含 `.git/`、`dist/`），其中 **`files/` 载荷 208 个**——载荷数是唯一需要精确盯住的
+仓库共 268 个文件（不含 `.git/`、`dist/`），其中 **`files/` 载荷 208 个**——载荷数是唯一需要精确盯住的
 数字（它直接决定 `manifest.json` 的校验条目），其余是脚本、文档与仓库元文件。
 
 ---
@@ -98,6 +99,7 @@ OpenRA_Simplified_Chinese/
 | `ANATOMY.md` | 本文档：每个文件是什么、载荷怎么构成 |
 | `MAINTAINING.md` | 维护手册：校验工具、引擎升级迁移、发版流程 |
 | `CONTRIBUTING.md` | 贡献者文档：改译文流程、翻译规范、术语表 |
+| `LOCALIZATION-ROADMAP.md` | 引擎侧本地化（多语言）路线图：现状核查、参考实现对照、P0/P1/P2 待办与验收标准 |
 | `CHANGELOG.md` | 版本历史 |
 | `archive/rasc-ref/` | 汉化组译名对齐工作的历史脚本与产物（**已归档**，无代码引用，参考仓库需自行从 Gitee 克隆） |
 
