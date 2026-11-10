@@ -58,6 +58,24 @@ PACKAGE_LAYOUT = {
     'src/hotfix/OpenRA.Mods.Common.dll': 'hotfix/OpenRA.Mods.Common.dll',
 }
 
+# 打包时现场生成的双击入口（thin shim）。
+#
+# 仓库本身保持零 .bat / .cmd：这些文件不入库，由本脚本在打包时生成，
+# 因为 .ps1 双击会被 Windows 用记事本打开——玩家需要一个能双击的入口。
+# 真正的逻辑始终在同名 .ps1 里；.bat 只做转发，ASCII + CRLF，无中文。
+BAT_SHIMS = {
+    'hotfix/apply-hotfix.bat':
+        '@echo off\r\n'
+        'rem Double-click entry. All logic lives in apply-hotfix.ps1 next to this file.\r\n'
+        'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0apply-hotfix.ps1" %*\r\n'
+        'pause\r\n',
+    'hotfix/rollback-hotfix.bat':
+        '@echo off\r\n'
+        'rem Double-click entry. All logic lives in rollback-hotfix.ps1 next to this file.\r\n'
+        'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0rollback-hotfix.ps1" %*\r\n'
+        'pause\r\n',
+}
+
 
 def sha256(path):
     h = hashlib.sha256()
@@ -213,11 +231,19 @@ def main():
             with open(os.path.join(root, rel.replace('/', os.sep)), 'rb') as fh:
                 z.writestr(zi, fh.read())
 
+        # 双击入口 shim（仓库里没有 .bat，这里现场生成）
+        for rel, content in BAT_SHIMS.items():
+            arc = top + '/' + (rel if args.dev else rel)
+            zi = zipfile.ZipInfo(arc, date_time=dt)
+            zi.compress_type = zipfile.ZIP_DEFLATED
+            zi.external_attr = 0o644 << 16
+            z.writestr(zi, content.encode('ascii'))
+
     size = os.path.getsize(out)
     print('发布包:', out)
     print('  模式    :', '全量快照(--dev)' if args.dev else '玩家包(白名单)')
     print('  版本    :', version, '/ 引擎', manifest['engineVersion'])
-    print('  条目    : %d 个文件' % len(files))
+    print('  条目    : %d 个文件' % (len(files) + len(BAT_SHIMS)))
     print('  大小    : %d 字节 (%.1f KB)' % (size, size / 1024))
     print('  sha256  :', sha256(out))
 

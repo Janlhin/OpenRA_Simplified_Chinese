@@ -104,7 +104,7 @@ OpenRA_Simplified_Chinese/
 | `manifest.json` | **补丁的身份证**：`version`、`engineVersion`、`repository`、`font`、`stats`，以及 208 条 `{path,size,sha256}` | `bin\manifest.json` |
 | `PACKAGE-README.md` | 包内 README 的源文件：逐文件说明 + 附录 A（由 `tools/build_readme_inventory.py` 生成）。**链接只指向包内文件**，不要写仓库路径 | `README.md` |
 | `安装说明.txt` / `安装说明.md` | 给玩家的说明。**`.md` 是唯一真相源**（标题层级 + 表格），`.txt` 由 `tools/build_install_txt.py` 生成：UTF-8 带 BOM + CRLF、按显示宽度折行，记事本直接看。改说明只改 `.md`，然后跑一次生成器 | 同名 |
-| `hotfix\` | **可选**引擎热修（仅 `playtest-20261026`）：修「战役界面点任务闪退」。含两个本地修改过的引擎 DLL、`apply-hotfix.ps1`（校验哈希 → 备份 → 覆盖）、`rollback-hotfix.ps1`（一键还原）与 `README.md`（含源码级修改说明）。**安装器不碰它**，需玩家手动应用；上游修复后随下个版本移除 | `hotfix\` |
+| `hotfix\` | **可选**引擎热修（仅 `playtest-20261026`）：修「战役界面点任务闪退」。含两个本地修改过的引擎 DLL、`apply-hotfix.ps1`（校验哈希 → 备份 → 覆盖）、`rollback-hotfix.ps1`（一键还原）与 `README.md`（含源码级修改说明）。另有两个 `.bat` 双击转发入口，**由 `tools/build_release.py` 打包时现场生成、不入仓库**（仓库保持零 `.bat`）。**安装器不碰它**，需玩家手动应用；上游修复后随下个版本移除 | `hotfix\` |
 
 ## `docs/`：仓库自己的文档（不进发布包）
 

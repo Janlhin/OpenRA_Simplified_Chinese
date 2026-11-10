@@ -26,7 +26,7 @@ Windows 侧脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`�
 - 🚫 往 `files/` 放字体：字体只在 `fonts/`，由安装器部署
 - 🚫 手写 `src/安装说明.txt`：它是 `tools/build_install_txt.py` 的生成物
 - 🚫 手改 `src/manifest.json` 的哈希：用 `tools/build_manifest.py` 重算
-- 🚫 新增 `.bat` / `.cmd`（含临时脚本）
+- 🚫 新增 `.bat` / `.cmd`（含临时脚本）。**唯一例外**：发布包里由 `tools/build_release.py` 打包时现场生成的双击转发 shim（见 `DECISIONS.md` D-010）——仓库里仍然一个都不能有
 - 🚫 未跑 `verify` 就声称「已完成」；把校验失败说成「环境问题」而不复现
 - 🚫 破坏性 Git 操作：`reset --hard`、`push --force`、修改已发布 tag
 

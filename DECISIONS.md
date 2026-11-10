@@ -93,3 +93,18 @@
   Release——会让已有链接 404。
 - **影响范围**：Release 资产（zip）与说明被替换；`docs/CHANGELOG.md`；仓库公告 issue #3；上游 issue 评论。
 - **复审条件**：本条是一次性例外。此后任何已发布版本的改动都必须升版本号，不得再破例。
+
+### D-010 · 2026-11-10 · 发布包内允许打包时生成 `.bat` 双击入口（仓库仍零 `.bat`）
+
+- **决策**：热修目录在发布包里附带 `apply-hotfix.bat` / `rollback-hotfix.bat` 两个双击入口，
+  它们由 `tools/build_release.py` 在打包时**现场生成**，不入仓库；仓库仍然零 `.bat` / `.cmd`。
+- **背景**：Windows 双击 `.ps1` 只会用记事本打开，玩家拿不到「双击即用」的体验——这正是
+  README「已知限制」里记着的老问题（`.lnk` 垫片 / 单文件 exe 两个候选都没做）。
+- **被采纳**：生成两个薄 `.bat`（ASCII + CRLF，仅 `powershell.exe -File` 转发到同名 `.ps1`，逻辑零重复），
+  在打包产物里给玩家双击入口；仓库侧门禁（`scripts/check-scripts.ps1` 与 CI）继续要求零 `.bat`。
+- **被否决**：① 把 `.bat` 提交进仓库——会直接违反仓库「零 `.bat`/`.cmd`」的硬约束与 CI 守卫；
+  ② 做 `.lnk` 垫片——`.lnk` 内含绝对路径，压缩包换目录就失效；③ 单文件 exe 启动器——需要签名预算，
+  且构建只能在 Windows 上做，CI 无法复现。
+- **影响范围**：`tools/build_release.py`（`BAT_SHIMS` 常量与写 zip 逻辑）、`src/hotfix/README.md`、
+  包内 README、`安装说明.md`、仓库 README、`CHANGELOG`。
+- **复审条件**：若将来引入 `.lnk` 或单文件 exe 启动器（能真正解决换目录失效问题），本条可废止。

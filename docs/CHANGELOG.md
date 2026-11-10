@@ -12,15 +12,16 @@
   - 改动只有两处：`OpenRA.Game.dll` 把可空字段的两次读取改为一次；
     `OpenRA.Mods.Common.dll` 让 `MissionBrowserLogic.SelectMap()` 不再在后台线程测量简介，
     改为主线程同步执行。源码级说明与补丁原理见 `hotfix\README.md`。
-  - 用法：关掉游戏 → 右键 `hotfix\apply-hotfix.ps1` →「使用 PowerShell 运行」。脚本先校验目标 DLL 哈希
-    （只接受官方原版或已打补丁两种状态），再把原版备份为 `*.orig-20261109` 后覆盖；
-    `hotfix\rollback-hotfix.ps1` 可一键还原。**安装器不碰它**，需要才用。
-  - 上游修复后，本热修会随下个版本移除。
+  - 用法：关掉游戏 → **双击 `hotfix\apply-hotfix.bat`**（Windows 下 `.ps1` 双击只会用记事本打开，
+    所以包里备了这两个转发入口，由打包脚本现场生成、仓库本身仍保持零 `.bat`），
+    在 UAC 弹窗点「是」。脚本先校验目标 DLL 哈希（只接受官方原版或已打补丁两种状态），
+    再把原版备份为 `*.orig-20261109` 后覆盖；`hotfix\rollback-hotfix.bat` 可一键还原。
+    **安装器不碰它**，需要才用；上游修复后，本热修会随下个版本移除。
 - **已知问题说明**：「进战役闪退」与「难度是灰的」两条写进仓库 README、包内 README 与 `安装说明`
   的问题排查表，并给出各自的对策。
 - 文本载荷 208 个文件、字体与许可证均未改动，`manifest.json` 的载荷哈希不变。
 
-**验证**：`scripts/verify.ps1` 全量 12 项通过（含打包自校验，包内 223 个文件）；`verify_manifest.py`
+**验证**：`scripts/verify.ps1` 全量 12 项通过（含打包自校验，包内 225 个文件）；`verify_manifest.py`
 确认载荷与清单逐字节一致；`build_install_txt.py --check` 确认 txt 与 md 生成结果一致。
 
 ## 1.6.0 — 2026-11-04

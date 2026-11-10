@@ -58,7 +58,7 @@ setup.ps1 -FontPath "D:\你的字体.ttf"   :: 换字体
 
 ## 这个 zip 里有什么
 
-解压后**顶层 10 项**（6 个文件 + 4 个目录），连子目录一共 **223 个文件**：
+解压后**顶层 10 项**（6 个文件 + 4 个目录），连子目录一共 **225 个文件**：
 
 ```
 OpenRA_Simplified_Chinese\
@@ -76,7 +76,9 @@ OpenRA_Simplified_Chinese\
 │   └─ NotoSansSC-Bold.ttf       ← 标题/粗体（约 10 MB）
 ├─ hotfix\                       ← 可选：引擎热修（仅 playtest-20261026）
 │   ├─ README.md                 ← 什么时候要装、改了什么、怎么还原
+│   ├─ apply-hotfix.bat          ← 双击入口（转发到同名 .ps1）
 │   ├─ apply-hotfix.ps1          ← 应用（校验哈希 → 备份 → 覆盖）
+│   ├─ rollback-hotfix.bat        ← 双击入口（转发到同名 .ps1）
 │   ├─ rollback-hotfix.ps1       ← 一键还原为官方原版
 │   ├─ OpenRA.Game.dll           ← 改了 2 处
 │   └─ OpenRA.Mods.Common.dll    ← 改了 1 处
@@ -246,10 +248,10 @@ Fluent **不会**在缺键时回退英文，而是把键名直接显示出来（
 - **进「战役」点任务可能闪退**：这是上游引擎缺陷，不是汉化的问题。`playtest-20261026` 在中文文本
   首次上屏时会在后台线程生成字形，与渲染线程争用同一份图集，导致崩溃。已上报
   <https://github.com/OpenRA/OpenRA/issues/22716>（含复现步骤、根因分析与修法建议）。
-  **1.6.1 起包内附带可选热修 `hotfix\`**：关掉游戏后，右键 `hotfix\apply-hotfix.ps1`
-  →「使用 PowerShell 运行」，按提示过 UAC 即可修好（脚本会先校验哈希、备份原版，
-  `hotfix\rollback-hotfix.ps1` 可一键还原）。不想装热修也行：卸载补丁改用英文界面即可避开。
-  上游修复后，本热修会随下个版本移除。
+  **1.6.1 起包内附带可选热修 `hotfix\`**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（Windows 下 `.ps1`
+  双击只会用记事本打开，所以包里备了这个转发入口），在 UAC 弹窗点「是」即可修好
+  （脚本会先校验哈希、备份原版，`hotfix\rollback-hotfix.bat` 可一键还原）。
+  不想装热修也行：卸载补丁改用英文界面即可避开。上游修复后，本热修会随下个版本移除。
 - **战役界面「难度」是灰的、点不动**：部分任务本身没有难度选项（上游设计，如红警 01、10b 与苏军
   01/02a/02b），不是汉化造成的；换一个有难度的任务即可。
 - **字号观感**：Noto Sans SC 的行高与 OpenRA 原字体不同，个别 UI 缩放档位下文字可能偏高或偏挤。

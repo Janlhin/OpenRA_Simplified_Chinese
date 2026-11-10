@@ -16,8 +16,9 @@
 ## 二、怎么用
 
 1. **关掉所有 OpenRA 窗口**（三个 exe 都退干净）；
-2. 右键 `apply-hotfix.ps1` →「使用 PowerShell 运行」，在 UAC 弹窗点「是」；
-   或在 PowerShell 里执行：
+2. **双击 `apply-hotfix.bat`**（Windows 下 `.ps1` 双击只会用记事本打开，所以包里备了这个转发入口）；
+   或者右键 `apply-hotfix.ps1` →「使用 PowerShell 运行」，再在 UAC 弹窗点「是」；
+   也可以在 PowerShell 里执行：
 
    ```powershell
    powershell -ExecutionPolicy Bypass -File apply-hotfix.ps1
@@ -26,6 +27,8 @@
    ```
 
 3. 看到两个 `[完成]` 即成功，直接启动游戏进「战役」验证。
+
+> `apply-hotfix.bat` 只是转发：真正的逻辑全在同名 `.ps1` 里（`.bat` 由打包脚本生成，不入仓库）。
 
 脚本的行为：
 
@@ -86,6 +89,9 @@ void SelectMap(MapPreview preview)
 |---|---|---|
 | `OpenRA.Game.dll` | 923,136 | `105e0003cccadd44c4bd711a1920a8d0f3329504b2c2403281392d89b67d9948` |
 | `OpenRA.Mods.Common.dll` | 3,655,168 | `1faf14403e0c65ed83be1d7efc7b7ac1a3ffb1462c5934e5ab1ddd92e22cd1ea` |
+
+另有四个脚本：`apply-hotfix.ps1`（应用）、`rollback-hotfix.ps1`（还原），以及两个由打包脚本现场生成的
+`.bat` 双击转发入口（`apply-hotfix.bat`、`rollback-hotfix.bat`，只调用同名 `.ps1`，本身不入仓库）。
 
 对应的官方原版 SHA256（脚本据此判断当前状态）：
 

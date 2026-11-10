@@ -38,7 +38,7 @@
 2. 📂 解压到一个**英文路径**下，例如 `D:\OpenRA_CN`
 3. 🛑 **关闭 OpenRA**
 4. 🖱️ **右键 `setup.ps1` → 使用 PowerShell 运行** → 菜单输入 `1` → 回车
-5. 🔧 **（可选）** 进「战役」点任务闪退的话：右键 `hotfix\apply-hotfix.ps1` → 使用 PowerShell 运行
+5. 🔧 **（可选）** 进「战役」点任务闪退的话：双击 `hotfix\apply-hotfix.bat`（Windows 下 `.ps1` 双击只会用记事本打开）
 
 > 装在 `C:\Program Files` 会弹一次 UAC；引擎版本不匹配会先警告再询问。
 
@@ -54,7 +54,7 @@ setup.ps1 -FontPath "D:\你的字体.ttf"   :: 换字体
 
 ## 🧩 包里有什么
 
-解压后**顶层 10 项**，连子目录共 223 个文件：
+解压后**顶层 10 项**，连子目录共 225 个文件：
 
 ```text
 OpenRA_Simplified_Chinese\
@@ -65,6 +65,7 @@ OpenRA_Simplified_Chinese\
 ├─ 📦 bin\  install.ps1 · manifest.json
 ├─ 🔤 fonts\ NotoSansSC-Regular.ttf · -Bold.ttf
 ├─ 🔧 hotfix\                     ← 可选：引擎热修（仅 playtest-20261026）
+│                                  ← apply-hotfix.bat / .ps1（应用）、rollback 同理
 └─ 📚 files\mods\                 ← 208 个中文文本（覆盖到游戏 mods\）
 ```
 
@@ -192,9 +193,9 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 这是**上游引擎缺陷**，不是汉化的问题：`playtest-20261026` 在中文文本首次上屏时会在后台线程生成字形，
 与渲染线程争用同一份图集。已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析与修法建议。
 
-**1.6.1 起包内附带可选热修**：关掉游戏后右键 `hotfix\apply-hotfix.ps1` →「使用 PowerShell 运行」，
-脚本会校验哈希、备份原版再覆盖，`hotfix\rollback-hotfix.ps1` 可一键还原。
-不想装热修也行：卸载补丁改用英文界面即可避开；上游修复后本热修会随下个版本移除。
+**1.6.1 起包内附带可选热修**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（Windows 下 `.ps1` 双击只会用
+记事本打开，所以包里备了这个转发入口），在 UAC 弹窗点「是」；脚本会校验哈希、备份原版再覆盖，
+`hotfix\rollback-hotfix.bat` 可一键还原。不想装热修也行：卸载补丁改用英文界面即可避开；上游修复后本热修会随下个版本移除。
 </details>
 
 <details>
