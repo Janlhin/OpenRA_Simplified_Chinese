@@ -6,12 +6,19 @@ CONTRIBUTING 等）留在仓库里，不进包。玩家解压后看到的布局�
 
     LICENSE / LICENSE-OFL.txt               ← 原样落到包根
     setup.ps1                               ← 来自 src/
+    setup.bat / setup.cmd                   ← 打包时生成的纯 CMD 入口（不依赖 PS）
     bin/install.ps1 / bin/manifest.json     ← 来自 src/，收进 bin/
+    bin/files.sha256                        ← 打包时生成的部署清单，供纯 CMD 入口逐文件校验
     README.md / 安装说明.txt / 安装说明.md    ← 来自 src/（README 由 PACKAGE-README 改名）
+    hotfix/**                               ← 可选引擎热修（纯 CMD 与 PS1 两套入口）
     files/**                                 ← 208 个文本载荷
     fonts/**                                 ← Noto Sans SC 两个字重
 
 `--dev` 打全量快照（除 .git/、dist/、*.zip），给内部复现问题用。
+
+仓库里**零 `.bat` / `.cmd`**：发布包里的六个批处理入口由 `tools/cmd-templates/*.tpl`
+现场生成（每个模板产出内容相同的 `.bat` 与 `.cmd` 两份）。模板保持纯 ASCII，写出时
+统一转 CRLF；脚本内部只用 `certutil` / `copy` / `robocopy`，不调用任何 PowerShell 宿主。
 
 包是**确定性**的：zip 内时间戳取自 manifest.json 的 releaseDate，
 同一份仓库内容每次产出字节一致的 zip。
@@ -58,23 +65,59 @@ PACKAGE_LAYOUT = {
     'src/hotfix/OpenRA.Mods.Common.dll': 'hotfix/OpenRA.Mods.Common.dll',
 }
 
-# 打包时现场生成的双击入口（thin shim）。
+# 打包时现场生成的纯 CMD 入口。
 #
-# 仓库本身保持零 .bat / .cmd：这些文件不入库，由本脚本在打包时生成，
-# 因为 .ps1 双击会被 Windows 用记事本打开——玩家需要一个能双击的入口。
-# 真正的逻辑始终在同名 .ps1 里；.bat 只做转发，ASCII + CRLF，无中文。
-BAT_SHIMS = {
-    'hotfix/apply-hotfix.bat':
-        '@echo off\r\n'
-        'rem Double-click entry. All logic lives in apply-hotfix.ps1 next to this file.\r\n'
-        'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0apply-hotfix.ps1" %*\r\n'
-        'pause\r\n',
-    'hotfix/rollback-hotfix.bat':
-        '@echo off\r\n'
-        'rem Double-click entry. All logic lives in rollback-hotfix.ps1 next to this file.\r\n'
-        'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0rollback-hotfix.ps1" %*\r\n'
-        'pause\r\n',
+# 仓库本身保持零 .bat / .cmd：模板以 .tpl 入库，生成物只写进 zip。
+# 每个模板产出内容完全相同的 .bat 与 .cmd 两份——有的机器上 .bat 被改了关联或被
+# 安全软件拦掉，换个扩展名就能双击。两者都是**自包含**的纯批处理，不转发 .ps1，
+# 所以 PowerShell 被禁用 / 被精简掉 / 执行策略锁死的机器也能装。
+CMD_TEMPLATES = {
+    'tools/cmd-templates/setup.cmd.tpl': ('setup.bat', 'setup.cmd'),
+    'tools/cmd-templates/apply-hotfix.cmd.tpl': ('hotfix/apply-hotfix.bat', 'hotfix/apply-hotfix.cmd'),
+    'tools/cmd-templates/rollback-hotfix.cmd.tpl': ('hotfix/rollback-hotfix.bat', 'hotfix/rollback-hotfix.cmd'),
 }
+
+# 纯 CMD 安装器的部署清单：三列 = SHA256 / 包内源路径 / 游戏目录相对路径。
+# 清单由 manifest.json 生成（不在仓库里手写），安装、还原、卸载校验都读它。
+CHECKSUM_LIST = 'bin/files.sha256'
+
+
+def checksum_list(manifest):
+    """字体排在前面——文档强调「先放字体、后覆盖文本」，顺序反了引擎会启动报错。"""
+    lines = []
+    for font in (manifest.get('font') or {}).get('bundled', []):
+        lines.append('%s  %s  %s' % (font['sha256'], font['path'], font['deployTo']))
+    for entry in manifest['files']:
+        rel = entry['path']
+        lines.append('%s  files/%s  %s' % (entry['sha256'], rel, rel))
+    return '\r\n'.join(lines) + '\r\n'
+
+
+def generated_files(root, manifest):
+    """返回 {包内相对路径: bytes}；同时守住模板与 PS1 的哈希一致性。"""
+    out = {}
+    ps1 = open(os.path.join(root, 'src', 'hotfix', 'apply-hotfix.ps1'), encoding='utf-8-sig').read()
+
+    for tpl_rel, targets in CMD_TEMPLATES.items():
+        tpl_path = os.path.join(root, tpl_rel.replace('/', os.sep))
+        if not os.path.exists(tpl_path):
+            raise SystemExit('缺少 CMD 模板：' + tpl_rel)
+        text = open(tpl_path, encoding='utf-8').read()
+        if not text.isascii():
+            raise SystemExit('CMD 模板必须是纯 ASCII（cmd.exe 会拆坏中文行）：' + tpl_rel)
+
+        # 模板里的四个 DLL 哈希必须与 PS1 / README 同源，任何一处漂移都直接打包失败
+        for h in re.findall(r'\b[0-9a-f]{64}\b', text):
+            if h not in ps1:
+                raise SystemExit('CMD 模板里的哈希与 apply-hotfix.ps1 不一致：%s / %s' % (tpl_rel, h))
+
+        crlf = text.replace('\r\n', '\n').replace('\n', '\r\n')
+        data = crlf.encode('utf-8')          # 无 BOM；脚本首行靠 chcp 65001 显示中文
+        for target in targets:
+            out[target] = data
+
+    out[CHECKSUM_LIST] = checksum_list(manifest).encode('ascii')  # 无 BOM，for /f 才读得对
+    return out
 
 
 def sha256(path):
@@ -151,14 +194,32 @@ def check_package_links(vroot):
     return problems
 
 
-def verify_package(vroot, root, manifest):
+def verify_package(vroot, root, manifest, generated):
     """在解压出的包上做自校验，返回问题列表（空 = 通过）。"""
     problems = []
 
-    required = [package_path(f) for f in list(RELEASE_FILES) + list(PACKAGE_LAYOUT)]
+    required = [package_path(f) for f in list(RELEASE_FILES) + list(PACKAGE_LAYOUT)] + list(generated)
     for name in required:
         if not os.path.exists(os.path.join(vroot, name.replace('/', os.sep))):
             problems.append('缺少入口文件：%s' % name)
+
+    # 现场生成物必须与模板逐字节一致（防止打包后有人手改 zip）
+    for name, data in generated.items():
+        path = os.path.join(vroot, name.replace('/', os.sep))
+        if os.path.exists(path) and open(path, 'rb').read() != data:
+            problems.append('生成物与模板不一致：%s' % name)
+
+    # 部署清单：行数 = 载荷 + 字体，且每行必须是「64 位哈希 + 两个路径」
+    list_path = os.path.join(vroot, CHECKSUM_LIST.replace('/', os.sep))
+    if os.path.exists(list_path):
+        rows = [l for l in open(list_path, encoding='ascii').read().splitlines() if l.strip()]
+        expect = len(manifest['files']) + len((manifest.get('font') or {}).get('bundled', []))
+        if len(rows) != expect:
+            problems.append('部署清单行数不符：%d 行，应为 %d 行' % (len(rows), expect))
+        for row in rows:
+            if not re.match(r'^[0-9a-f]{64}  \S+  \S+$', row):
+                problems.append('部署清单格式错误：%s' % row[:80])
+                break
 
     pkg_manifest = os.path.join(vroot, package_path('src/manifest.json').replace('/', os.sep))
     if os.path.exists(pkg_manifest):
@@ -212,6 +273,7 @@ def main():
     root = os.path.abspath(args.repo)
     with open(os.path.join(root, 'src', 'manifest.json'), encoding='utf-8') as fh:
         manifest = json.load(fh)
+    generated = generated_files(root, manifest)
     version = manifest['version']
     top = manifest['name']
     y, m, d = (int(x) for x in manifest['releaseDate'].split('-'))
@@ -231,19 +293,19 @@ def main():
             with open(os.path.join(root, rel.replace('/', os.sep)), 'rb') as fh:
                 z.writestr(zi, fh.read())
 
-        # 双击入口 shim（仓库里没有 .bat，这里现场生成）
-        for rel, content in BAT_SHIMS.items():
-            arc = top + '/' + (rel if args.dev else rel)
+        # 纯 CMD 入口与部署清单（仓库里没有 .bat/.cmd，这里现场生成写进 zip）
+        for rel, data in sorted(generated.items()):
+            arc = top + '/' + rel
             zi = zipfile.ZipInfo(arc, date_time=dt)
             zi.compress_type = zipfile.ZIP_DEFLATED
             zi.external_attr = 0o644 << 16
-            z.writestr(zi, content.encode('ascii'))
+            z.writestr(zi, data)
 
     size = os.path.getsize(out)
     print('发布包:', out)
     print('  模式    :', '全量快照(--dev)' if args.dev else '玩家包(白名单)')
     print('  版本    :', version, '/ 引擎', manifest['engineVersion'])
-    print('  条目    : %d 个文件' % (len(files) + len(BAT_SHIMS)))
+    print('  条目    : %d 个文件（含 %d 个现场生成的纯 CMD 入口/清单）' % (len(files) + len(generated), len(generated)))
     print('  大小    : %d 字节 (%.1f KB)' % (size, size / 1024))
     print('  sha256  :', sha256(out))
 
@@ -257,14 +319,16 @@ def main():
             z.extractall(tmp)
         vroot = os.path.join(tmp, top)
         print('解压自校验:', vroot)
-        problems = verify_package(vroot, root, manifest)
+        problems = verify_package(vroot, root, manifest, generated)
         if problems:
             for p in problems[:20]:
                 print('  [失败] ' + p)
             if len(problems) > 20:
                 print('  ...共 %d 个问题' % len(problems))
             return 1
-        print('  [通过] 入口文件齐全，bin/manifest.json 与仓库一致')
+        print('  [通过] 入口文件齐全（含 6 个纯 CMD 入口），bin/manifest.json 与仓库一致')
+        print('  [通过] 生成物与模板逐字节一致，部署清单 %d 行格式正确' %
+              (len(manifest['files']) + len((manifest.get('font') or {}).get('bundled', []))))
         print('  [通过] 随包字体 %d 个，size+sha256 与 manifest 一致' % len((manifest.get('font') or {}).get('bundled', [])))
         print('  [通过] %d 个载荷 size+sha256 全部一致，无多余文件' % len(manifest['files']))
         print('  [通过] 包内 Markdown/TXT 的相对链接都落在包里')

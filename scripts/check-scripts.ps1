@@ -44,8 +44,30 @@ foreach ($f in $fontsInPayload) {
     $errors.Add("files/ 内出现字体文件：$($f.FullName.Substring($root.Length + 1))（字体只放 fonts/）")
 }
 
+# 4) 纯 CMD 模板：非 ASCII 会拆坏 cmd.exe 的行解析；不得调用任何 PS 宿主；
+#    模板里的 DLL 哈希必须与热修 PS1 同源（tools/build_release.py 打包时还会再查一次）
+$tplDir = Join-Path $root 'tools/cmd-templates'
+$tpls = @(Get-ChildItem -LiteralPath $tplDir -File -Filter '*.tpl' -ErrorAction SilentlyContinue)
+if ($tpls.Count -ne 3) { $errors.Add("CMD 模板应为 3 个，实际 $($tpls.Count) 个") }
+$hotfixPs1 = [System.IO.File]::ReadAllText((Join-Path $root 'src/hotfix/apply-hotfix.ps1'))
+foreach ($t in $tpls) {
+    $bytes = [System.IO.File]::ReadAllBytes($t.FullName)
+    if (@($bytes | Where-Object { $_ -gt 127 }).Count -gt 0) {
+        $errors.Add("CMD 模板必须是纯 ASCII：$($t.Name)（cmd.exe 会拆坏中文行）")
+    }
+    $text = [System.IO.File]::ReadAllText($t.FullName)
+    if ($text -match '(?i)powershell|pwsh') {
+        $errors.Add("CMD 模板不得调用 PS 宿主：$($t.Name)")
+    }
+    foreach ($m in [regex]::Matches($text, '\b[0-9a-f]{64}\b')) {
+        if (-not $hotfixPs1.Contains($m.Value)) {
+            $errors.Add("CMD 模板哈希与 apply-hotfix.ps1 不一致：$($t.Name) / $($m.Value)")
+        }
+    }
+}
+
 if ($errors.Count -eq 0) {
-    Write-Host "  ✓ 脚本基线合规（$($ps1.Count) 个 .ps1 解析通过，零 .bat/.cmd，files/ 无字体）" -ForegroundColor DarkGreen
+    Write-Host "  ✓ 脚本基线合规（$($ps1.Count) 个 .ps1 解析通过，零 .bat/.cmd，$($tpls.Count) 个纯 CMD 模板，files/ 无字体）" -ForegroundColor DarkGreen
     exit 0
 }
 
