@@ -49,9 +49,11 @@
 
 - **问题**：崩溃的根因在引擎侧（`SpriteFont` 非线程安全），1.6.1 附带的热修只是本地绕过。
 - **方法**：跟踪 [OpenRA/OpenRA#22716](https://github.com/OpenRA/OpenRA/issues/22716)；上游修复并发布新 playtest 后，按 `docs/MAINTAINING.md` 的「引擎升级」流程适配新英文基线。
-- **必须一起做的两件事**：① **移除发布包里的 `hotfix\` 目录**（含 `tools/build_release.py` 的白名单条目与
-  `src/hotfix/` 目录），恢复「补丁只换文本、不动引擎」的承诺；② 把 README / 包内 README / `安装说明`
-  里关于热修的段落改为「已由上游修复」。
+- **必须一起做的三件事**：① **移除发布包里的 `hotfix\` 目录**（含 `tools/build_release.py`
+  的白名单条目与 `src/hotfix/` 目录），恢复「补丁只换文本、不动引擎」的承诺；
+  ② 删掉 `tools/cmd-templates/` 下两个热修模板，同步把 `build_release.py` 的生成项与
+  `check-scripts.ps1` 的模板数量校验（3 → 1）改掉（纯 CMD 主入口保留）；
+  ③ 把 README / 包内 README / `安装说明` 里关于热修的段落改为「已由上游修复」。
 - **阻塞原因**：等待上游发布。
 - **完成判据**：新 playtest 下 `pwsh -File scripts/verify.ps1` 退出码 0，发布包内不再有 `hotfix\`，且在战役界面连续点选任务不再崩溃。
 

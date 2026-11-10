@@ -75,11 +75,13 @@ OpenRA 升级会带来新键、删改旧键。Fluent **不会**在缺键时回�
 - 只改译文却不更新 `manifest.json` 里的 `size` / `sha256`。
 - 用机器翻译粗糙地批量替换、明显不通顺的句子。
 - **新增 `.bat` / `.cmd`**——仓库里一个都不允许（CI 直接失败）；Windows 侧脚本一律 `.ps1`。
+  发布包里的纯 CMD 入口由 `.tpl` 模板现场生成、不入库，见 `DECISIONS.md` D-011。
 
 ## 开发脚本一览
 
 Python 工具只用标准库；Windows 侧脚本统一 `.ps1`（5.1 兼容、UTF-8 带 BOM + CRLF）。
-**不允许任何 `.bat` / `.cmd`**，CI 有守卫（零例外）。
+**仓库内不允许任何 `.bat` / `.cmd`**，CI 有守卫；发布包的纯 CMD 备用入口由
+`tools/cmd-templates/*.tpl` 在打包时生成，模板须纯 ASCII 且不调用 PS 宿主（见 `DECISIONS.md` D-011）。
 
 
 | 脚本 | 作用 |

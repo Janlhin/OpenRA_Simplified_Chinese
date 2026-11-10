@@ -17,7 +17,8 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 | 打包 | `python tools/build_release.py` | 生成 `dist/*.zip` 且自校验通过 |
 | 安装 Git 钩子 | `pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1` | `git config core.hooksPath` = `.githooks` |
 
-Windows 侧脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`、`.cmd`。
+**仓库侧** Windows 脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`、`.cmd`。
+发布包内的纯 CMD 备用入口以 `.tpl` 模板入库，由打包脚本现场生成（见 `DECISIONS.md` D-011）。
 
 ## 3. 禁止清单
 
@@ -26,7 +27,7 @@ Windows 侧脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`�
 - 🚫 往 `files/` 放字体：字体只在 `fonts/`，由安装器部署
 - 🚫 手写 `src/安装说明.txt`：它是 `tools/build_install_txt.py` 的生成物
 - 🚫 手改 `src/manifest.json` 的哈希：用 `tools/build_manifest.py` 重算
-- 🚫 新增 `.bat` / `.cmd`（含临时脚本）。**唯一例外**：发布包里由 `tools/build_release.py` 打包时现场生成的双击转发 shim（见 `DECISIONS.md` D-010）——仓库里仍然一个都不能有
+- 🚫 新增 `.bat` / `.cmd`（含临时脚本）。**唯一例外**：发布包里由 `tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成的纯 CMD 入口（D-010 / D-011）——仓库里仍然一个都不能有；模板须纯 ASCII、不得调用 PS 宿主
 - 🚫 未跑 `verify` 就声称「已完成」；把校验失败说成「环境问题」而不复现
 - 🚫 破坏性 Git 操作：`reset --hard`、`push --force`、修改已发布 tag
 
@@ -35,7 +36,7 @@ Windows 侧脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`�
 **SemVer 2.0.0**，规则见 [`docs/VERSIONING.md`](docs/VERSIONING.md)。
 **单一真相**：`src/manifest.json` 的 `version` 字段；`docs/CHANGELOG.md` 顶层标题与 `src/安装说明.md` 首行由校验脚本比对，三者必须一致。
 
-- 公开接口 = 发布包结构（zip 布局、`manifest.json` schema、`setup.ps1` 参数）
+- 公开接口 = 发布包结构（zip 布局、`manifest.json` schema、`setup.ps1` 参数、`setup.bat` 动作参数）
 - 破坏接口 → 主版本；新增能力（新覆盖模块、新参数、适配新引擎）→ 次版本；译文/文案修正 → 修订号
 - 已发布版本不得修改，tag 一旦推送不改；发错就发新版本
 

@@ -38,7 +38,9 @@
 2. 📂 解压到一个**英文路径**下，例如 `D:\OpenRA_CN`
 3. 🛑 **关闭 OpenRA**
 4. 🖱️ **右键 `setup.ps1` → 使用 PowerShell 运行** → 菜单输入 `1` → 回车
-5. 🔧 **（可选）** 进「战役」点任务闪退的话：双击 `hotfix\apply-hotfix.bat`（Windows 下 `.ps1` 双击只会用记事本打开）
+   - **PowerShell 用不了？** 双击 `setup.bat`（或内容完全相同的 `setup.cmd`）→ 菜单 `1`：
+     纯批处理入口，不依赖 PS，屏幕提示为英文；中文对照见包内 `安装说明.md`。
+5. 🔧 **（可选）** 进「战役」点任务闪退的话：双击 `hotfix\apply-hotfix.bat` / `.cmd`（同为纯 CMD 入口）
 
 > 装在 `C:\Program Files` 会弹一次 UAC；引擎版本不匹配会先警告再询问。
 
@@ -52,20 +54,29 @@ setup.ps1 -Verify        :: 校验是否卸干净
 setup.ps1 -FontPath "D:\你的字体.ttf"   :: 换字体
 ```
 
+纯 CMD 路线（PS1 不可用时，`setup.cmd` 与 `setup.bat` 内容相同）：
+
+```bat
+setup.bat "D:\Games\OpenRA" /install     :: 安装
+setup.bat "D:\Games\OpenRA" /restore    :: 还原英文
+setup.bat "D:\Games\OpenRA" /verify     :: 校验是否卸干净
+```
+
 ## 🧩 包里有什么
 
-解压后**顶层 10 项**，连子目录共 225 个文件：
+解压后**顶层 12 项**，连子目录共 230 个文件：
 
 ```text
 OpenRA_Simplified_Chinese\
-├─ 🖱️ setup.ps1                  ← 右键 → 使用 PowerShell 运行
+├─ 🖱️ setup.ps1                  ← PS 路线：右键 → 使用 PowerShell 运行
+├─ 🖱️ setup.bat / setup.cmd      ← 纯 CMD 路线：双击（两者内容相同，不依赖 PS）
 ├─ 📖 README.md                  ← 逐文件说明（含 208 行清单）
-├─ 📄 安装说明.txt / .md           ← PS1 装 / AI 装 / 手动装 / 排查 / 可选热修
+├─ 📄 安装说明.txt / .md           ← PS1 装 / 纯 CMD 装 / AI 装 / 手动装 / 排查 / 热修
 ├─ ⚖️ LICENSE / LICENSE-OFL.txt   ← 补丁 GPL、字体 OFL
-├─ 📦 bin\  install.ps1 · manifest.json
+├─ 📦 bin\  install.ps1 · manifest.json · files.sha256（纯 CMD 部署清单）
 ├─ 🔤 fonts\ NotoSansSC-Regular.ttf · -Bold.ttf
 ├─ 🔧 hotfix\                     ← 可选：引擎热修（仅 playtest-20261026）
-│                                  ← apply-hotfix.bat / .ps1（应用）、rollback 同理
+│                                  ← apply/rollback 各有 .bat · .cmd · .ps1 三种入口
 └─ 📚 files\mods\                 ← 208 个中文文本（覆盖到游戏 mods\）
 ```
 
@@ -99,11 +110,12 @@ OpenRA_Simplified_Chinese\
 ├─ 📦 src\                            打包源（进 zip 的就是这里）
 │   ├─ setup.ps1 · install.ps1 · manifest.json
 │   ├─ PACKAGE-README.md              包内 README 的源文件
-│   ├─ hotfix\                        可选引擎热修（apply / rollback / 两个 DLL）
+│   ├─ hotfix\                        可选引擎热修（PS1 脚本 + 两个 DLL；纯 CMD 入口由模板生成）
 │   └─ 安装说明.txt · 安装说明.md
 ├─ 📚 files\mods\                     208 个载荷（覆盖树）
 ├─ 🔤 fonts\                          Noto Sans SC 两个字重
 ├─ 🛠️ tools\                          校验、载荷重建、打包、文档生成
+│   └─ cmd-templates\                 3 个纯 ASCII CMD 模板（.tpl；生成物只进发布包）
 ├─ 🧪 scripts\                        唯一验收入口 verify.ps1 与各项守卫
 ├─ 🪝 .githooks\                      pre-commit / commit-msg 薄壳
 ├─ 📘 docs\                           ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
@@ -130,7 +142,7 @@ OpenRA_Simplified_Chinese\
 
 | 项 | 值 |
 |---|---|
-| 运行时 | PowerShell **7.4+**（`pwsh`）；Python **3.11+**（`fonttools`） |
+| 运行时 | 研发侧：PowerShell **7.4+**（`pwsh`）、Python **3.11+**（`fonttools`）；玩家侧：Windows 10/11（PS 路线需 PowerShell 5.1，纯 CMD 路线只需 `cmd.exe` + `certutil.exe`） |
 | 数据格式 | Fluent `.ftl`、YAML、JSON；无编译产物 |
 | 目标平台 | Windows 10 / 11（安装器）；校验脚本跨平台 |
 | 第三方来源 | 见 [`MANIFEST.md`](MANIFEST.md) |
@@ -193,9 +205,11 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 这是**上游引擎缺陷**，不是汉化的问题：`playtest-20261026` 在中文文本首次上屏时会在后台线程生成字形，
 与渲染线程争用同一份图集。已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析与修法建议。
 
-**1.6.1 起包内附带可选热修**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（Windows 下 `.ps1` 双击只会用
-记事本打开，所以包里备了这个转发入口），在 UAC 弹窗点「是」；脚本会校验哈希、备份原版再覆盖，
-`hotfix\rollback-hotfix.bat` 可一键还原。不想装热修也行：卸载补丁改用英文界面即可避开；上游修复后本热修会随下个版本移除。
+**1.6.1 起包内附带可选热修**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（`.bat` 被拦就双击
+`apply-hotfix.cmd`），在 UAC 弹窗点「是」。这两个入口是**纯批处理、不依赖 PowerShell**，
+会先对两个 DLL 统一做哈希预检、备份原版再覆盖并复验；`hotfix\rollback-hotfix.bat` / `.cmd`
+可一键还原（PS 路线另有同名 `.ps1`）。不想装热修也行：卸载补丁改用英文界面即可避开；
+上游修复后本热修会随下个版本移除。
 </details>
 
 <details>
@@ -218,9 +232,9 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 - [x] 🧯 安装器可回滚、可校验、卸载能挑对备份
 - [ ] 📸 补一组界面截图，放到 README 顶部
 - [ ] 🖋️ 可选主题字体（霞鹜文楷），做成独立附件
-- [x] 🧨 **入口全面改用 `.ps1`**：`setup.ps1` 取代 `setup.cmd`，仓库与包里已无任何 `.bat` / `.cmd`
-- [x] 📜 **约定落地**：CI 守卫禁止任何 `.bat` / `.cmd`，**零例外**
-- [ ] 🖱️ **恢复双击体验**：`.ps1` 双击只会打开记事本；候选 `.lnk` 垫片或单文件 exe
+- [x] 🧨 **入口全面改用 `.ps1`**：`setup.ps1` 取代 `setup.cmd`，**仓库里**零 `.bat` / `.cmd`
+- [x] 📜 **约定落地**：CI 守卫禁止仓库内任何 `.bat` / `.cmd`，**零例外**（发布包里打包时现场生成的纯 CMD 入口不入库）
+- [x] 🖱️ **恢复双击体验**：发布包附 `setup.bat` / `setup.cmd` 与热修同名入口，纯批处理、不依赖 PS（见 `DECISIONS.md` D-011）
 - [ ] 🐧 Linux / macOS 的一页式手动安装文档
 - [ ] 📝 术语表统一校对（借 `docs/archive/rasc-ref` 的对齐结果）
 

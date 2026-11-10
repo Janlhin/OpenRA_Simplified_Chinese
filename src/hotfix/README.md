@@ -13,33 +13,48 @@
 
 不满足就别装——尤其是上游已经修好的版本，装了反而多余。
 
-## 二、怎么用
+## 二、怎么用（纯 CMD 优先）
 
 1. **关掉所有 OpenRA 窗口**（三个 exe 都退干净）；
-2. **双击 `apply-hotfix.bat`**（Windows 下 `.ps1` 双击只会用记事本打开，所以包里备了这个转发入口）；
-   或者右键 `apply-hotfix.ps1` →「使用 PowerShell 运行」，再在 UAC 弹窗点「是」；
-   也可以在 PowerShell 里执行：
+2. **双击 `apply-hotfix.bat`**；如果这台机器把 `.bat` 关联改过、或被安全软件拦了，
+   就双击同目录的 `apply-hotfix.cmd`——两者内容完全一样，只是扩展名不同。
+3. 在 UAC 弹窗点「是」（默认目录 `C:\Program Files\OpenRA (playtest)` 需要管理员权限；
+   装在自建目录里不会弹）。看到两行 `[OK]` 即成功，直接启动游戏进「战役」验证。
 
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File apply-hotfix.ps1
-   # 装在别处的话：
-   powershell -ExecutionPolicy Bypass -File apply-hotfix.ps1 -Target "D:\Games\OpenRA"
-   ```
+**这两个入口是纯批处理，完全不依赖 PowerShell。** 屏幕提示是英文：`cmd.exe` 在非 ASCII
+代码页下会把中文批处理行拆坏，所以脚本刻意只用 ASCII；常用提示的中文含义：
 
-3. 看到两个 `[完成]` 即成功，直接启动游戏进「战役」验证。
+| 屏幕提示 | 含义 |
+|---|---|
+| `[BACKUP] ...orig-20261109` | 已备份官方原版 |
+| `[OK] OpenRA.Game.dll` | 该文件已替换为热修版，且覆盖后哈希校验通过 |
+| `[SKIP] ... is already the hotfix build` | 之前已经打过，跳过 |
+| `[ERROR] ... hash is neither ...` | DLL 不是官方原版也不是热修版，已中止且零文件被改动 |
 
-> `apply-hotfix.bat` 只是转发：真正的逻辑全在同名 `.ps1` 里（`.bat` 由打包脚本生成，不入仓库）。
+装在别处的话，把目录作为第一个参数传入：
+
+```text
+apply-hotfix.bat "D:\Games\OpenRA"
+apply-hotfix.cmd "D:\Games\OpenRA"
+```
+
+PowerShell 可用的机器也可以继续用原来的 `.ps1`（右键 →「使用 PowerShell 运行」，或
+`powershell -ExecutionPolicy Bypass -File apply-hotfix.ps1 -Target "D:\Games\OpenRA"`）。
+**两套入口行为等价、互相独立**，任选其一；`.ps1` 坏了不影响 `.bat` / `.cmd`。
+
+> `.bat` / `.cmd` 由 `tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成，
+> **不进仓库**；仓库里仍然零 `.bat` / `.cmd`（见 `DECISIONS.md` D-011）。
 
 脚本的行为：
 
-- 替换前校验目标 DLL 的 SHA256，**只接受「官方原版」或「已打过热修」两种状态**，
-  其它一律中止且不做任何修改（避免覆盖到别的引擎版本）；
+- 先对两个 DLL 统一做 SHA256 预检，**只接受「官方原版」或「已打过热修」两种状态**，
+  任何一个不合格就整体中止、零文件被改动（避免覆盖到别的引擎版本）；
 - 首次替换前把原版备份为 `OpenRA.Game.dll.orig-20261109` /
   `OpenRA.Mods.Common.dll.orig-20261109`；
-- 替换后再次校验哈希。
+- 替换后再次校验哈希，用的是系统自带 `certutil.exe`，不是 PowerShell。
 
-想还原：运行 `rollback-hotfix.ps1`（同样支持 `-Target`）。
-上游修复该缺陷后，直接删掉本目录即可，不必还原。
+想还原：双击 `rollback-hotfix.bat` 或 `rollback-hotfix.cmd`（也可运行 `rollback-hotfix.ps1`），
+从备份恢复并校验哈希。上游修复该缺陷后，直接删掉本目录即可，不必还原。
 
 ## 三、它改了什么
 
@@ -90,8 +105,12 @@ void SelectMap(MapPreview preview)
 | `OpenRA.Game.dll` | 923,136 | `105e0003cccadd44c4bd711a1920a8d0f3329504b2c2403281392d89b67d9948` |
 | `OpenRA.Mods.Common.dll` | 3,655,168 | `1faf14403e0c65ed83be1d7efc7b7ac1a3ffb1462c5934e5ab1ddd92e22cd1ea` |
 
-另有四个脚本：`apply-hotfix.ps1`（应用）、`rollback-hotfix.ps1`（还原），以及两个由打包脚本现场生成的
-`.bat` 双击转发入口（`apply-hotfix.bat`、`rollback-hotfix.bat`，只调用同名 `.ps1`，本身不入仓库）。
+另有六份脚本：纯 CMD 的 `apply-hotfix.bat` / `.cmd`、`rollback-hotfix.bat` / `.cmd`
+（四个文件两两同内容，由打包脚本现场生成、不进仓库），以及 PowerShell 版
+`apply-hotfix.ps1` / `rollback-hotfix.ps1`。两套入口互相独立，PS1 不可用也能装。
+
+包根目录另有主安装器的纯 CMD 入口 `setup.bat` / `setup.cmd`，它读 `bin\files.sha256`
+逐文件校验 208 个文本与两个字体；详见包内 `安装说明.md`。
 
 对应的官方原版 SHA256（脚本据此判断当前状态）：
 

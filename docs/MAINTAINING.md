@@ -194,22 +194,22 @@ python tools/check_font_coverage.py
 
 ## 脚本与入口约定
 
-**仓库里不允许任何 `.bat` / `.cmd`；Windows 侧脚本一律 `.ps1`。** CI 有守卫，出现即失败，零例外。
+**仓库里不允许任何 `.bat` / `.cmd`；Windows 侧脚本一律 `.ps1`。** CI 有守卫，仓库内出现即失败。
+发布包是唯一例外：`tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成 6 个纯 CMD
+入口与 1 份 `bin\files.sha256` 部署清单，**生成物只进 zip、不入库**（见 `DECISIONS.md` D-010 / D-011）。
 
 入口是 `src/setup.ps1`：只做参数转发，**不含业务逻辑**，逻辑全在 `src/install.ps1`。
+PS 不可用的玩家走纯 CMD 路线：`setup.bat` / `setup.cmd` 自带安装 / 还原 / 卸载校验，
+读 `bin\files.sha256` 逐文件校验；`hotfix\` 也有同名的纯 CMD 应用 / 还原入口。
 
-已知限制：Windows 对 `.ps1` 的默认动词是 `Edit`（用记事本打开），所以**双击不会运行**，
-必须右键 →「使用 PowerShell 运行」，或者在 PS 里执行。1.5.3 及以前靠一个 `.cmd` 垫片绕开这点；
-现在宁可要求右键，也不维护两套入口。
+**模板必须纯 ASCII**：`cmd.exe` 在 `chcp 65001` 下会把 UTF-8 中文批处理行拆成命令
+（实测出现过 `'备份在' is not recognized`），括号块内的裸 `)` 也会提前闭合块。所以模板只用
+ASCII、屏幕提示为英文，中文说明放包内 `安装说明.md`。改模板后必须在真实 `cmd.exe` 里跑一遍
+安装 / 校验 / 还原与热修应用 / 还原，不能只看语法；`check-scripts.ps1` 只保证 ASCII、零 PS
+宿主与哈希同源，运行期行为靠沙盒回归。
 
-要恢复"双击即装"，需要一个**不依赖文件关联、也不依赖执行策略**的入口，候选：
-
-1. `.lnk` 快捷方式指向 `powershell.exe -NoProfile -ExecutionPolicy Bypass -File ...`。
-   难点：lnk 内是绝对路径，压缩包换目录就失效，需要在首次运行或安装时重写；
-2. 单文件 `.exe`（ps2exe / Inno Setup）。能双击，但未签名会触发 SmartScreen，且构建要在 Windows 上做，
-   Linux CI 无法复现。
-
-选定方案前，文档统一写「右键 → 使用 PowerShell 运行」，不要写"双击"。
+已否决的双击方案（保留记录）：① `.lnk` 垫片——内含绝对路径，压缩包换目录就失效；
+② 单文件 `.exe`——需要代码签名预算，且构建只能在 Windows 上做，Linux CI 无法复现。
 
 ## CI
 
@@ -225,7 +225,7 @@ pwsh -NoLogo -NoProfile -File scripts/verify.ps1
 1. 版本号 SemVer 合法 + `manifest.json` / `CHANGELOG` / `安装说明` 三处一致（`scripts/check-versions.ps1`）；
 2. 五个治理文档字段完整、`AGENTS.md` ≤150 行、规则单一载体（`scripts/check-docs.ps1`）；
 3. 顶层结构白名单（`scripts/check-layout.ps1`）；
-4. 脚本基线：零 `.bat` / `.cmd`、`.ps1` 可被解析、`files/` 内无字体（`scripts/check-scripts.ps1`）；
+4. 脚本基线：仓库零 `.bat` / `.cmd`、`.ps1` 可被解析、3 个 CMD 模板纯 ASCII / 零 PS 宿主 / 哈希同源、`files/` 内无字体（`scripts/check-scripts.ps1`）；
 5. `verify_manifest.py` —— 载荷与 `manifest.json` 逐字节一致；
 6. `lint_ftl.py files/mods` —— Fluent 规范（BOM / 换行 / 缩进 / 花括号）；
 7. `struct_check_maps.py files/mods` —— 地图文案结构自检；

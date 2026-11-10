@@ -20,6 +20,8 @@
 - **被否决**：保留 `.cmd` 垫片兼容旧文档（维护两份入口的成本高于收益）。
 - **影响**：`src/setup.ps1`、`scripts/check-scripts.ps1`、CI。
 - **复审条件**：Windows 恢复 `.ps1` 双击直跑（当前双击只会用记事本打开）。
+- **后续（2026-11-10）**：本条关于「发布包内不得出现 `.bat` / `.cmd`」的部分被 **D-010** 放宽、
+  又被 **D-011** 进一步扩展；「仓库零 `.bat` / `.cmd`」这一半始终有效。
 
 ### D-003 · 2026-10 · 字体随包分发（Noto Sans SC 两字重）
 
@@ -108,3 +110,35 @@
 - **影响范围**：`tools/build_release.py`（`BAT_SHIMS` 常量与写 zip 逻辑）、`src/hotfix/README.md`、
   包内 README、`安装说明.md`、仓库 README、`CHANGELOG`。
 - **复审条件**：若将来引入 `.lnk` 或单文件 exe 启动器（能真正解决换目录失效问题），本条可废止。
+- **后续（2026-11-10）**：本条被 **D-011** 扩展——薄壳升级为自包含的纯 CMD 实现，并新增 `.cmd` 副本与主安装器入口。
+
+### D-011 · 2026-11-10 · 发布包补一套纯 BAT/CMD 备用入口（主安装器 + 热修）
+
+- **决策**：发布包同时提供 `setup.bat` / `setup.cmd`（安装 / 还原 / 卸载校验）与
+  `hotfix\apply-hotfix.{bat,cmd}`、`hotfix\rollback-hotfix.{bat,cmd}`，共 6 个**自包含的纯批处理**
+  入口，完全不调用 PS 宿主；另生成 `bin\files.sha256` 部署清单。仓库仍零 `.bat` / `.cmd`：
+  它们由 `tools/cmd-templates/*.tpl` 打包时现场生成（D-010 的生成式思路保留并扩展）。
+- **背景**：有玩家反馈 `.ps1` 在其机器上跑不起来（组策略禁用、系统精简、执行策略锁死、
+  双击只开记事本）。D-010 的两个 `.bat` 只是转发同名 `.ps1` 的薄壳，PS 坏了照样失效；
+  而「手动安装」没有任何哈希校验。需要一条与 PS 完全解耦、且保留校验与回滚能力的备用路径。
+- **被采纳**：模板纯 ASCII + CRLF（`cmd.exe` 在 `chcp 65001` 下会把中文批处理行拆成命令，
+  CHANGELOG 早在 1.5.x 就记过这个坑）；SHA256 用系统自带 `certutil.exe`，备份用 `robocopy`；
+  主安装器读 `bin\files.sha256`（由 `manifest.json` 生成、210 行）逐文件部署与校验，
+  还原时按清单精确回退并删除补丁新增文件，还会跳过「装完又装一次」产生的假备份；
+  热修先对两个 DLL 统一预检，任一哈希不合格就整体中止、零文件改动；仅目标目录不可写时
+  用临时 VBS 请求 UAC（不依赖 PS）。`.bat` 与 `.cmd` 内容完全相同，供 `.bat` 被改关联或拦截时切换。
+  两条独立拦截路径：`scripts/check-scripts.ps1` 查模板 ASCII / 零 PS 宿主 / 哈希同源，
+  `tools/build_release.py --verify` 查生成物逐字节一致与清单行数；本机另做过完整沙盒回归。
+- **被否决**：① 把 `.bat` / `.cmd` 直接提交进仓库——违反 D-002 硬约束与 CI 守卫；
+  ② 继续用转发 `.ps1` 的薄壳——PS 坏了照样不可用，正是本次要解决的问题；
+  ③ 纯 CMD 版只做安装不做还原——玩家会卡在「装得上、卸不掉」；
+  ④ 在 BAT 里放中文提示 + `chcp 65001`——实测 cmd 把 `rem` / `echo` 行拆成命令
+  （`'备份在' is not recognized`），故屏幕提示统一为英文、中文说明放文档。
+- **影响范围**：`tools/cmd-templates/`（3 个模板）、`tools/build_release.py`、`scripts/check-scripts.ps1`、
+  `src/hotfix/README.md`、`src/安装说明.md` + `.txt`、`src/PACKAGE-README.md`、仓库 README、
+  `docs/ANATOMY.md`、`docs/MAINTAINING.md`、`AGENTS.md`、`TASKS.md`、`docs/CHANGELOG.md`；
+  发布包由 225 → 230 个文件（顶层 10 → 12 项）。按用户明确要求**版本号维持 1.6.1**并替换
+  Release 资产——这是 D-009 之后的第二次同号重发，同样属一次性特例，此后任何已发布版本的
+  内容改动一律升号。
+- **复审条件**：上游修复 #22716 后随 T-007 移除 `hotfix\` 时，一并删除两个热修模板；
+  若将来引入 `.lnk` 或单文件 exe 启动器，重新评估纯 CMD 路线是否仍有必要。

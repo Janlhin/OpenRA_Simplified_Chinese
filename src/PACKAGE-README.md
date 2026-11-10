@@ -17,7 +17,8 @@
 
 ## 三分钟装好
 
-**系统要求**：Windows 10 / 11 + 系统自带的 PowerShell 5.1（不用另装任何东西）。
+**系统要求**：Windows 10 / 11。PowerShell 可用走 `setup.ps1`；**PowerShell 用不了就双击
+`setup.bat`（或 `setup.cmd`）**，那套入口是纯批处理，不依赖 PS。
 
 1. 把 zip 解压到一个**英文路径**下，例如 `D:\OpenRA_CN`。
 2. **关闭 OpenRA**。
@@ -27,8 +28,14 @@
    - 引擎版本不是 `playtest-20261026` 会先警告，再问你是否继续。
 4. 启动游戏，界面即为中文。
 
-`setup.ps1` 是**唯一入口**：安装 / 还原 / 卸载校验 / 预演都在同一个菜单里，
+`setup.ps1` 是 PS 路线的入口：安装 / 还原 / 卸载校验 / 预演都在同一个菜单里，
 不用记参数，也不用找第二个脚本。
+
+**PS1 跑不起来时**：双击 `setup.bat`（`.bat` 被改过关联或被安全软件拦，就双击内容完全相同的
+`setup.cmd`），菜单 `1` 安装 / `2` 还原 / `3` 校验。它是自包含的纯批处理，只用
+`cmd.exe` / `certutil.exe` / `robocopy.exe`，同样会备份 `mods`、先放字体、按清单逐文件
+SHA-256 校验 210 个条目。屏幕提示是英文（`cmd.exe` 在中文代码页下会拆坏中文行），
+中文对照见 [安装说明.md](安装说明.md)；高级参数（`-DryRun` / `-FontPath` 等）仍只有 PS 路线有。
 
 ### 命令行（等价用法）
 
@@ -56,30 +63,40 @@ setup.ps1 -FontPath "D:\你的字体.ttf"   :: 换字体
 | `-Uninstall` | 从最近一次备份还原 |
 | `-Verify` | 校验「汉化是否已卸载干净」 |
 
+纯 CMD 路线的等价用法（`setup.cmd` 与 `setup.bat` 内容相同，路径用引号括起来）：
+
+```bat
+setup.bat "D:\Games\OpenRA" /install
+setup.bat "D:\Games\OpenRA" /restore
+setup.bat "D:\Games\OpenRA" /verify
+```
+
 ## 这个 zip 里有什么
 
-解压后**顶层 10 项**（6 个文件 + 4 个目录），连子目录一共 **225 个文件**：
+解压后**顶层 12 项**（8 个文件 + 4 个目录），连子目录一共 **230 个文件**：
 
 ```
 OpenRA_Simplified_Chinese\
-├─ setup.ps1                     ← 右键 → 使用 PowerShell 运行
+├─ setup.ps1                     ← PS 路线：右键 → 使用 PowerShell 运行
+├─ setup.bat / setup.cmd         ← 纯 CMD 路线：双击即可（两者内容相同）
 ├─ README.md                     ← 你正在看的
 ├─ 安装说明.txt                   ← 纯文本版（记事本直接看，由 md 生成）
 ├─ 安装说明.md                    ← 完整说明：装 / 还原 / 手动装 / 排查
 ├─ LICENSE                       ← 补丁的 GPL-3.0
 ├─ LICENSE-OFL.txt               ← 字体的 SIL OFL 1.1
 ├─ bin\
-│   ├─ install.ps1               ← 全部安装逻辑
-│   └─ manifest.json             ← 清单：版本 + 208 条哈希 + 字体哈希
+│   ├─ install.ps1               ← PS 路线的全部安装逻辑
+│   ├─ manifest.json             ← 清单：版本 + 208 条哈希 + 字体哈希
+│   └─ files.sha256              ← 纯 CMD 路线的部署清单（210 行）
 ├─ fonts\
 │   ├─ NotoSansSC-Regular.ttf    ← 正文字体（约 10 MB）
 │   └─ NotoSansSC-Bold.ttf       ← 标题/粗体（约 10 MB）
 ├─ hotfix\                       ← 可选：引擎热修（仅 playtest-20261026）
 │   ├─ README.md                 ← 什么时候要装、改了什么、怎么还原
-│   ├─ apply-hotfix.bat          ← 双击入口（转发到同名 .ps1）
-│   ├─ apply-hotfix.ps1          ← 应用（校验哈希 → 备份 → 覆盖）
-│   ├─ rollback-hotfix.bat        ← 双击入口（转发到同名 .ps1）
-│   ├─ rollback-hotfix.ps1       ← 一键还原为官方原版
+│   ├─ apply-hotfix.bat / .cmd   ← 双击应用（纯 CMD，两者内容相同）
+│   ├─ apply-hotfix.ps1          ← PS 路线应用（校验哈希 → 备份 → 覆盖）
+│   ├─ rollback-hotfix.bat / .cmd ← 双击还原（纯 CMD）
+│   ├─ rollback-hotfix.ps1       ← PS 路线一键还原
 │   ├─ OpenRA.Game.dll           ← 改了 2 处
 │   └─ OpenRA.Mods.Common.dll    ← 改了 1 处
 └─ files\
@@ -88,19 +105,23 @@ OpenRA_Simplified_Chinese\
 
 | 项 | 它到底干什么 | 谁在用 | 能删吗 |
 |---|---|---|---|
-| `setup.ps1` | **唯一入口**。右键「使用 PowerShell 运行」出中文菜单；带参数时原样透传给 `bin\install.ps1` | 玩家 | 删了只能手动安装 |
-| `bin\install.ps1` | 全部逻辑：找游戏、判版本、校验哈希、备份、提权、部署字体、还原 | `setup.ps1` 调用 | **不能删** |
-| `bin\manifest.json` | 补丁的身份证：版本、适配的引擎、208 个载荷的 `{path,size,sha256}`、字体清单 | 安装器校验用 | **不能删** |
+| `setup.ps1` | **PS 路线入口**。右键「使用 PowerShell 运行」出中文菜单；带参数时原样透传给 `bin\install.ps1` | 玩家 | 改用纯 CMD 路线时可删 |
+| `setup.bat` / `setup.cmd` | **纯 CMD 路线入口**。自包含批处理，不依赖 PS；菜单 `1`/`2`/`3` = 安装 / 还原 / 校验，屏幕提示英文 | 玩家（PS 不可用时） | 两套入口至少留一套 |
+| `bin\install.ps1` | PS 路线全部逻辑：找游戏、判版本、校验哈希、备份、提权、部署字体、还原 | `setup.ps1` 调用 | 用纯 CMD 路线时可删 |
+| `bin\manifest.json` | 补丁的身份证：版本、适配的引擎、208 个载荷的 `{path,size,sha256}`、字体清单 | PS 路线与清单生成用 | **不要删**（`files.sha256` 由它生成） |
+| `bin\files.sha256` | 纯 CMD 路线的部署清单：210 行「SHA256 / 包内源路径 / 游戏目录相对路径」 | `setup.bat` / `setup.cmd` | 用 PS 路线时可删 |
 | `files\mods\` | 208 个中文文本，目录结构与游戏 `mods\` 完全一致（见下节） | 安装器覆盖进游戏 | **不能删**（删了等于空包） |
 | `fonts\NotoSansSC-Regular.ttf` | 正文字体，装进 `mods\common\` | 安装器 | **不能删**（删了回退系统字体，系统也没有就装不了） |
 | `fonts\NotoSansSC-Bold.ttf` | 粗体/标题字体，同上 | 安装器 | 同上 |
-| `hotfix\` | **可选**的引擎热修：修「战役界面点任务闪退」。不装不影响汉化本身；详见 `hotfix\README.md` | 玩家手动执行 | 可以删（上游修复后应删） |
+| `hotfix\` | **可选**的引擎热修：修「战役界面点任务闪退」，含纯 CMD 与 PS 两套入口；不装不影响汉化本身，详见 `hotfix\README.md` | 玩家手动执行 | 可以删（上游修复后应删） |
 | `README.md` | 本文件：每个文件是什么、怎么装、怎么还原、常见问题 | 玩家 | 可以删，但建议留着 |
 | `安装说明.txt` / `安装说明.md` | 安装步骤：PS1 一键装、让 AI 助手装、手动装、问题排查表（`.txt` 是纯文本版，记事本直接看；两版内容一致） | 玩家 | 可以删 |
 | `LICENSE` / `LICENSE-OFL.txt` | 补丁的 GPL-3.0；随包字体的 SIL OFL 1.1 | 法律 | **不能删**（合规） |
 
-`bin\` 里两个文件互相依赖，别单独挪动——`setup.ps1` 按相对路径找它们。
-`hotfix\` 与安装流程**完全解耦**：安装器不会碰它，需要时自己运行 `apply-hotfix.ps1`。
+`bin\` 里的 PS 脚本与 `setup.ps1` 互相依赖，别单独挪动；纯 CMD 路线只依赖
+`setup.bat` / `setup.cmd` 与 `bin\files.sha256`，和 `bin\install.ps1` 无关。
+`hotfix\` 与安装流程**完全解耦**：两套安装器都不会碰它，需要时自己双击
+`apply-hotfix.bat` / `.cmd`（或运行 `apply-hotfix.ps1`）。
 
 研发资产（`tools/`、`docs/`、`.github/`、`CONTRIBUTING.md`、`CHANGELOG.md` 等）
 只留在仓库里，**不进发布包**。
@@ -140,7 +161,7 @@ OpenRA_Simplified_Chinese\
 
 ## 手动安装（不运行脚本）
 
-适用：不想跑脚本，或公司电脑用组策略禁掉了 PowerShell。
+适用：两套一键入口（PS1 与纯 CMD）都不想用。
 
 **顺序不能错**：`files\` 里的 `mod.yaml` 已经指向 `common|NotoSansSC-Regular.ttf` 与
 `common|NotoSansSC-Bold.ttf`，所以「先覆盖文本、后放字体」会让引擎读不到字体文件——
@@ -194,6 +215,7 @@ OpenRA 默认字体 `common|FreeSans.ttf` **没有中文字形**，不换字体�
 所有被覆盖的文件都备份到 `<OpenRA 目录>\_zhcn-backup\<时间戳>\`，并附 `backup.json` 记录清单。
 
 - 右键 `setup.ps1` →「使用 PowerShell 运行」→ 菜单输入 `2`：还原全部文件、删掉新增的两个字体，并顺手清掉补丁以前留下的字体。
+- 纯 CMD 路线：`setup.bat` / `setup.cmd` → 菜单 `2`：从 4 位编号备份还原 208 个文本、删掉补丁新增的文本与字体；菜单 `3` 校验是否卸干净（退出码 0 = 干净）。两套路线的备份目录互不干扰。
 - 有多份备份时，安装器自动挑**最早的那份「真正的安装前快照」**：已经还原过的（名字带 `.已还原`）
   和重复安装时生成的（里面存的其实是译文）都会被跳过，并在屏幕上说明跳过了哪一份。
 - 想指定用哪一份：`setup.ps1 -Uninstall -Backup 20261030-180424`
@@ -231,7 +253,7 @@ OpenRA 默认字体 `common|FreeSans.ttf` **没有中文字形**，不换字体�
 | 地图元数据里的地图标题（任务列表显示的 `Allies 01` 等） | **未汉化，见上文说明** |
 
 统计：**3,036 条 Fluent 文案 + 20 条安装源名称 + 140 份战役简报 + 16 个战役分组名 + 若干地图内文本**，
-共 **208 个载荷文件**、595 KB；整包 218 个文件（字体解压后约 20 MB，zip 约 12.4 MB）。
+共 **208 个载荷文件**、595 KB；整包 230 个文件（字体解压后约 20 MB，zip 约 14 MB）。
 
 ## 引擎升级后请注意
 
@@ -248,9 +270,10 @@ Fluent **不会**在缺键时回退英文，而是把键名直接显示出来（
 - **进「战役」点任务可能闪退**：这是上游引擎缺陷，不是汉化的问题。`playtest-20261026` 在中文文本
   首次上屏时会在后台线程生成字形，与渲染线程争用同一份图集，导致崩溃。已上报
   <https://github.com/OpenRA/OpenRA/issues/22716>（含复现步骤、根因分析与修法建议）。
-  **1.6.1 起包内附带可选热修 `hotfix\`**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（Windows 下 `.ps1`
-  双击只会用记事本打开，所以包里备了这个转发入口），在 UAC 弹窗点「是」即可修好
-  （脚本会先校验哈希、备份原版，`hotfix\rollback-hotfix.bat` 可一键还原）。
+  **1.6.1 起包内附带可选热修 `hotfix\`**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**
+  （`.bat` 被拦就双击 `apply-hotfix.cmd`），在 UAC 弹窗点「是」即可修好。这两个入口是
+  **纯批处理、不依赖 PowerShell**，会先对两个 DLL 统一做哈希预检、备份原版再覆盖并复验；
+  `hotfix\rollback-hotfix.bat` / `.cmd` 可一键还原。PS 路线另有同名 `.ps1`。
   不想装热修也行：卸载补丁改用英文界面即可避开。上游修复后，本热修会随下个版本移除。
 - **战役界面「难度」是灰的、点不动**：部分任务本身没有难度选项（上游设计，如红警 01、10b 与苏军
   01/02a/02b），不是汉化造成的；换一个有难度的任务即可。
@@ -258,7 +281,9 @@ Fluent **不会**在缺键时回退英文，而是把键名直接显示出来（
   要微调就改 `mods\<模组>\mod.yaml` 的 `Fonts:` 段（`Size` 加 1~2），或 `mods\common\metrics.yaml`。
 - 只做了 Windows 脚本；Linux / macOS 用户可手动把 `files/` 覆盖到安装目录，再把 `fonts/` 里的
   两个 TTF 放进 `mods/common/`。
-- `setup.ps1` 依赖 PowerShell。若目标机器被组策略禁用脚本，请走上面的「手动安装」。
+- `setup.ps1` 依赖 PowerShell；被组策略禁用或系统精简掉 PS 时，**双击 `setup.bat` / `setup.cmd`**
+  走纯批处理路线（功能等价，屏幕提示为英文），不必退回「手动安装」。纯 CMD 路线的高级参数
+  （`-DryRun` / `-FontPath`）仍只有 PS 路线提供。
 
 ## 附录 A：全部 208 个文件清单
 

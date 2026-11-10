@@ -18,14 +18,22 @@
 它是个**覆盖式补丁**，不是整包分发游戏——`files/` 里全是文本文件，安装时按目录结构盖到 OpenRA 安装目录上。
 
 ```
-右键 setup.ps1 → 使用 PowerShell 运行（中文菜单）
-   └─ install.ps1（总调度）
-        ├─ 读 manifest.json           ← 版本、适配引擎版本、208 个载荷文件的 SHA-256
-        ├─ 探测 OpenRA 安装目录        ← 注册表 + Program Files\OpenRA*
-        ├─ 逐文件校验 SHA-256          ← 与 manifest.json 比对，不一致就中止
-        ├─ 备份被覆盖的文件            ← <OpenRA 目录>\_zhcn-backup\<时间戳>\
-        ├─ 覆盖 files/ 到 mods/        ← 汉化生效
-        └─ 部署随包字体              ← fonts/ 里的 Regular+Bold → mods/common/
+两条互不依赖的一键入口：
+
+  [PS 路线]  右键 setup.ps1 → 使用 PowerShell 运行（中文菜单）
+               └─ install.ps1（总调度）
+                    ├─ 读 manifest.json           ← 版本、适配引擎、208 个载荷的 SHA-256
+                    ├─ 探测 OpenRA 安装目录        ← 注册表 + Program Files\OpenRA*
+                    ├─ 逐文件校验 SHA-256          ← 与 manifest.json 比对，不一致就中止
+                    ├─ 备份被覆盖的文件            ← <OpenRA 目录>\_zhcn-backup\<时间戳>\
+                    ├─ 覆盖 files/ 到 mods/        ← 汉化生效
+                    └─ 部署随包字体              ← fonts/ 里的 Regular+Bold → mods/common/
+
+  [纯 CMD]   双击 setup.bat / setup.cmd（英文菜单，PS 不可用时；不调用 PS 宿主）
+               └─ 读 bin\files.sha256             ← 210 行，由 manifest.json 打包时生成
+                    ├─ robocopy 备份 mods          ← _zhcn-backup\0001 递增编号
+                    ├─ 先放字体 → 再逐文件覆盖 208 个文本
+                    └─ certutil 逐文件 SHA-256 校验；菜单 2 还原 / 3 校验卸载
 ```
 
 四个关键设计：**只覆盖文本**、**安装前先校验哈希**、**覆盖前先备份**、**随包自带字体**
@@ -47,16 +55,16 @@ OpenRA_Simplified_Chinese/
 ├─ MANIFEST.md                        第三方来源登记：URL、版本、SHA256、许可结论
 ├─ LICENSE / LICENSE-OFL.txt          补丁的 GPL 与字体的 SIL OFL
 ├─ src/                               打包源
-│   ├─ setup.ps1                      玩家唯一入口（UTF-8 带 BOM + CRLF，右键运行出菜单）
-│   ├─ install.ps1                    全部逻辑
+│   ├─ setup.ps1                      PS 路线入口（UTF-8 带 BOM + CRLF，右键运行出菜单）
+│   ├─ install.ps1                    PS 路线的全部逻辑
 │   ├─ manifest.json                  版本、适配引擎、208 条哈希、字体清单
 │   ├─ PACKAGE-README.md              包内 README 的源文件（打包时改名 README.md）
-│   ├─ hotfix/                        可选引擎热修（两个改过的 DLL + 应用/还原脚本 + 说明）
-│   └─ 安装说明.txt / 安装说明.md      玩家说明：PS1 装 / AI 装 / 手动装 / 排查（.txt 由 .md 生成）
+│   ├─ hotfix/                        可选引擎热修（两个 DLL + PS1 脚本 + 说明；纯 CMD 入口由模板生成）
+│   └─ 安装说明.txt / 安装说明.md      玩家说明：PS1 装 / 纯 CMD 装 / AI 装 / 手动装 / 排查
 ├─ files/                             载荷：覆盖树的根
 │   └─ mods/{common,ra,cnc,d2k,common-content,ra-content,cnc-content,d2k-content}/
 ├─ fonts/                             NotoSansSC-Regular/Bold.ttf（随包中文字体）
-├─ tools/                             14 个 Python 脚本（纯标准库）
+├─ tools/                             Python 脚本（纯标准库）+ cmd-templates/（3 个纯 ASCII CMD 模板）
 ├─ scripts/                           PowerShell 校验脚本与 Git 钩子（唯一验收入口 verify.ps1）
 ├─ .githooks/                         pre-commit / commit-msg 薄壳
 ├─ docs/                              仓库自己的文档，不进发布包
@@ -76,7 +84,7 @@ OpenRA_Simplified_Chinese/
 └─ .gitignore
 ```
 
-仓库共 268 个文件（不含 `.git/`、`dist/`），其中 **`files/` 载荷 208 个**——载荷数是唯一需要精确盯住的
+仓库共 271 个文件（不含 `.git/`、`dist/`，含 3 个 CMD 模板），其中 **`files/` 载荷 208 个**——载荷数是唯一需要精确盯住的
 数字（它直接决定 `manifest.json` 的校验条目），其余是脚本、文档与仓库元文件。
 
 ---
@@ -99,12 +107,16 @@ OpenRA_Simplified_Chinese/
 
 | 文件 | 作用 | 包内位置 |
 |---|---|---|
-| `setup.ps1` | **玩家唯一入口**。UTF-8 带 BOM + CRLF：不带参数时调 `install.ps1 -Menu` 出中文菜单，带参数时原样透传。Windows 双击 `.ps1` 只会打开记事本，必须右键「使用 PowerShell 运行」 | `setup.ps1` |
+| `setup.ps1` | **PS 路线入口**。UTF-8 带 BOM + CRLF：不带参数时调 `install.ps1 -Menu` 出中文菜单，带参数时原样透传。Windows 双击 `.ps1` 只会打开记事本，必须右键「使用 PowerShell 运行」；PS 不可用时有纯 CMD 备用入口（见下方说明） | `setup.ps1` |
 | `install.ps1` | **安装/卸载/校验的全部逻辑**：目录探测、版本校验、SHA-256 校验、备份与挑选、UAC 提权、字体部署、`-DryRun`、还原、校验。脚本为 UTF-8 **带 BOM** + CRLF | `bin\install.ps1` |
 | `manifest.json` | **补丁的身份证**：`version`、`engineVersion`、`repository`、`font`、`stats`，以及 208 条 `{path,size,sha256}` | `bin\manifest.json` |
 | `PACKAGE-README.md` | 包内 README 的源文件：逐文件说明 + 附录 A（由 `tools/build_readme_inventory.py` 生成）。**链接只指向包内文件**，不要写仓库路径 | `README.md` |
 | `安装说明.txt` / `安装说明.md` | 给玩家的说明。**`.md` 是唯一真相源**（标题层级 + 表格），`.txt` 由 `tools/build_install_txt.py` 生成：UTF-8 带 BOM + CRLF、按显示宽度折行，记事本直接看。改说明只改 `.md`，然后跑一次生成器 | 同名 |
-| `hotfix\` | **可选**引擎热修（仅 `playtest-20261026`）：修「战役界面点任务闪退」。含两个本地修改过的引擎 DLL、`apply-hotfix.ps1`（校验哈希 → 备份 → 覆盖）、`rollback-hotfix.ps1`（一键还原）与 `README.md`（含源码级修改说明）。另有两个 `.bat` 双击转发入口，**由 `tools/build_release.py` 打包时现场生成、不入仓库**（仓库保持零 `.bat`）。**安装器不碰它**，需玩家手动应用；上游修复后随下个版本移除 | `hotfix\` |
+| `hotfix\` | **可选**引擎热修（仅 `playtest-20261026`）：修「战役界面点任务闪退」。含两个本地修改过的引擎 DLL、`apply-hotfix.ps1`（校验哈希 → 备份 → 覆盖）、`rollback-hotfix.ps1`（一键还原）与 `README.md`（含源码级修改说明）。发布包里另有 4 个**自包含的纯 CMD** 入口（apply / rollback 各一份 `.bat` + 内容相同的 `.cmd`），由 `tools/build_release.py` 现场生成、不入仓库。**安装器不碰它**，需玩家手动应用；上游修复后随下个版本移除 | `hotfix\` |
+
+> 发布包里还有 **7 个打包期生成物**不在 `src/`：6 个纯 CMD 入口（3 个模板 × `.bat` / `.cmd`）
+> 与 `bin\files.sha256`（210 行部署清单，由 `manifest.json` 生成）。模板在 `tools/cmd-templates/`，
+> 必须纯 ASCII；写出时统一转 CRLF，生成物只写进 zip、不入库。理由与实测记录见 `DECISIONS.md` D-011。
 
 ## `docs/`：仓库自己的文档（不进发布包）
 
