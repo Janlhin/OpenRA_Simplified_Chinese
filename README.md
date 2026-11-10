@@ -183,8 +183,24 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 安装器是未签名的脚本，部分杀软会提示。不放心就走 `安装说明` 里的**手动安装**，效果完全一样。
 </details>
 
+<details>
+<summary>🐞 进「战役」点任务就闪退？</summary>
+
+这是**上游引擎缺陷**，不是汉化的问题：`playtest-20261026` 在中文文本首次上屏时会在后台线程生成字形，
+与渲染线程争用同一份图集。本补丁只换文本、不换引擎，无法规避。
+已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析、临时解与上游处理进展。
+临时办法：卸载补丁改用英文界面；等上游修复后再升级。
+</details>
+
+<details>
+<summary>🎚️ 战役界面「难度」是灰的、点不动？</summary>
+
+部分任务本身没有难度选项（上游设计，如红警 01、10b 与苏军 01/02a/02b），不是汉化造成的；换一个有难度的任务即可。
+</details>
+
 ## ⚠️ 已知限制
 
+- 🐞 **上游引擎缺陷**：`playtest-20261026` 下中文战役简报会触发崩溃（见下方「常见问题」），补丁不换引擎，无法规避，已上报 [#22716](https://github.com/OpenRA/OpenRA/issues/22716)
 - 🔤 字体用的是 **Noto Sans SC 全量字形**（约 20 MB），比系统黑体占空间，但换来"不依赖本机字体"
 - 📐 字号观感：Noto 的行高与原 `FreeSans` 不同，个别 UI 缩放档位可能略挤，可在 `mod.yaml` 的 `Fonts:` 微调
 - 🪟 只提供 Windows 脚本；Linux / macOS 可手动覆盖 `files/` 并把 `fonts/` 放进 `mods/common/`

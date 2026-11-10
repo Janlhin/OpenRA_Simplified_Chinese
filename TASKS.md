@@ -4,18 +4,18 @@
 > **已决条目不得删除**（保留可追溯）；状态取值：`待裁决` / `待办` / `进行中` / `阻塞` / `已完成`。
 > 交付说明末尾必须附「当前未决议清单」；无则写「当前无待裁决项」。
 
-### T-001 · 2026-11-09 · 待裁决 · 战役难度禁用态的占位文案
+### T-001 · 2026-11-09 · 已完成 · 战役难度禁用态的占位文案
 
+- **状态**：已完成（采用方案 B：保持译文不变，改为文档说明）
 - **问题**：无难度选项的任务（`allies-01`、`allies-10b`、`soviet-01/02a/02b` 等）里，难度下拉被禁用，但仍显示控件默认文案「普通」，玩家误以为「有难度却点不动」。英文原版同样显示灰色 `Normal`，属上游行为。
-- **方法**：把 `label-missionbrowser-normal-difficulty` 的译文改为「不可用」，同时改 `files/mods/common/fluent/chrome.ftl` 与 `files/mods/cnc/fluent/chrome.ftl`，再重建 `manifest.json`。
-- **裁决选项**：A 改译文为「不可用」；B 保持现状，仅在 README/FAQ 说明；C 改译文为「—」。
+- **方法**：不改译文（`label-missionbrowser-normal-difficulty` 保持「普通」），在仓库 README、包内 README、`src/安装说明.md` 的问题排查表中统一说明：部分任务本身没有难度选项，换一个有难度的任务即可。
 - **完成判据**：`pwsh -File scripts/verify.ps1` 退出码 0，且 `docs/CHANGELOG.md` 有对应条目。
 
-### T-002 · 2026-11-09 · 阻塞 · 向 OpenRA 上游提交崩溃报告
+### T-002 · 2026-11-09 · 已完成 · 向 OpenRA 上游提交崩溃报告
 
 - **问题**：`playtest-20261026` 在战役界面调用后台线程测量中文文本，触发 `Sheet.GetTexture()` 的可空竞态崩溃（详见本地分析）。需要以 issue 形式反馈上游，并表达中文汉化贡献意愿。
 - **方法**：正文已备好（`桌面\OpenRA_CN_patch\openra-issue-body.md`）；待 GitHub 授权后以 API 提交。
-- **阻塞原因**：本机 `gh` 令牌失效，设备码流程在非交互环境被中断。
+- **结果**：已提交 [OpenRA/OpenRA#22716](https://github.com/OpenRA/OpenRA/issues/22716)，维护者 pchote 确认根因为 `SpriteFont` 非线程安全（仅 ASCII 字形被主线程预缓存），并给出修法方向：把 `CreateGlyph` 的 sprite 更新投递回主线程。
 - **完成判据**：`gh issue view <URL> --json number` 退出码 0（issue 可读），把编号回填到本条。
 
 ### T-003 · 2026-11-09 · 待办 · 评估接入 markdownlint
@@ -45,4 +45,11 @@
 
 ---
 
-**当前未决议清单**：T-001（需在 A/B/C 中裁决）。
+### T-007 · 2026-11-09 · 阻塞 · 跟踪上游线程安全修复并适配新引擎
+
+- **问题**：崩溃的根因在引擎侧（`SpriteFont` 非线程安全），本地只做了临时解（把战役界面的测量挪回主线程），未进入上游代码。
+- **方法**：跟踪 [OpenRA/OpenRA#22716](https://github.com/OpenRA/OpenRA/issues/22716)；上游修复并发布新 playtest 后，按 `docs/MAINTAINING.md` 的「引擎升级」流程适配新英文基线，并把本补丁临时解相关的说明改为「已由上游修复」。
+- **阻塞原因**：等待上游发布。
+- **完成判据**：新 playtest 下 `pwsh -File scripts/verify.ps1` 退出码 0，且在战役界面连续点选任务不再崩溃。
+
+**当前未决议清单**：当前无待裁决项。
