@@ -41,22 +41,31 @@
 ```
 OpenRA_Simplified_Chinese/
 ├─ README.md                          仓库首页（给读源码的人，不是包内那份）
+├─ AGENTS.md                          AI 协作入口：强制命令、禁止清单、歧义协议（≤150 行目录）
+├─ DECISIONS.md                       决策日志：采纳什么、否决什么、为什么
+├─ TASKS.md                           任务队列：状态、完成判据（命令 + 退出码）
+├─ MANIFEST.md                        第三方来源登记：URL、版本、SHA256、许可结论
 ├─ LICENSE / LICENSE-OFL.txt          补丁的 GPL 与字体的 SIL OFL
 ├─ src/                               打包源
 │   ├─ setup.ps1                      玩家唯一入口（UTF-8 带 BOM + CRLF，右键运行出菜单）
 │   ├─ install.ps1                    全部逻辑
 │   ├─ manifest.json                  版本、适配引擎、208 条哈希、字体清单
 │   ├─ PACKAGE-README.md              包内 README 的源文件（打包时改名 README.md）
+│   ├─ hotfix/                        可选引擎热修（两个改过的 DLL + 应用/还原脚本 + 说明）
 │   └─ 安装说明.txt / 安装说明.md      玩家说明：PS1 装 / AI 装 / 手动装 / 排查（.txt 由 .md 生成）
 ├─ files/                             载荷：覆盖树的根
 │   └─ mods/{common,ra,cnc,d2k,common-content,ra-content,cnc-content,d2k-content}/
 ├─ fonts/                             NotoSansSC-Regular/Bold.ttf（随包中文字体）
 ├─ tools/                             14 个 Python 脚本（纯标准库）
+├─ scripts/                           PowerShell 校验脚本与 Git 钩子（唯一验收入口 verify.ps1）
+├─ .githooks/                         pre-commit / commit-msg 薄壳
 ├─ docs/                              仓库自己的文档，不进发布包
 │   ├─ ANATOMY.md                     本文档
 │   ├─ MAINTAINING.md                 维护者操作手册
 │   ├─ CONTRIBUTING.md                贡献者文档
 │   ├─ LOCALIZATION-ROADMAP.md        引擎侧本地化（多语言）路线图与待办
+│   ├─ VERSIONING.md                  SemVer 版本规则与发版清单
+│   ├─ COMPLIANCE.md                  工程规范条款到本仓库落地的映射
 │   ├─ CHANGELOG.md                   版本历史
 │   └─ archive/rasc-ref/              译名对齐工作的历史脚本与产物（已归档，代码不引用）
 ├─ .github/
@@ -72,15 +81,19 @@ OpenRA_Simplified_Chinese/
 
 ---
 
-## 根目录的 5 个文件
+## 根目录的 9 个文件
 
 | 文件 | 作用 | 谁读取 |
 |---|---|---|
 | `README.md` | 仓库首页：项目简介、仓库布局、本地校验命令、文档索引。**与包内 README 是两份**——包内那份在 `src/PACKAGE-README.md` | 读源码的人 / GitHub |
+| `AGENTS.md` | AI 协作入口：强制命令入口、禁止清单、歧义处理协议、文档地图。**只放目录与链接**，行数上限 150 | AI 工具（唯一规则载体） |
+| `DECISIONS.md` | 追加式决策日志：每条含背景、采纳方案、被否决的替代方案与理由、影响范围、复审条件 | 维护者 / 评审者 |
+| `TASKS.md` | 任务队列：状态、问题、方法、完成判据（命令 + 期望退出码）；已决条目不删除 | 维护者 / 协作者 |
+| `MANIFEST.md` | 第三方二进制与源码的来源登记：名称、URL、版本、SHA256、用途、**许可结论** | 法务 / 审核 |
 | `LICENSE` | GPL-3.0-or-later 全文 | 法律 |
 | `LICENSE-OFL.txt` | 随包字体 Noto Sans SC 的 SIL OFL 1.1 全文（OFL 要求随附） | 法律 |
 | `.gitattributes` | 行尾规则。**`files/** -text` 是关键**：载荷必须逐字节保真，否则别的平台检出时改写换行会让 `manifest.json` 的哈希集体失效。`*.cmd` / `*.ps1` / `*.txt` 声明 CRLF | git |
-| `.gitignore` | 忽略 `_zhcn-backup/`、`dist/`、编辑器与系统垃圾文件 | git |
+| `.gitignore` | 忽略 `_zhcn-backup/`、`dist/`、`.venv/`、编辑器与系统垃圾文件 | git |
 
 ## `src/`：会被打进发布包的那部分
 
@@ -91,6 +104,7 @@ OpenRA_Simplified_Chinese/
 | `manifest.json` | **补丁的身份证**：`version`、`engineVersion`、`repository`、`font`、`stats`，以及 208 条 `{path,size,sha256}` | `bin\manifest.json` |
 | `PACKAGE-README.md` | 包内 README 的源文件：逐文件说明 + 附录 A（由 `tools/build_readme_inventory.py` 生成）。**链接只指向包内文件**，不要写仓库路径 | `README.md` |
 | `安装说明.txt` / `安装说明.md` | 给玩家的说明。**`.md` 是唯一真相源**（标题层级 + 表格），`.txt` 由 `tools/build_install_txt.py` 生成：UTF-8 带 BOM + CRLF、按显示宽度折行，记事本直接看。改说明只改 `.md`，然后跑一次生成器 | 同名 |
+| `hotfix\` | **可选**引擎热修（仅 `playtest-20261026`）：修「战役界面点任务闪退」。含两个本地修改过的引擎 DLL、`apply-hotfix.ps1`（校验哈希 → 备份 → 覆盖）、`rollback-hotfix.ps1`（一键还原）与 `README.md`（含源码级修改说明）。**安装器不碰它**，需玩家手动应用；上游修复后随下个版本移除 | `hotfix\` |
 
 ## `docs/`：仓库自己的文档（不进发布包）
 

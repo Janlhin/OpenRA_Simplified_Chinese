@@ -2,19 +2,26 @@
 
 ## 1.6.1 — 2026-11-10
 
-**只补文档：把两个「不是汉化的问题」讲清楚。译文与载荷零改动，208 个文件逐字节不变。**
+**包内新增「可选引擎热修」：修掉上游 `playtest-20261026` 下中文战役简报导致的闪退。文本载荷 208 个文件零改动。**
 
-- **上游引擎缺陷：红警进「战役」点任务闪退。** `playtest-20261026` 在中文文本首次上屏时会在
-  后台线程生成字形，与渲染线程争用同一份图集导致崩溃。本补丁只换文本、不换引擎，无法规避。
-  已上报 [OpenRA/OpenRA#22716](https://github.com/OpenRA/OpenRA/issues/22716)，维护者确认根因是
-  `SpriteFont` 非线程安全（英文版只因 ASCII 字形被主线程预缓存才不暴露），并给出修法方向：
-  把 `CreateGlyph` 的 sprite 更新投递回主线程。玩家侧的临时办法写进了 `安装说明` 的问题排查表。
-- **战役界面「难度」是灰的、点不动。** 部分任务本身没有难度选项（上游设计，如红警 01、10b 与苏军
-  01/02a/02b），不是汉化造成的；已在仓库 README、包内 README 与 `安装说明` 中统一说明。
-- 仓库侧：`TASKS.md` 记录 issue 的提交结果（T-002）与后续跟踪项（T-007，等上游修复后适配新引擎）。
+- **热修 `hotfix\`（新增，可选）**：修「红警 → 战役 → 点任务」闪退。
+  - 成因在引擎侧：中文文本首次上屏时字形在后台线程生成，与渲染线程争用同一份图集。
+    已上报 [OpenRA/OpenRA#22716](https://github.com/OpenRA/OpenRA/issues/22716)，维护者确认根因是
+    `SpriteFont` 非线程安全（英文版仅因 ASCII 字形被主线程预缓存而不暴露），修法方向是把字形的
+    sprite 更新投递回主线程。
+  - 改动只有两处：`OpenRA.Game.dll` 把可空字段的两次读取改为一次；
+    `OpenRA.Mods.Common.dll` 让 `MissionBrowserLogic.SelectMap()` 不再在后台线程测量简介，
+    改为主线程同步执行。源码级说明与补丁原理见 `hotfix\README.md`。
+  - 用法：关掉游戏 → 右键 `hotfix\apply-hotfix.ps1` →「使用 PowerShell 运行」。脚本先校验目标 DLL 哈希
+    （只接受官方原版或已打补丁两种状态），再把原版备份为 `*.orig-20261109` 后覆盖；
+    `hotfix\rollback-hotfix.ps1` 可一键还原。**安装器不碰它**，需要才用。
+  - 上游修复后，本热修会随下个版本移除。
+- **已知问题说明**：「进战役闪退」与「难度是灰的」两条写进仓库 README、包内 README 与 `安装说明`
+  的问题排查表，并给出各自的对策。
+- 文本载荷 208 个文件、字体与许可证均未改动，`manifest.json` 的载荷哈希不变。
 
-**验证**：`scripts/verify.ps1` 全量 12 项通过；`verify_manifest.py` 确认载荷 208 个文件与
-`manifest.json` 逐字节一致；`build_install_txt.py --check` 确认 `安装说明.txt` 与 md 生成结果一致。
+**验证**：`scripts/verify.ps1` 全量 12 项通过（含打包自校验，包内 223 个文件）；`verify_manifest.py`
+确认载荷与清单逐字节一致；`build_install_txt.py --check` 确认 txt 与 md 生成结果一致。
 
 ## 1.6.0 — 2026-11-04
 

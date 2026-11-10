@@ -38,6 +38,7 @@
 2. 📂 解压到一个**英文路径**下，例如 `D:\OpenRA_CN`
 3. 🛑 **关闭 OpenRA**
 4. 🖱️ **右键 `setup.ps1` → 使用 PowerShell 运行** → 菜单输入 `1` → 回车
+5. 🔧 **（可选）** 进「战役」点任务闪退的话：右键 `hotfix\apply-hotfix.ps1` → 使用 PowerShell 运行
 
 > 装在 `C:\Program Files` 会弹一次 UAC；引擎版本不匹配会先警告再询问。
 
@@ -53,16 +54,17 @@ setup.ps1 -FontPath "D:\你的字体.ttf"   :: 换字体
 
 ## 🧩 包里有什么
 
-解压后**顶层 9 项**，连子目录共 218 个文件：
+解压后**顶层 10 项**，连子目录共 223 个文件：
 
 ```text
 OpenRA_Simplified_Chinese\
 ├─ 🖱️ setup.ps1                  ← 右键 → 使用 PowerShell 运行
 ├─ 📖 README.md                  ← 逐文件说明（含 208 行清单）
-├─ 📄 安装说明.txt / .md           ← PS1 装 / AI 装 / 手动装 / 问题排查
+├─ 📄 安装说明.txt / .md           ← PS1 装 / AI 装 / 手动装 / 排查 / 可选热修
 ├─ ⚖️ LICENSE / LICENSE-OFL.txt   ← 补丁 GPL、字体 OFL
 ├─ 📦 bin\  install.ps1 · manifest.json
 ├─ 🔤 fonts\ NotoSansSC-Regular.ttf · -Bold.ttf
+├─ 🔧 hotfix\                     ← 可选：引擎热修（仅 playtest-20261026）
 └─ 📚 files\mods\                 ← 208 个中文文本（覆盖到游戏 mods\）
 ```
 
@@ -96,6 +98,7 @@ OpenRA_Simplified_Chinese\
 ├─ 📦 src\                            打包源（进 zip 的就是这里）
 │   ├─ setup.ps1 · install.ps1 · manifest.json
 │   ├─ PACKAGE-README.md              包内 README 的源文件
+│   ├─ hotfix\                        可选引擎热修（apply / rollback / 两个 DLL）
 │   └─ 安装说明.txt · 安装说明.md
 ├─ 📚 files\mods\                     208 个载荷（覆盖树）
 ├─ 🔤 fonts\                          Noto Sans SC 两个字重
@@ -187,9 +190,11 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 <summary>🐞 进「战役」点任务就闪退？</summary>
 
 这是**上游引擎缺陷**，不是汉化的问题：`playtest-20261026` 在中文文本首次上屏时会在后台线程生成字形，
-与渲染线程争用同一份图集。本补丁只换文本、不换引擎，无法规避。
-已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析、临时解与上游处理进展。
-临时办法：卸载补丁改用英文界面；等上游修复后再升级。
+与渲染线程争用同一份图集。已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析与修法建议。
+
+**1.6.1 起包内附带可选热修**：关掉游戏后右键 `hotfix\apply-hotfix.ps1` →「使用 PowerShell 运行」，
+脚本会校验哈希、备份原版再覆盖，`hotfix\rollback-hotfix.ps1` 可一键还原。
+不想装热修也行：卸载补丁改用英文界面即可避开；上游修复后本热修会随下个版本移除。
 </details>
 
 <details>
@@ -200,7 +205,7 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 
 ## ⚠️ 已知限制
 
-- 🐞 **上游引擎缺陷**：`playtest-20261026` 下中文战役简报会触发崩溃（见下方「常见问题」），补丁不换引擎，无法规避，已上报 [#22716](https://github.com/OpenRA/OpenRA/issues/22716)
+- 🐞 **上游引擎缺陷**：`playtest-20261026` 下中文战役简报会触发崩溃（见下方「常见问题」）。1.6.1 起包内附带**可选引擎热修** `hotfix\`；上游修复后该热修会随下个版本移除。已上报 [#22716](https://github.com/OpenRA/OpenRA/issues/22716)
 - 🔤 字体用的是 **Noto Sans SC 全量字形**（约 20 MB），比系统黑体占空间，但换来"不依赖本机字体"
 - 📐 字号观感：Noto 的行高与原 `FreeSans` 不同，个别 UI 缩放档位可能略挤，可在 `mod.yaml` 的 `Fonts:` 微调
 - 🪟 只提供 Windows 脚本；Linux / macOS 可手动覆盖 `files/` 并把 `fonts/` 放进 `mods/common/`
