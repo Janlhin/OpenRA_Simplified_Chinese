@@ -50,6 +50,12 @@ PACKAGE_LAYOUT = {
     'src/PACKAGE-README.md': 'README.md',
     'src/安装说明.txt': '安装说明.txt',
     'src/安装说明.md': '安装说明.md',
+    # 可选引擎热修（仅适配 playtest-20261026；上游修复后随下个版本移除）
+    'src/hotfix/README.md': 'hotfix/README.md',
+    'src/hotfix/apply-hotfix.ps1': 'hotfix/apply-hotfix.ps1',
+    'src/hotfix/rollback-hotfix.ps1': 'hotfix/rollback-hotfix.ps1',
+    'src/hotfix/OpenRA.Game.dll': 'hotfix/OpenRA.Game.dll',
+    'src/hotfix/OpenRA.Mods.Common.dll': 'hotfix/OpenRA.Mods.Common.dll',
 }
 
 

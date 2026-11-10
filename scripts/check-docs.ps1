@@ -106,13 +106,18 @@ if (-not ($tasks -match '当前未决议清单')) {
 }
 
 # 7) MANIFEST.md 表格字段与哈希
+#    主登记表 7 列；附表（如原版哈希对照）2 列，只做格式检查。
 $manifestLines = Get-Content -LiteralPath (Join-Path $root 'MANIFEST.md') -Encoding utf8
-$rows = @($manifestLines | Where-Object { $_ -match '^\|\s' -and $_ -notmatch '^\|\s*-+' -and $_ -notmatch '^\|\s*名称\s*\|' })
+$rows = @()
+foreach ($line in ($manifestLines | Where-Object { $_ -match '^\|\s' -and $_ -notmatch '^\|\s*-+' -and $_ -notmatch '^\|\s*名称\s*\|' })) {
+    $cells = @($line.Trim().Trim('|').Split('|') | ForEach-Object { $_.Trim() })
+    if ($cells.Count -eq 2) { continue }   # 辅助表（哈希对照等），不参与登记校验
+    $rows += ,$cells
+}
 if ($rows.Count -eq 0) { $errors.Add('MANIFEST.md 没有任何登记条目') }
-foreach ($row in $rows) {
-    $cells = $row.Trim().Trim('|').Split('|') | ForEach-Object { $_.Trim() }
+foreach ($cells in $rows) {
     if ($cells.Count -ne 7) {
-        $errors.Add("MANIFEST.md 表格列数应为 7，实际 $($cells.Count)：$row")
+        $errors.Add("MANIFEST.md 表格列数应为 7，实际 $($cells.Count)：$($cells -join ' | ')")
         continue
     }
     $sha = $cells[3].Trim('`')
