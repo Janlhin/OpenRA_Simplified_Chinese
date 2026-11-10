@@ -20,16 +20,32 @@ $files = @(
     @{ Name = 'OpenRA.Mods.Common.dll'; Original = '1cf381887df9b52ddfdf6d9fc5f8ab613a9b928ff145103cd3297af5c08cab38'; Patched = '1faf14403e0c65ed83be1d7efc7b7ac1a3ffb1462c5934e5ab1ddd92e22cd1ea' }
 )
 
-$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object Security.Principal.WindowsPrincipal($identity)
-if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host '正在请求管理员权限，请在 UAC 窗口点「是」...'
-    $exe = (Get-Process -Id $PID).Path
-    Start-Process -FilePath $exe -Verb RunAs -ArgumentList @(
-        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $PSCommandPath + '"'),
-        '-Target', ('"' + $Target + '"')
-    )
-    exit
+function Test-TargetWritable([string]$dir) {
+    if (-not (Test-Path -LiteralPath $dir)) { return $false }
+    $probe = Join-Path $dir ('.cn-write-test-' + [guid]::NewGuid().ToString('N'))
+    try {
+        [IO.File]::WriteAllText($probe, 'x')
+        Remove-Item -LiteralPath $probe -Force -ErrorAction SilentlyContinue
+        return $true
+    }
+    catch {
+        return $false
+    }
+}
+
+# 只有目标目录不可写（如 Program Files）才需要提权；自建目录直接跑即可
+if (-not (Test-TargetWritable $Target)) {
+    $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = New-Object Security.Principal.WindowsPrincipal($identity)
+    if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        Write-Host '正在请求管理员权限，请在 UAC 窗口点「是」...'
+        $exe = (Get-Process -Id $PID).Path
+        Start-Process -FilePath $exe -Verb RunAs -ArgumentList @(
+            '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $PSCommandPath + '"'),
+            '-Target', ('"' + $Target + '"')
+        )
+        exit
+    }
 }
 
 function Get-Sha256([string]$path) {
