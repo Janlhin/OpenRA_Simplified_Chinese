@@ -101,32 +101,32 @@ OpenRA_Simplified_Chinese\
 
 ```text
 .
-├─ 📄 README.md                       你正在看的
-├─ 🤖 AGENTS.md                       AI 协作入口（目录，≤150 行）
-├─ 🧾 DECISIONS.md                    决策日志（含被否决方案与理由）
-├─ 📋 TASKS.md                       任务队列（含可机器判定的完成判据）
-├─ 📦 MANIFEST.md                    第三方字体/源码的来源、SHA256 与许可
-├─ ⚖️ LICENSE · LICENSE-OFL.txt       补丁 GPL-3.0 / 字体 SIL OFL 1.1
-├─ 📦 playtest-20261026\              playtest 线（2.0.0）
-│   ├─ files\mods\                     208 个文本载荷（覆盖树）
-│   ├─ bin\manifest.json               这一条的清单：version / engineVersion / files[]
-│   ├─ hotfix\                         可选引擎热修（只有这条线有）
-│   ├─ README.md                       包内 README 的源文件
+├─ 📄 README.md                           你正在看的
+├─ 🤖 AGENTS.md                           AI 协作入口（目录，≤150 行）
+├─ 🧾 DECISIONS.md                        决策日志（含被否决方案与理由）
+├─ 📋 TASKS.md                            任务队列（含可机器判定的完成判据）
+├─ 📦 MANIFEST.md                         第三方字体/源码的来源、SHA256 与许可
+├─ ⚖️ LICENSE · LICENSE-OFL.txt           补丁 GPL-3.0 / 字体 SIL OFL 1.1
+├─ 📦 playtest-20261026\                  playtest 线（2.0.0）
+│   ├─ files\mods\                        208 个文本载荷（覆盖树）
+│   ├─ bin\manifest.json                  这一条的清单：version / engineVersion / files[]
+│   ├─ hotfix\                            可选引擎热修（只有这条线有）
+│   ├─ README.md                          包内 README 的源文件
 │   └─ 安装说明.txt · 安装说明.md
-├─ 📦 release-20250330\               官方稳定版线（2.0.0），结构与上一条相同
-│   ├─ files\mods\                     197 个文本载荷（含 127 份中文战役简报）
+├─ 📦 release-20250330\                   官方稳定版线（2.0.0），结构与上一条相同
+│   ├─ files\mods\                        197 个文本载荷（含 127 份中文战役简报）
 │   ├─ bin\manifest.json
 │   └─ README.md · 安装说明.md · 适配说明.md · 未译条目清单.csv
-├─ 🧰 src\                             两条线共用的安装器（setup.ps1 只转发，业务在 install.ps1）
-├─ 🔤 fonts\                          Noto Sans SC 两个字重
-├─ 🛠️ tools\                          校验、载荷重建、打包、文档生成
-│   └─ cmd-templates\                 纯 ASCII CMD 模板（.tpl；生成物只进发布包）
-├─ 🧪 scripts\                        唯一验收入口 verify.ps1 与各项守卫
-├─ 🪝 .githooks\                      pre-commit / commit-msg 薄壳
-├─ 📘 docs\                           ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
-│   ├─ VERSIONING.md · COMPLIANCE.md  版本号规则 / 规范落地矩阵
-│   └─ archive\rasc-ref\              译名对齐的历史资料（已归档）
-└─ ⚙️ .github\                        CI 与 issue / PR 模板
+├─ 🧰 src\                                两条线共用的安装器（setup.ps1 只转发，业务在 install.ps1）
+├─ 🔤 fonts\                              Noto Sans SC 两个字重
+├─ 🛠️ tools\                              校验、载荷重建、打包、文档生成
+│   └─ cmd-templates\                     纯 ASCII CMD 模板（.tpl；生成物只进发布包）
+├─ 🧪 scripts\                            唯一验收入口 verify.ps1 与各项守卫
+├─ 🪝 .githooks\                          pre-commit / commit-msg 薄壳
+├─ 📘 docs\                               ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
+│   ├─ VERSIONING.md · COMPLIANCE.md      版本号规则 / 规范落地矩阵
+│   └─ archive\rasc-ref\                  译名对齐的历史资料（已归档）
+└─ ⚙️ .github\                            CI 与 issue / PR 模板
 ```
 
 | 想了解 | 去哪看 |
