@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""把 `src/安装说明.md` 渲染成纯文本版 `src/安装说明.txt`。
+"""把 `playtest-20261026/安装说明.md` 渲染成纯文本版 `playtest-20261026/安装说明.txt`。
 
 为什么要有这个脚本
 ------------------
@@ -26,7 +26,7 @@ txt 的格式约束
 
 用法::
 
-    python tools/build_install_txt.py            # 生成/覆盖 src/安装说明.txt
+    python tools/build_install_txt.py            # 生成/覆盖 playtest-20261026/安装说明.txt
     python tools/build_install_txt.py --check    # 只校验，不一致退出码 1
     python tools/build_install_txt.py --stdout   # 打到标准输出，便于肉眼比对
 """
@@ -37,8 +37,8 @@ import sys
 import unicodedata
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, 'src', '安装说明.md')
-DST = os.path.join(ROOT, 'src', '安装说明.txt')
+SRC = os.path.join(ROOT, 'playtest-20261026', '安装说明.md')
+DST = os.path.join(ROOT, 'playtest-20261026', '安装说明.txt')
 
 BAR = '-' * 62
 BAR_HEAVY = '=' * 62

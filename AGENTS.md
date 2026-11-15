@@ -13,7 +13,7 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 |---|---|---|
 | 全量校验 | `pwsh -NoLogo -NoProfile -File scripts/verify.ps1` | 退出码 0 |
 | 提交前快速校验 | `pwsh -NoLogo -NoProfile -File scripts/verify.ps1 -Fast` | 退出码 0 |
-| 重建载荷清单 | `python tools/build_manifest.py` | `src/manifest.json` 的差异可逐条解释 |
+| 重建载荷清单 | `python tools/build_manifest.py` | `playtest-20261026/bin/manifest.json` 的差异可逐条解释 |
 | 打包 | `python tools/build_release.py` | 生成 `dist/*.zip` 且自校验通过 |
 | 安装 Git 钩子 | `pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1` | `git config core.hooksPath` = `.githooks` |
 
@@ -25,8 +25,8 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 - 🚫 修改 `files/**/map.yaml`：地图 UID 会变，联机哈希与旧录像失效
 - 🚫 修改引擎 `.dll`、美术、音频：补丁只允许文本与字体
 - 🚫 往 `files/` 放字体：字体只在 `fonts/`，由安装器部署
-- 🚫 手写 `src/安装说明.txt`：它是 `tools/build_install_txt.py` 的生成物
-- 🚫 手改 `src/manifest.json` 的哈希：用 `tools/build_manifest.py` 重算
+- 🚫 手写 `playtest-20261026/安装说明.txt`：它是 `tools/build_install_txt.py` 的生成物
+- 🚫 手改 `playtest-20261026/bin/manifest.json` 的哈希：用 `tools/build_manifest.py` 重算
 - 🚫 新增 `.bat` / `.cmd`（含临时脚本）。**唯一例外**：发布包里由 `tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成的纯 CMD 入口（D-010 / D-011）——仓库里仍然一个都不能有；模板须纯 ASCII、不得调用 PS 宿主
 - 🚫 未跑 `verify` 就声称「已完成」；把校验失败说成「环境问题」而不复现
 - 🚫 破坏性 Git 操作：`reset --hard`、`push --force`、修改已发布 tag
@@ -34,7 +34,7 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 ## 4. 版本号
 
 **SemVer 2.0.0**，规则见 [`docs/VERSIONING.md`](docs/VERSIONING.md)。
-**单一真相**：`src/manifest.json` 的 `version` 字段；`docs/CHANGELOG.md` 顶层标题与 `src/安装说明.md` 首行由校验脚本比对，三者必须一致。
+**单一真相**：`playtest-20261026/bin/manifest.json` 的 `version` 字段；`docs/CHANGELOG.md` 顶层标题与 `playtest-20261026/安装说明.md` 首行由校验脚本比对，三者必须一致。
 
 - 公开接口 = 发布包结构（zip 布局、`manifest.json` schema、`setup.ps1` 参数、`setup.bat` 动作参数）
 - 破坏接口 → 主版本；新增能力（新覆盖模块、新参数、适配新引擎）→ 次版本；译文/文案修正 → 修订号

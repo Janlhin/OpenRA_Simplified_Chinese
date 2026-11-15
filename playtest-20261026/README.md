@@ -270,7 +270,7 @@ Fluent **不会**在缺键时回退英文，而是把键名直接显示出来（
 - **进「战役」点任务可能闪退**：这是上游引擎缺陷，不是汉化的问题。`playtest-20261026` 在中文文本
   首次上屏时会在后台线程生成字形，与渲染线程争用同一份图集，导致崩溃。已上报
   <https://github.com/OpenRA/OpenRA/issues/22716>（含复现步骤、根因分析与修法建议）。
-  **1.6.1 起包内附带可选热修 `hotfix\`**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**
+  **包内附带可选热修 `hotfix\`**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**
   （`.bat` 被拦就双击 `apply-hotfix.cmd`），在 UAC 弹窗点「是」即可修好。这两个入口是
   **纯批处理、不依赖 PowerShell**，会先对两个 DLL 统一做哈希预检、备份原版再覆盖并复验；
   `hotfix\rollback-hotfix.bat` / `.cmd` 可一键还原。PS 路线另有同名 `.ps1`。

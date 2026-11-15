@@ -71,31 +71,31 @@ CMD_TEMPLATES = {
 # 打包时再生成纯 CMD 双入口），差别只在「装什么」：载荷目录、包内文档、版本与目标引擎。
 # 新增一条线时只加一个 profile，安装器代码不需要分叉。
 PROFILES = {
-    # playtest 线：仓库根 files/ + fonts/，带可选引擎热修
-    'playtest': {
-        'title': 'playtest 线（1.6.1）',
-        'manifest': 'src/manifest.json',
-        'payload': (('files', 'files'), ('fonts', 'fonts')),
+    # playtest 线：playtest-20261026/ 目录自成一包，带可选引擎热修
+    'playtest-20261026': {
+        'title': 'playtest 线（2.0.0）',
+        'manifest': 'playtest-20261026/bin/manifest.json',
+        'payload': (('playtest-20261026/files', 'files'), ('fonts', 'fonts')),
         'layout': {
             'src/setup.ps1': 'setup.ps1',
             'src/install.ps1': 'bin/install.ps1',
-            'src/manifest.json': 'bin/manifest.json',
-            # PACKAGE-README.md 是**包内**那份 README 的源文件：链接只指向 zip 里确实
-            # 存在的文件，与仓库首页（README.md，面向读源码的人）分开维护。
-            'src/PACKAGE-README.md': 'README.md',
-            'src/安装说明.txt': '安装说明.txt',
-            'src/安装说明.md': '安装说明.md',
-            'src/hotfix/README.md': 'hotfix/README.md',
-            'src/hotfix/apply-hotfix.ps1': 'hotfix/apply-hotfix.ps1',
-            'src/hotfix/rollback-hotfix.ps1': 'hotfix/rollback-hotfix.ps1',
-            'src/hotfix/OpenRA.Game.dll': 'hotfix/OpenRA.Game.dll',
-            'src/hotfix/OpenRA.Mods.Common.dll': 'hotfix/OpenRA.Mods.Common.dll',
+            'playtest-20261026/bin/manifest.json': 'bin/manifest.json',
+            # 线目录里的 README.md 是**包内**那份 README 的源文件：链接只指向 zip 里确实
+            # 存在的文件，与仓库首页（根 README.md，面向读源码的人）分开维护。
+            'playtest-20261026/README.md': 'README.md',
+            'playtest-20261026/安装说明.txt': '安装说明.txt',
+            'playtest-20261026/安装说明.md': '安装说明.md',
+            'playtest-20261026/hotfix/README.md': 'hotfix/README.md',
+            'playtest-20261026/hotfix/apply-hotfix.ps1': 'hotfix/apply-hotfix.ps1',
+            'playtest-20261026/hotfix/rollback-hotfix.ps1': 'hotfix/rollback-hotfix.ps1',
+            'playtest-20261026/hotfix/OpenRA.Game.dll': 'hotfix/OpenRA.Game.dll',
+            'playtest-20261026/hotfix/OpenRA.Mods.Common.dll': 'hotfix/OpenRA.Mods.Common.dll',
         },
         'templates': ('setup.cmd.tpl', 'apply-hotfix.cmd.tpl', 'rollback-hotfix.cmd.tpl'),
-        'hotfix_ps1': 'src/hotfix/apply-hotfix.ps1',
-        'suffix': '',
+        'hotfix_ps1': 'playtest-20261026/hotfix/apply-hotfix.ps1',
+        'suffix': '-playtest20261026',
     },
-    # 稳定版线：release-20250330/files 作载荷，字体取仓库根 fonts/，不带热修
+    # 稳定版线：release-20250330/ 目录自成一包，字体取仓库根 fonts/，不带热修
     'release-20250330': {
         'title': '稳定版线（2.0.0）',
         'manifest': 'release-20250330/bin/manifest.json',
@@ -115,7 +115,7 @@ PROFILES = {
     },
 }
 
-DEFAULT_PROFILE = 'playtest'
+DEFAULT_PROFILE = 'playtest-20261026'
 
 # 纯 CMD 安装器的部署清单：三列 = SHA256 / 包内源路径 / 游戏目录相对路径。
 # 清单由 manifest.json 生成（不在仓库里手写），安装、还原、卸载校验都读它。

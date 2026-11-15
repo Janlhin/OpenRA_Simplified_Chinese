@@ -1,5 +1,29 @@
 # 更新日志
 
+## 2.0.0 — 2026-11-15
+
+**两条产品线合并发布同一个版本号：2.0.0 同时指 `release-20250330` 与 `playtest-20261026` 两个包，仓库改成两条线各占一个目录。**
+
+- **统一版号**：两条线此前各记一套版本（1.6.x ↔ 2.0），发一次要维护两个数字。现在 `2.0.0` 是**整个项目这一次发布**的版本，包名用引擎后缀区分：
+  `OpenRA_Simplified_Chinese-2.0.0-release20250330.zip` / `-2.0.0-playtest20261026.zip`。
+  按 SemVer 2.0.0，目标引擎换线属不兼容变更，所以从 `1.x` 直接到 `2.0.0`（`MAJOR`），此后两条线一起升 `MINOR` / `PATCH`。
+- **仓库改成两条并列的线目录**（以前 playtest 线的载荷散在仓库根 `files/`、`src/`，和 `release-20250330/` 不对称）：
+  ```
+  playtest-20261026/          稳定版线之外的另一条线
+  ├─ files/                  208 个文本载荷
+  ├─ bin/manifest.json       这一条的清单（version / engineVersion / files[]）
+  ├─ hotfix/                 可选引擎热修（只此线有）
+  ├─ README.md               包内 README 的源文件
+  └─ 安装说明.md / .txt
+  release-20250330/          稳定版线（同结构，不带热修）
+  src/                       两条线共用的安装器（setup.ps1 + install.ps1）
+  fonts/                     随包字体
+  ```
+  每条线的目录名直接等于 `engineVersion`，`check-versions.ps1` 断言「目录名 = engineVersion」「两条线 version / releaseDate 必须相同」，统一版号被破坏 CI 直接红。
+- **CI 与脚本路径全部跟着改**：`verify_manifest` / `build_manifest` / `lint_ftl` / `struct_check_maps` / `check_font_coverage` / `check_links` / `check-scripts` / `check-layout` / `verify.ps1` / PR 模板；
+  `build_release.py` 的 profile 名改为线目录名（`playtest-20261026`、`release-20250330`），默认 profile = `playtest-20261026`。
+- **文本载荷零改动**：两条线的译文与 1.6.1 完全一致，这次只动版本号、目录与打包/校验链路。
+
 ## 1.6.1 — 2026-11-10
 
 **包内新增「可选引擎热修」与「纯 BAT/CMD 备用入口」：前者修 `playtest-20261026` 下中文战役简报导致的闪退，后者让 PowerShell 不可用的机器也能完整安装 / 还原 / 校验。文本载荷 208 个文件零改动。**

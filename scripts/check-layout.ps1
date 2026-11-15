@@ -18,10 +18,10 @@ $root = Split-Path -Parent $PSScriptRoot
 $allowed = @(
     '.gitattributes', '.gitignore', '.github', '.githooks',
     'AGENTS.md', 'DECISIONS.md', 'LICENSE', 'LICENSE-OFL.txt', 'MANIFEST.md',
-    'README.md', 'TASKS.md', 'docs', 'files', 'fonts', 'release-20250330', 'scripts', 'src', 'tools'
+    'README.md', 'TASKS.md', 'docs', 'fonts', 'playtest-20261026', 'release-20250330', 'scripts', 'src', 'tools'
 )
 $required = @('README.md', 'AGENTS.md', 'DECISIONS.md', 'TASKS.md', 'MANIFEST.md',
-    'src', 'files', 'fonts', 'tools', 'scripts', 'docs')
+    'src', 'playtest-20261026', 'fonts', 'tools', 'scripts', 'docs')
 
 # 构建产物与本地缓存不属于仓库结构
 $ignored = @('dist', '_zhcn-backup', '.git', '.venv')

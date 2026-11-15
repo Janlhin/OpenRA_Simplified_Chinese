@@ -44,8 +44,8 @@ python tools/build_manifest.py --original "C:\Program Files\OpenRA (playtest)" \
   单独部署，不参与 `files/` 的逐字节哈希，也不影响地图 UID。
 - 所有 `.ftl` 写入时会自动加上 SPDX 许可头。
 - 该脚本会**清空并重拷 `files/`**，运行前请确认工作区没有未提交的手工改动。
-- 只想改一两个文件时，也可以直接改 `src/manifest.json` 里对应条目的 `size` / `sha256`。
-- `src/manifest.json` 的 `stats` 三项由脚本**按固定口径重算**，不要再手填：
+- 只想改一两个文件时，也可以直接改 `playtest-20261026/bin/manifest.json` 里对应条目的 `size` / `sha256`。
+- `playtest-20261026/bin/manifest.json` 的 `stats` 三项由脚本**按固定口径重算**，不要再手填：
   `fluentMessages` = 非地图 `.ftl` 的顶层消息数（不含 `-term` 与属性）；
   `installerTitles` = `*-content/installer/*.yaml` 的顶层节点数；
   `mapBriefings` = 含 `briefing` 的 `maps/*/map.ftl` 个数。
@@ -68,7 +68,7 @@ git checkout && cd ..
 # 2) 生成译文底稿 + 四份报告
 python tools/port_translations.py \
     --old-english "openra-old/mods" \
-    --old-payload "上一版/files/mods" \
+    --old-payload "上一版/playtest-20261026/files/mods" \
     --new-english "C:/Program Files/OpenRA (playtest)/mods" \
     --out "stage/patched/mods" \
     --font-from "common|FreeSans.ttf,common|FreeSansBold.ttf" --font-to "common|NotoSansSC-Regular.ttf"
@@ -91,14 +91,14 @@ python tools/build_manifest.py --original "…" --patched "stage/patched" --vers
 
 注意：
 
-- `--old-payload` 用**上一版 release 的 `files/mods`**（带 SPDX 头的载荷），不要用汉化后的安装目录。
+- `--old-payload` 用**上一版 release 的 `playtest-20261026/files/mods`**（带 SPDX 头的载荷），不要用汉化后的安装目录。
 - 工具只负责"哪些还没翻"，**不判断译文是否仍然准确**——英文改过的地方要人看。
 - 新地图的 `map.ftl` 会以"新增键"的形式出现，照常翻译即可。
 
 ## 仓库与发布
 
 - **远端**：<https://github.com/Janlhin/OpenRA_Simplified_Chinese>（`origin`，默认分支 `main`）
-- `src/manifest.json` 的 `repository` 字段已填。
+- `playtest-20261026/bin/manifest.json` 的 `repository` 字段已填。
 - `LICENSE` 的版权行是 `Copyright (C) 2026 OpenRA_Simplified_Chinese contributors`，
   若想挂到个人名下可自行改。
 
@@ -107,21 +107,21 @@ python tools/build_manifest.py --original "…" --patched "stage/patched" --vers
 ```bash
 python tools/build_manifest.py --original "…" --patched "…"   # 重建载荷与哈希
 python tools/build_readme_inventory.py     # 包内 README 附录 A 的 208 行清单跟着重生成
-python tools/lint_ftl.py files/mods
-python tools/struct_check_maps.py files/mods
+python tools/lint_ftl.py playtest-20261026/files/mods
+python tools/struct_check_maps.py playtest-20261026/files/mods
 git add -A && git commit -m "..." && git push
 ```
 
-> 包内 README（源文件 `src/PACKAGE-README.md`，包里叫 `README.md`）的「附录 A 全部文件清单」
-> **不要手改**——它由 `build_readme_inventory.py` 从 `src/manifest.json` 渲染，CI 用 `--check` 断言两者一致；
+> 包内 README（源文件 `playtest-20261026/README.md`，包里叫 `README.md`）的「附录 A 全部文件清单」
+> **不要手改**——它由 `build_readme_inventory.py` 从 `playtest-20261026/bin/manifest.json` 渲染，CI 用 `--check` 断言两者一致；
 > 改了载荷忘了重跑，CI 会直接挡下。
 
 ## 发新版本
 
-1. 改版本号：`src/manifest.json` 的 `version` / `releaseDate`（或用
+1. 改版本号：`playtest-20261026/bin/manifest.json` 的 `version` / `releaseDate`（或用
    `build_manifest.py --version x.y.z --date YYYY-MM-DD` 连带重算），并在 `CHANGELOG.md` 顶部加一节。
 2. 若动过 `files/`，按上节重建载荷与哈希。
-3. 若动过 `src/安装说明.md`，先 `python tools/build_install_txt.py` 重新生成 `.txt`。
+3. 若动过 `playtest-20261026/安装说明.md`，先 `python tools/build_install_txt.py` 重新生成 `.txt`。
 4. 构建发布包：`python tools/build_release.py --verify`
    （产出 `dist/OpenRA_Simplified_Chinese-x.y.z.zip`，并打印 SHA-256——写进 Release 说明）
 5. 打 tag 并推送：`git tag -a vX.Y.Z -m "…" && git push origin vX.Y.Z`
@@ -133,9 +133,9 @@ git add -A && git commit -m "..." && git push
 `build_release.py` 默认走**白名单**，只打玩家需要的文件：
 
 ```
-src/setup.ps1  src/安装说明.txt  src/安装说明.md  LICENSE  LICENSE-OFL.txt   ← 原样落到包根
-src/install.ps1   src/manifest.json          ← 按 profile 的 layout 收进 bin/
-src/PACKAGE-README.md                        ← 改名成包内的 README.md
+src/setup.ps1  playtest-20261026/安装说明.txt  playtest-20261026/安装说明.md  LICENSE  LICENSE-OFL.txt   ← 原样落到包根
+src/install.ps1   playtest-20261026/bin/manifest.json          ← 按 profile 的 layout 收进 bin/
+playtest-20261026/README.md                        ← 改名成包内的 README.md
 fonts/NotoSansSC-Regular.ttf  fonts/NotoSansSC-Bold.ttf  files/**
 ```
 
@@ -144,14 +144,14 @@ fonts/NotoSansSC-Regular.ttf  fonts/NotoSansSC-Bold.ttf  files/**
 `--profile` 选线，安装器代码只有一份：
 
 ```powershell
-python tools/build_release.py                      # playtest 线（1.6.1，默认）
+python tools/build_release.py                      # playtest 线（2.0.0，默认）
 python tools/build_release.py --profile release-20250330 --verify
 ```
 
 | profile | 载荷 | 目标引擎 | 版本真相 |
 |---|---|---|---|
-| `playtest`（默认） | 仓库根 `files/` + `fonts/` | `playtest-20261026` | `src/manifest.json` |
-| `release-20250330` | `release-20250330/files/` + 仓库根 `fonts/` | `release-20250330` | `release-20250330/bin/manifest.json` |
+| `playtest-20261026`（默认） | `playtest-20261026/files/` + `fonts/` | `playtest-20261026` | `playtest-20261026/bin/manifest.json` |
+| `release-20250330` | `release-20250330/files/` + `fonts/` | `release-20250330` | `release-20250330/bin/manifest.json` |
 
 两条线产出的包内布局完全一致（`setup.ps1` / `setup.bat` / `setup.cmd` / `bin/install.ps1` /
 `bin/manifest.json` / `bin/files.sha256` / `files/` / `fonts/`）；模板里的 `@@ENGINE@@` 与
@@ -159,7 +159,7 @@ python tools/build_release.py --profile release-20250330 --verify
 新增一条线只需在 `PROFILES` 里加一项（`manifest` / `payload` / `layout` / `templates` / `suffix`）。
 
 
-`src/安装说明.txt` 是**生成物**：手改会在 CI 第 9 步被 `build_install_txt.py --check` 挡下来。
+`playtest-20261026/安装说明.txt` 是**生成物**：手改会在 CI 第 9 步被 `build_install_txt.py --check` 挡下来。
 
 `tools/`、`docs/`（含 CONTRIBUTING / CHANGELOG）、`.github/`、`.gitattributes`
 都留在仓库里，不进包——C 端解压后应该只看到一个入口、一份说明和 `files/`。
@@ -249,8 +249,8 @@ pwsh -NoLogo -NoProfile -File scripts/verify.ps1
 3. 顶层结构白名单（`scripts/check-layout.ps1`）；
 4. 脚本基线：仓库零 `.bat` / `.cmd`、`.ps1` 可被解析、3 个 CMD 模板纯 ASCII / 零 PS 宿主 / 哈希同源、`files/` 内无字体（`scripts/check-scripts.ps1`）；
 5. `verify_manifest.py` —— 载荷与 `manifest.json` 逐字节一致；
-6. `lint_ftl.py files/mods` —— Fluent 规范（BOM / 换行 / 缩进 / 花括号）；
-7. `struct_check_maps.py files/mods` —— 地图文案结构自检；
+6. `lint_ftl.py playtest-20261026/files/mods` —— Fluent 规范（BOM / 换行 / 缩进 / 花括号）；
+7. `struct_check_maps.py playtest-20261026/files/mods` —— 地图文案结构自检；
 8. `check_links.py .` —— Markdown 相对链接与锚点（`docs/` 引用根目录文件必须写 `../`）；
 9. `build_install_txt.py --check` —— `安装说明.txt` 必须等于 `安装说明.md` 的生成结果；
 10. `build_readme_inventory.py --check` —— 包内 README 的附录 A 与 `manifest.json` 一致；
@@ -267,7 +267,7 @@ pwsh -NoLogo -NoProfile -File scripts/verify.ps1
 
 > 第 9 步挡的是"改了 md 忘了同步 txt"这类漂移。这份说明早先由手写维护两份，
 > 结果 txt 里漏进了字面 `**`，所有校验都没报错，只有人眼能发现。现在 txt 是生成物：
-> 改说明只改 `src/安装说明.md`，然后 `python tools/build_install_txt.py`。
+> 改说明只改 `playtest-20261026/安装说明.md`，然后 `python tools/build_install_txt.py`。
 
 > 第 6 步对 **CRLF 换行**判错并返回退出码 1。`.gitattributes` 已声明 `files/** -text`（不转换换行），
 > 所以载荷在本地就必须是 LF——不要用编辑器批量转换换行，否则 `manifest.json` 的哈希会全部失效。
@@ -314,7 +314,7 @@ python tools/check_font_glyphs.py "C:\Windows\Fonts\simhei.ttf" "安装游戏内
 python tools/struct_check_maps.py "C:\Program Files\OpenRA (playtest)\mods" "C:\OpenRA-CN\mods"
 
 # 改完 安装说明.md 后重生成纯文本版（CI 会断言两者一致）
-python tools/build_install_txt.py            # 写入 src/安装说明.txt
+python tools/build_install_txt.py            # 写入 playtest-20261026/安装说明.txt
 python tools/build_install_txt.py --stdout   # 只打到屏幕，先看看再写
 
 # 引擎自带的静态检查（退出码 0 即通过）

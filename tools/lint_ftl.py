@@ -9,7 +9,7 @@
   - 值里不出现字面转义序列(`\\n` / `\\t` / `\\r`)——Fluent 不认反斜杠转义,
     这类字符几乎总是"译文表里的 \\n 没被换成真换行",会把 `\\n` 直接显示在界面上。
 
-用法: python tools/lint_ftl.py [根目录]     # 默认 files/mods
+用法: python tools/lint_ftl.py [根目录]     # 默认 playtest-20261026/files/mods
 退出码 0 表示通过。
 """
 import os
@@ -64,7 +64,7 @@ def check(path):
 
 def main():
     root = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'files', 'mods')
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'playtest-20261026', 'files', 'mods')
     if not os.path.isdir(root):
         print(f'[错误] 目录不存在:{root}')
         return 1

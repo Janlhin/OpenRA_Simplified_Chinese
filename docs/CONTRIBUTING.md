@@ -16,13 +16,13 @@
 ## 最常见的改动:修一句译文
 
 1. 直接在 `files/` 下找到对应的 `.ftl`,改掉译文。
-   文件路径与游戏安装目录一一对应,例如 `files/mods/ra/fluent/rules.ftl` → `<安装目录>/mods/ra/fluent/rules.ftl`。
+   文件路径与游戏安装目录一一对应,例如 `playtest-20261026/files/mods/ra/fluent/rules.ftl` → `<安装目录>/mods/ra/fluent/rules.ftl`。
 2. 跑三个自检(三个都要过):
 
    ```bash
    python tools/verify_manifest.py          # 载荷与 manifest.json 逐字节一致
-   python tools/lint_ftl.py files/mods      # BOM / 换行 / 缩进 / 花括号
-   python tools/struct_check_maps.py files/mods
+   python tools/lint_ftl.py playtest-20261026/files/mods      # BOM / 换行 / 缩进 / 花括号
+   python tools/struct_check_maps.py playtest-20261026/files/mods
    ```
 
 3. 因为改了字节,必须同步哈希:

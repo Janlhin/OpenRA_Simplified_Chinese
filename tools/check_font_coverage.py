@@ -53,7 +53,7 @@ def font_cmap(path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--payload', default='files')
+    ap.add_argument('--payload', default='playtest-20261026/files')
     ap.add_argument('--font', action='append', default=[],
                     help='要检查的字体(可重复;默认 fonts/NotoSansSC-Regular.ttf 与 -Bold.ttf)')
     ap.add_argument('--repo', default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

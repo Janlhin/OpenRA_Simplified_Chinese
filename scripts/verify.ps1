@@ -87,8 +87,8 @@ Step-Pwsh 'scripts/check-docs.ps1'
 Step-Pwsh 'scripts/check-layout.ps1'
 Step-Pwsh 'scripts/check-scripts.ps1'
 Step-Python 'tools/verify_manifest.py'
-Step-Python 'tools/lint_ftl.py' @('files/mods')
-Step-Python 'tools/struct_check_maps.py' @('files/mods')
+Step-Python 'tools/lint_ftl.py' @('playtest-20261026/files/mods')
+Step-Python 'tools/struct_check_maps.py' @('playtest-20261026/files/mods')
 Step-Python 'tools/check_links.py' @('.')
 Step-Python 'tools/build_install_txt.py' @('--check')
 Step-Python 'tools/build_readme_inventory.py' @('--check')

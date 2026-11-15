@@ -80,8 +80,8 @@ def main():
     args = ap.parse_args()
 
     repo = os.path.abspath(args.repo)
-    payload = os.path.join(repo, 'files')
-    manifest_path = os.path.join(repo, 'src', 'manifest.json')
+    payload = os.path.join(repo, 'playtest-20261026', 'files')
+    manifest_path = os.path.join(repo, 'playtest-20261026', 'bin', 'manifest.json')
 
     with open(manifest_path, encoding='utf-8') as fh:
         manifest = json.load(fh)

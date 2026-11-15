@@ -32,7 +32,7 @@
 - **影响**：`MANIFEST.md` 登记、`tools/check_font_coverage.py`、安装器字体部署与卸载。
 - **复审条件**：官方 OpenRA 内置 CJK 字体，或提供字体回退链。
 
-### D-004 · 2026-10 · `src/manifest.json` 是载荷与版本号的唯一真相
+### D-004 · 2026-10 · `playtest-20261026/bin/manifest.json` 是载荷与版本号的唯一真相
 
 - **决策**：载荷哈希、字体哈希、版本号、引擎版本全部由 `tools/build_manifest.py` 生成写入 `manifest.json`；安装器与校验脚本只读它。
 - **背景**：手写哈希清单必然与文件漂移，且无法判断「谁对」。
@@ -107,7 +107,7 @@
 - **被否决**：① 把 `.bat` 提交进仓库——会直接违反仓库「零 `.bat`/`.cmd`」的硬约束与 CI 守卫；
   ② 做 `.lnk` 垫片——`.lnk` 内含绝对路径，压缩包换目录就失效；③ 单文件 exe 启动器——需要签名预算，
   且构建只能在 Windows 上做，CI 无法复现。
-- **影响范围**：`tools/build_release.py`（`BAT_SHIMS` 常量与写 zip 逻辑）、`src/hotfix/README.md`、
+- **影响范围**：`tools/build_release.py`（`BAT_SHIMS` 常量与写 zip 逻辑）、`playtest-20261026/hotfix/README.md`、
   包内 README、`安装说明.md`、仓库 README、`CHANGELOG`。
 - **复审条件**：若将来引入 `.lnk` 或单文件 exe 启动器（能真正解决换目录失效问题），本条可废止。
 - **后续（2026-11-10）**：本条被 **D-011** 扩展——薄壳升级为自包含的纯 CMD 实现，并新增 `.cmd` 副本与主安装器入口。
@@ -135,7 +135,7 @@
   ④ 在 BAT 里放中文提示 + `chcp 65001`——实测 cmd 把 `rem` / `echo` 行拆成命令
   （`'备份在' is not recognized`），故屏幕提示统一为英文、中文说明放文档。
 - **影响范围**：`tools/cmd-templates/`（3 个模板）、`tools/build_release.py`、`scripts/check-scripts.ps1`、
-  `src/hotfix/README.md`、`src/安装说明.md` + `.txt`、`src/PACKAGE-README.md`、仓库 README、
+  `playtest-20261026/hotfix/README.md`、`playtest-20261026/安装说明.md` + `.txt`、`playtest-20261026/README.md`、仓库 README、
   `docs/ANATOMY.md`、`docs/MAINTAINING.md`、`AGENTS.md`、`TASKS.md`、`docs/CHANGELOG.md`；
   发布包由 225 → 230 个文件（顶层 10 → 12 项）。按用户明确要求**版本号维持 1.6.1**并替换
   Release 资产——这是 D-009 之后的第二次同号重发，同样属一次性特例，此后任何已发布版本的
@@ -147,7 +147,7 @@
 
 - **决策**：`release-<YYYYMMDD>/` 与主包是**同一项目的两条产品线**：`tools/build_release.py --profile`
   分线打包，两条线共用 `src/setup.ps1` / `src/install.ps1` 与纯 CMD 模板，包内布局完全一致；
-  差异只由清单的 `engineVersion` 与 `files[]` 驱动，分包 `bin/manifest.json` 与 `src/manifest.json` 同 schema。
+  差异只由清单的 `engineVersion` 与 `files[]` 驱动，分包 `bin/manifest.json` 与 `playtest-20261026/bin/manifest.json` 同 schema。
   版本一律按 SemVer 2.0.0 写 `MAJOR.MINOR.PATCH`（稳定版线为 `2.0.0`，tag `v2.0.0`）。
 - **背景**：官方稳定版 `release-20250330` 与 playtest 是两套互不兼容的载荷（地图 yaml 的简报承载方式、
   `mod.yaml` 字段集都不同）。用户要稳定版单独发版并声明适配引擎：目标引擎换线对玩家是**不兼容变更**，
@@ -163,5 +163,30 @@
 - **影响范围**：`tools/build_release.py`（新增 `--profile` 与两条线配置）、`tools/cmd-templates/setup.cmd.tpl`
   （引擎号与载荷数改为打包时填入的占位符）、`scripts/check-versions.ps1`、`docs/VERSIONING.md` 第 7 节、
   `release-20250330/bin/manifest.json`（改同 schema）、`scripts/check-layout.ps1` 白名单、仓库 README。
-- **复审条件**：若官方稳定版与 playtest 的载荷重新统一（一份 `.ftl` 通吃），合并回单版本线并删除本例外。
+- **复审条件**：若官方稳定版与 playtest 的载荷重新统一（一份 `.ftl` 通吃），合并回单版本线并删除本条目；
+  其中「两条线各记一个版本号」「分包不得复用同一版本号」两点已被 **D-013** 取代。
+
+### D-013 · 2026-11-15 · 两条线各占一个目录，两条线共用同一个版本号（2.0.0）
+
+- **决策**：仓库按产品线分目录——`playtest-20261026/`、`release-20250330/`，每个目录自成一个包
+  （`files/` 载荷 + `bin/manifest.json` + 包内文档；`hotfix/` 只 playtest 线有），`src/` 只留两条线共用的安装器；
+  **两条线的 `version` / `releaseDate` 必须相同**，`2.0.0` 指整个项目这一次的发布，两个包靠文件名后缀
+  `-release20250330` / `-playtest20261026` 区分。
+- **背景**：D-012 让两条线各记一套版本（playtest 1.6.1 ↔ 稳定版 2.0.0），一次发布要维护两个数字、两套 tag，
+  且 playtest 线的载荷散在仓库根 `files/` 与 `src/`（`files/` 名字看不出归属，与 `release-20250330/` 结构不对称）。
+  用户明确要求「两个都叫 2.0.0 统一版号，后续方便管理」+「仓库做两个文件夹分好 release / playtest」。
+- **被采纳**：① 线目录名 = `engineVersion`，`check-versions.ps1` 断言目录名与 `manifest.engineVersion` 一致；
+  ② 统一版号由 CI 强制：所有线的 `version` / `releaseDate` 必须相同，任一不同即红；
+  tag 只剩一个 `v2.0.0`，不再接受「分包另记版本号」；③ 各线 `安装说明.md` 首行版本号逐线校验；
+  ④ `build_release.py` 的 profile 名改为线目录名，默认 `playtest-20261026`；⑤ 全部校验脚本
+  （`verify_manifest` / `build_manifest` / `lint_ftl` / `struct_check_maps` / `check_font_coverage` /
+  `check_links` / `check-scripts` / `check-layout` / `verify.ps1` / PR 模板）改指线目录。
+- **被否决**：① 两条线继续各记一个版本号（发一次要发两个号、两个 tag，管理成本随线数线性增长）；
+  ② 只加一个空的 `playtest-20261026/` 壳目录、载荷仍留在根 `files/`（目录名与内容不符，等于没分）；
+  ③ 把两条线合成一个包按引擎自动选载荷（玩家装错引擎时无法自愈，且包体翻倍）。
+- **影响范围**：仓库顶层结构（`files/`、`src/manifest.json`、`src/hotfix/`、`src/PACKAGE-README.md`、
+  `src/安装说明.*` 全部迁入 `playtest-20261026/`）、`tools/build_release.py` 的 `PROFILES`、`scripts/check-versions.ps1`
+  （重写为「逐线校验 + 统一版号」）、`scripts/*`、`tools/*`、README 结构树、`docs/VERSIONING.md` 第 7 节、`docs/MAINTAINING.md`。
+- **复审条件**：若某条线停止维护（引擎版本不再发布），删除该线目录并把 tag 收成单包；若官方提供单一载荷
+  通吃两条引擎，回到单目录单版本。
 

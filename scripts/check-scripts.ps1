@@ -38,7 +38,7 @@ foreach ($file in $ps1) {
 }
 
 # 3) files/ 内不得出现字体
-$fontsInPayload = @(Get-ChildItem -LiteralPath (Join-Path $root 'files') -Recurse -File -ErrorAction SilentlyContinue |
+$fontsInPayload = @(Get-ChildItem -LiteralPath (Join-Path $root 'playtest-20261026/files') -Recurse -File -ErrorAction SilentlyContinue |
     Where-Object { $_.Extension -in '.ttf', '.ttc', '.otf' })
 foreach ($f in $fontsInPayload) {
     $errors.Add("files/ 内出现字体文件：$($f.FullName.Substring($root.Length + 1))（字体只放 fonts/）")
@@ -49,7 +49,7 @@ foreach ($f in $fontsInPayload) {
 $tplDir = Join-Path $root 'tools/cmd-templates'
 $tpls = @(Get-ChildItem -LiteralPath $tplDir -File -Filter '*.tpl' -ErrorAction SilentlyContinue)
 if ($tpls.Count -ne 3) { $errors.Add("CMD 模板应为 3 个，实际 $($tpls.Count) 个") }
-$hotfixPs1 = [System.IO.File]::ReadAllText((Join-Path $root 'src/hotfix/apply-hotfix.ps1'))
+$hotfixPs1 = [System.IO.File]::ReadAllText((Join-Path $root 'playtest-20261026/hotfix/apply-hotfix.ps1'))
 foreach ($t in $tpls) {
     $bytes = [System.IO.File]::ReadAllBytes($t.FullName)
     if (@($bytes | Where-Object { $_ -gt 127 }).Count -gt 0) {

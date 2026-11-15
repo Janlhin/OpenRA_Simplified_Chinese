@@ -16,7 +16,8 @@ LINK = re.compile(r'\[[^\]]*\]\(([^)\s]+)\)')
 # 随包文档在 zip 里位于根目录，写的是"包内相对路径"（LICENSE、安装说明.md 等）。
 # 在仓库里按 src/ 解析必然是假死链，所以这里跳过；它们由
 # `build_release.py --verify` 按**包内布局**单独校验（见 check_package_links）。
-PACKAGE_DOCS = {'src/PACKAGE-README.md', 'src/安装说明.md'}
+PACKAGE_DOCS = {'playtest-20261026/README.md', 'playtest-20261026/安装说明.md',
+                'release-20250330/README.md', 'release-20250330/安装说明.md'}
 HEADING = re.compile(r'^(#{1,6})\s+(.*?)\s*$')
 # GitHub 生成锚点时会剥掉这些标点（保留中日韩字符与字母数字）
 PUNCT = re.compile(r'[，。、；：！？（）【】《》""\'\'".,;:!?()\[\]{}<>/\\|+*=~^$%@#&]')

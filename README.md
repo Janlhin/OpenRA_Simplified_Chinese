@@ -80,7 +80,7 @@ OpenRA_Simplified_Chinese\
 └─ 📚 files\mods\                 ← 208 个中文文本（覆盖到游戏 mods\）
 ```
 
-每个文件干什么、能不能删、属于哪一类，见 **[`src/PACKAGE-README.md`](src/PACKAGE-README.md)**
+每个文件干什么、能不能删、属于哪一类，见 **[`playtest-20261026/README.md`](playtest-20261026/README.md)**
 （它就是打进 zip 的那份 `README.md`，附全部 208 个载荷的清单与大小）。
 
 ## 🗺️ 覆盖范围
@@ -107,16 +107,20 @@ OpenRA_Simplified_Chinese\
 ├─ 📋 TASKS.md                       任务队列（含可机器判定的完成判据）
 ├─ 📦 MANIFEST.md                    第三方字体/源码的来源、SHA256 与许可
 ├─ ⚖️ LICENSE · LICENSE-OFL.txt       补丁 GPL-3.0 / 字体 SIL OFL 1.1
-├─ 📦 src\                            打包源（进 zip 的就是这里）
-│   ├─ setup.ps1 · install.ps1 · manifest.json
-│   ├─ PACKAGE-README.md              包内 README 的源文件
-│   ├─ hotfix\                        可选引擎热修（PS1 脚本 + 两个 DLL；纯 CMD 入口由模板生成）
+├─ 📦 playtest-20261026\              playtest 线（2.0.0）
+│   ├─ files\mods\                     208 个文本载荷（覆盖树）
+│   ├─ bin\manifest.json               这一条的清单：version / engineVersion / files[]
+│   ├─ hotfix\                         可选引擎热修（只有这条线有）
+│   ├─ README.md                       包内 README 的源文件
 │   └─ 安装说明.txt · 安装说明.md
-├─ 📚 files\mods\                     208 个载荷（覆盖树）
-├─ 📦 release-20250330\               适配官方稳定版 release-20250330 的载荷与包（v2.0.0）
+├─ 📦 release-20250330\               官方稳定版线（2.0.0），结构与上一条相同
+│   ├─ files\mods\                     197 个文本载荷（含 127 份中文战役简报）
+│   ├─ bin\manifest.json
+│   └─ README.md · 安装说明.md · 适配说明.md · 未译条目清单.csv
+├─ 🧰 src\                             两条线共用的安装器（setup.ps1 只转发，业务在 install.ps1）
 ├─ 🔤 fonts\                          Noto Sans SC 两个字重
 ├─ 🛠️ tools\                          校验、载荷重建、打包、文档生成
-│   └─ cmd-templates\                 3 个纯 ASCII CMD 模板（.tpl；生成物只进发布包）
+│   └─ cmd-templates\                 纯 ASCII CMD 模板（.tpl；生成物只进发布包）
 ├─ 🧪 scripts\                        唯一验收入口 verify.ps1 与各项守卫
 ├─ 🪝 .githooks\                      pre-commit / commit-msg 薄壳
 ├─ 📘 docs\                           ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
@@ -177,7 +181,7 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 
 英文 → 文本没覆盖成功，检查是否多套了一层 `mods\mods`；
 方块 → 字体没生效，`mods\common\` 下应当有 `NotoSansSC-Regular.ttf` 与 `-Bold.ttf`。
-完整排查见 [`src/安装说明.md`](src/安装说明.md)。
+完整排查见 [`playtest-20261026/安装说明.md`](playtest-20261026/安装说明.md)。
 </details>
 
 <details>
@@ -207,7 +211,7 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 这是**上游引擎缺陷**，不是汉化的问题：`playtest-20261026` 在中文文本首次上屏时会在后台线程生成字形，
 与渲染线程争用同一份图集。已上报 <https://github.com/OpenRA/OpenRA/issues/22716>，里面有复现步骤、根因分析与修法建议。
 
-**1.6.1 起包内附带可选热修**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（`.bat` 被拦就双击
+**包内附带可选热修**：关掉游戏后**双击 `hotfix\apply-hotfix.bat`**（`.bat` 被拦就双击
 `apply-hotfix.cmd`），在 UAC 弹窗点「是」。这两个入口是**纯批处理、不依赖 PowerShell**，
 会先对两个 DLL 统一做哈希预检、备份原版再覆盖并复验；`hotfix\rollback-hotfix.bat` / `.cmd`
 可一键还原（PS 路线另有同名 `.ps1`）。不想装热修也行：卸载补丁改用英文界面即可避开；
@@ -222,7 +226,7 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 
 ## ⚠️ 已知限制
 
-- 🐞 **上游引擎缺陷**：`playtest-20261026` 下中文战役简报会触发崩溃（见下方「常见问题」）。1.6.1 起包内附带**可选引擎热修** `hotfix\`；上游修复后该热修会随下个版本移除。已上报 [#22716](https://github.com/OpenRA/OpenRA/issues/22716)
+- 🐞 **上游引擎缺陷**：`playtest-20261026` 下中文战役简报会触发崩溃（见下方「常见问题」）。包内附带**可选引擎热修** `hotfix\`；上游修复后该热修会随下个版本移除。已上报 [#22716](https://github.com/OpenRA/OpenRA/issues/22716)
 - 🔤 字体用的是 **Noto Sans SC 全量字形**（约 20 MB），比系统黑体占空间，但换来"不依赖本机字体"
 - 📐 字号观感：Noto 的行高与原 `FreeSans` 不同，个别 UI 缩放档位可能略挤，可在 `mod.yaml` 的 `Fonts:` 微调
 - 🪟 只提供 Windows 脚本；Linux / macOS 可手动覆盖 `files/` 并把 `fonts/` 放进 `mods/common/`

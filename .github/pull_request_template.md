@@ -9,11 +9,11 @@
 ## 自检（本地跑过请打勾）
 
 - [ ] `python tools/verify_manifest.py` 通过
-- [ ] `python tools/lint_ftl.py files/mods` 通过
-- [ ] `python tools/struct_check_maps.py files/mods` 通过
+- [ ] `python tools/lint_ftl.py playtest-20261026/files/mods` 通过
+- [ ] `python tools/struct_check_maps.py playtest-20261026/files/mods` 通过
 - [ ] 已用 `tools/build_manifest.py` 或手工同步 `manifest.json` 的 `size` / `sha256`
 - [ ] 已更新 `README.md` / `CHANGELOG.md` 里的条数与文件数（如有变化）
-- [ ] 没有把字体、游戏素材放进 `files/`
+- [ ] 没有把字体、游戏素材放进各线的 `files/`
 - [ ] 没有修改键名、也没删掉 `##` 注释与 SPDX 头
 - [ ] 没有新增 `.bat` / `.cmd`（仓库禁止，CI 会拦）
 

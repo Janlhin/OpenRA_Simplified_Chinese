@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""校验 files/ 里的载荷与 manifest.json 是否逐字节一致。
+"""校验各条产品线的 files/ 载荷与该线 bin/manifest.json 是否逐字节一致。
 
 用途:
   - 贡献者在提交前自检;
@@ -24,8 +24,8 @@ def main():
     else:
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    manifest_path = os.path.join(root, 'src', 'manifest.json')
-    payload = os.path.join(root, 'files')
+    manifest_path = os.path.join(root, 'playtest-20261026', 'bin', 'manifest.json')
+    payload = os.path.join(root, 'playtest-20261026', 'files')
     if not os.path.exists(manifest_path):
         print(f'[错误] 找不到 {manifest_path}')
         return 1
