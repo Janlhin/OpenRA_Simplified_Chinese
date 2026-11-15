@@ -1,0 +1,384 @@
+{
+ "name": "OpenRA_简体中文补丁",
+ "version": "2.0",
+ "target_engine": "release-20250330",
+ "released": "2026-11-15",
+ "file_count": 75,
+ "files": [
+  {
+   "path": "mods\\cnc\\missions.yaml",
+   "sha256": "da4e2fe63ee54f85455763c3dedfa121296224a215e1f56a50febaa481716da9",
+   "bytes": 383
+  },
+  {
+   "path": "mods\\cnc\\mod.yaml",
+   "sha256": "eea96dc590fd77a305d314833b595e778ef98303341cab1d64069d212898d4cf",
+   "bytes": 6267
+  },
+  {
+   "path": "mods\\cnc\\chrome\\multiplayer-createserver.yaml",
+   "sha256": "8db222d875baa9985ac4a95412d64348150009a0e0648637118ccbad7b864ae2",
+   "bytes": 4880
+  },
+  {
+   "path": "mods\\cnc\\fluent\\campaign.ftl",
+   "sha256": "22691bce39a672dbadb823fb2e6b345cd45eb3480addfaa5fbcc2e25f44128ef",
+   "bytes": 585
+  },
+  {
+   "path": "mods\\cnc\\fluent\\chrome.ftl",
+   "sha256": "12dcc9fae4e1c207b5d755152a387a4a9c73796eefbebc1e515a88d732acf433",
+   "bytes": 29450
+  },
+  {
+   "path": "mods\\cnc\\fluent\\cnc.ftl",
+   "sha256": "0d7426217292d70aef62404f9809c53eee6f774a2296a8fe454fc7fa3d3de6bc",
+   "bytes": 138
+  },
+  {
+   "path": "mods\\cnc\\fluent\\hotkeys.ftl",
+   "sha256": "937d47d52b999cf4b50b20e25b77c2c61831c72c50840cc0f054a035eea12af8",
+   "bytes": 401
+  },
+  {
+   "path": "mods\\cnc\\fluent\\lua.ftl",
+   "sha256": "47fbe6b4373542ba5474550d57c38dc16e198934b62da08d3c768a4618d1b693",
+   "bytes": 4987
+  },
+  {
+   "path": "mods\\cnc\\fluent\\rules.ftl",
+   "sha256": "8d1a156314f375b7fe1aa50e9856e43915fcc45615ce5211b53faf4c6696c2f1",
+   "bytes": 27099
+  },
+  {
+   "path": "mods\\cnc\\maps\\nod06a\\map.ftl",
+   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
+   "bytes": 178
+  },
+  {
+   "path": "mods\\cnc\\maps\\nod06b\\map.ftl",
+   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
+   "bytes": 178
+  },
+  {
+   "path": "mods\\cnc-content\\mod.yaml",
+   "sha256": "400e9d7465636321b9c8ec2f31394e0c2f166420a9a8aafc3ea8feb5f891b464",
+   "bytes": 8343
+  },
+  {
+   "path": "mods\\cnc-content\\fluent\\chrome.ftl",
+   "sha256": "614e9d622ca7e9f477724fe85509c0f0c4e554f83bbbe48433c640810d6b5919",
+   "bytes": 809
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\covertops.yaml",
+   "sha256": "3d5f01c77c203be2d9a4c9a6a331d91b4a440a8d825300ac2df0ea5243c8bee9",
+   "bytes": 376
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\downloads.yaml",
+   "sha256": "be3f5d808526144cdcead8cd4f53fe30805b1dda6c09d1b32b8b9fada673a267",
+   "bytes": 625
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\firstdecade.yaml",
+   "sha256": "76b2bec4aae32af965ec6473b0595c0e0da7e17990f583bb91e37926469640aa",
+   "bytes": 9351
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\gdi95.yaml",
+   "sha256": "5a2948d852c4a0f73a4b60f6e18ff7aaaba6f7c84b08e93e4ebfb38f04fd09eb",
+   "bytes": 4926
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\nod95.yaml",
+   "sha256": "2e77ad6e72d320522f2aab5e1fa2d72603e00131c01fd20a1a5d0f1d24db293c",
+   "bytes": 4670
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\origin.yaml",
+   "sha256": "597f48d240cc13bffd0db83f9ca5eabd905e171e86f2ed8aba40443d061de151",
+   "bytes": 18186
+  },
+  {
+   "path": "mods\\cnc-content\\installer\\steam.yaml",
+   "sha256": "2339440668519cb8e276647f5270804e19a1f6aa6fb8946d0cfd45e3d75a5ed1",
+   "bytes": 17856
+  },
+  {
+   "path": "mods\\common\\NotoSansSC-Bold.ttf",
+   "sha256": "f9ec901913a6b47200a63096a1044fd38298ee89d6930af1acb2851601120e32",
+   "bytes": 10585400
+  },
+  {
+   "path": "mods\\common\\NotoSansSC-Regular.ttf",
+   "sha256": "3ee4c70117ea2a94369dec831e43445d4f73cd0bb419fc7c558ff933e4c2a5b1",
+   "bytes": 10595876
+  },
+  {
+   "path": "mods\\common\\chrome\\multiplayer-createserver.yaml",
+   "sha256": "347be94965ba858f7f1a304ff7ba1e1eb2f3081118428209191bea6df1e3a797",
+   "bytes": 4566
+  },
+  {
+   "path": "mods\\common\\fluent\\chrome.ftl",
+   "sha256": "0094ee5f0420d20225a2ba66a369207d9506d342038aadeac5900684ce2a3945",
+   "bytes": 24144
+  },
+  {
+   "path": "mods\\common\\fluent\\common.ftl",
+   "sha256": "90c4c18d4ea64addc7a30cfe86257fc3bed362dba931ba16de97ce8f1822a6a8",
+   "bytes": 34722
+  },
+  {
+   "path": "mods\\common\\fluent\\hotkeys.ftl",
+   "sha256": "86e2887c1c676c1677748b8a810a98c54ce40ce011a20fab60a217e634c70057",
+   "bytes": 8863
+  },
+  {
+   "path": "mods\\common\\fluent\\rules.ftl",
+   "sha256": "b09cd214931b1cc74ab5c4e80ceab7ce75453a5816f3860e6f7f0367383631b3",
+   "bytes": 1572
+  },
+  {
+   "path": "mods\\common-content\\fluent\\chrome.ftl",
+   "sha256": "ba6f3eb973f88220da3da41e97ad7912dd536adf6eac76fcdfc0927e80a1662d",
+   "bytes": 571
+  },
+  {
+   "path": "mods\\common-content\\fluent\\content.ftl",
+   "sha256": "442408d9fe7c75421838b08201566635edeabc19d3ce3c9ae25d9d321c39c676",
+   "bytes": 46
+  },
+  {
+   "path": "mods\\d2k\\missions.yaml",
+   "sha256": "376e113644e7d83f3b536e37aff42ce21a3b6746ffe3102c3962b741f80885ac",
+   "bytes": 468
+  },
+  {
+   "path": "mods\\d2k\\mod.yaml",
+   "sha256": "7e01d1ad32a808f42350c3e9bb4d563181ba887c93f0e5c0bb1c5bb7b4ee55c2",
+   "bytes": 6203
+  },
+  {
+   "path": "mods\\d2k\\fluent\\campaign.ftl",
+   "sha256": "176d5e4f54c8bf6a975d9dbcfc92cc579fe7229c208bcb04ff0f566cfbe844aa",
+   "bytes": 345
+  },
+  {
+   "path": "mods\\d2k\\fluent\\chrome.ftl",
+   "sha256": "71c16908a5f75864a590d3dd9dd2aa2c1eb8e759ca9342f0e0eb959a24a81abe",
+   "bytes": 6217
+  },
+  {
+   "path": "mods\\d2k\\fluent\\d2k.ftl",
+   "sha256": "9ebe1b40e8fc05b890843dab83aad4cfcc597d384e1c333631719e66bf448962",
+   "bytes": 298
+  },
+  {
+   "path": "mods\\d2k\\fluent\\hotkeys.ftl",
+   "sha256": "875a526425e52fbbd3313799e7b5513da9c6b5bc7bde408050c313f593893be0",
+   "bytes": 435
+  },
+  {
+   "path": "mods\\d2k\\fluent\\lua.ftl",
+   "sha256": "ea90f2d611b9db4306df8f6d65b39d3c0095321bff7a9bfda8ca55574760b120",
+   "bytes": 6814
+  },
+  {
+   "path": "mods\\d2k\\fluent\\rules.ftl",
+   "sha256": "f0ec72506ae8849cd4e0ee6921dc9d90cdf71aaa9be92b4e48002b74b1c0cc17",
+   "bytes": 22111
+  },
+  {
+   "path": "mods\\d2k-content\\mod.yaml",
+   "sha256": "1f574de744c08fc7262c40fc6b65f286bc532e8ef3fb6e87159aa6607def1546",
+   "bytes": 2613
+  },
+  {
+   "path": "mods\\d2k-content\\fluent\\chrome.ftl",
+   "sha256": "9cf35b82340ff3e79e60b7f615e0b68a8a5e5998a5ad5cdddb8b602bd1f2ab24",
+   "bytes": 637
+  },
+  {
+   "path": "mods\\d2k-content\\installer\\d2k.yaml",
+   "sha256": "ea314335730e5a90e5aec0a43440b6830dc2743ab5d56467ac0f51e4d73943ef",
+   "bytes": 21456
+  },
+  {
+   "path": "mods\\d2k-content\\installer\\downloads.yaml",
+   "sha256": "4c133a582f97cc04d7856420f821a1375529f4e17a379936d1cdae3bcc4a4232",
+   "bytes": 39102
+  },
+  {
+   "path": "mods\\d2k-content\\installer\\gruntmods.yaml",
+   "sha256": "7445919178e69690a63afafdbfcc40089d5e2e1cb3d71c4499488bec39158386",
+   "bytes": 19080
+  },
+  {
+   "path": "mods\\ra\\missions.yaml",
+   "sha256": "bc33af4e66b4541b1565c65436e02110a3a2c3ff1765d4e778ede89e773695ae",
+   "bytes": 1042
+  },
+  {
+   "path": "mods\\ra\\mod.yaml",
+   "sha256": "a40f368c2dc65eb2e8d2519c12f0af291a4f4d111eea15a3debd9f7e9cf93e34",
+   "bytes": 7238
+  },
+  {
+   "path": "mods\\ra\\fluent\\campaign.ftl",
+   "sha256": "1c13aed4fb479b7f5eabe80af4ef53d15e92b1a9c9912bf4e9a849e8623ac305",
+   "bytes": 1634
+  },
+  {
+   "path": "mods\\ra\\fluent\\chrome.ftl",
+   "sha256": "930da0c5944b666305faac4d65d70d87b835feef2eab59db6c6e04c17037b1f9",
+   "bytes": 6362
+  },
+  {
+   "path": "mods\\ra\\fluent\\hotkeys.ftl",
+   "sha256": "75c97c55b1aa50149572aa712c0f83ee35c03f6a806d70dabe09ee27dfba586f",
+   "bytes": 418
+  },
+  {
+   "path": "mods\\ra\\fluent\\lua.ftl",
+   "sha256": "34e32ee4f56cd5fa373007e309f72e7b80ffe4f49073be635155e5f1dd6b1fe7",
+   "bytes": 19257
+  },
+  {
+   "path": "mods\\ra\\fluent\\ra.ftl",
+   "sha256": "7397f2f4121970b5c9584233f5c97aa19855e35e93547ac0ba6cbc3eeffa0536",
+   "bytes": 368
+  },
+  {
+   "path": "mods\\ra\\fluent\\rules.ftl",
+   "sha256": "e20621a04d4c2e907215723c882c0a05fa03fe26baaba72bd248851c79758325",
+   "bytes": 23522
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-02\\map.ftl",
+   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
+   "bytes": 178
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-02\\rules.yaml",
+   "sha256": "db1bd60e40b12cc0bfbd6575cf77fccab955385554eb2c8580634dacc0f2992b",
+   "bytes": 1869
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-04\\map.ftl",
+   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
+   "bytes": 178
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-05a\\map.ftl",
+   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
+   "bytes": 178
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-10a\\rules.yaml",
+   "sha256": "ca082d16efbaf76304080241e0544d564be1cc9db0da1e4da4b5d134907c348e",
+   "bytes": 1814
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-13\\allies13.lua",
+   "sha256": "c81dd16b123c085bee81255cc74fcb98332aca75ccb24f5d5ea5f1558dff0361",
+   "bytes": 12107
+  },
+  {
+   "path": "mods\\ra\\maps\\allies-13\\rules.yaml",
+   "sha256": "5ff657a55250fdb9c0136ee2becf7678b8aa44c199a1d4db1168bbc4c56c788d",
+   "bytes": 1172
+  },
+  {
+   "path": "mods\\ra\\maps\\bomber-john\\map.ftl",
+   "sha256": "83e4957ddaaf08176b7cb723c3e9d82717180343bf26177f39b953cc1988175c",
+   "bytes": 537
+  },
+  {
+   "path": "mods\\ra\\maps\\drop-zone\\map.ftl",
+   "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad",
+   "bytes": 45
+  },
+  {
+   "path": "mods\\ra\\maps\\drop-zone-battle-of-tikiaki\\map.ftl",
+   "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad",
+   "bytes": 45
+  },
+  {
+   "path": "mods\\ra\\maps\\drop-zone-w\\map.ftl",
+   "sha256": "3a85e22fa1b69a8b11d475eebbdfb2e8b969d3597bb5662285e5f4a22197b5b5",
+   "bytes": 56
+  },
+  {
+   "path": "mods\\ra\\maps\\fort-lonestar\\map.ftl",
+   "sha256": "6ecb413d95f3fbec5368b08b4991bb954b5825e28d1c5133be4c9510700bc4f2",
+   "bytes": 663
+  },
+  {
+   "path": "mods\\ra\\maps\\oil-spill\\map.ftl",
+   "sha256": "302fa71ac664a293f0f773db2532463e19fa588274398cb15d22d497a2edb65e",
+   "bytes": 62
+  },
+  {
+   "path": "mods\\ra\\maps\\top-o-the-world\\map.ftl",
+   "sha256": "18e19308b47dfc8426ab610a4a13d53d1fe57aea113011226bc2437b1885f9d3",
+   "bytes": 201
+  },
+  {
+   "path": "mods\\ra-content\\mod.yaml",
+   "sha256": "ef7a043b18d4689cb339e590755060563779e08a36e44771e793e4a3badc821d",
+   "bytes": 10727
+  },
+  {
+   "path": "mods\\ra-content\\fluent\\chrome.ftl",
+   "sha256": "88e54c42292a069291d6c4e3d2f772f89a4c17c35a21f741859418a072c7dbb3",
+   "bytes": 986
+  },
+  {
+   "path": "mods\\ra-content\\installer\\aftermath.yaml",
+   "sha256": "13742b575e76010d03b76c9fad532cd765422c010b1798dbd333429618a37d14",
+   "bytes": 3182
+  },
+  {
+   "path": "mods\\ra-content\\installer\\allies95.yaml",
+   "sha256": "fe166e19a5609d9ab6257eaf767aaa2b29e23862a5f768d140073e78f06e50bf",
+   "bytes": 4697
+  },
+  {
+   "path": "mods\\ra-content\\installer\\cnc95.yaml",
+   "sha256": "d4795e438768bc270959043244ab4f96b3b589a199fe43bb9513f4adbfb6492b",
+   "bytes": 295
+  },
+  {
+   "path": "mods\\ra-content\\installer\\counterstrike.yaml",
+   "sha256": "052798a1e39cbeba7e61b32e18883e0b1116457a8a409f0b3e7b8cb0d0fa05a3",
+   "bytes": 1033
+  },
+  {
+   "path": "mods\\ra-content\\installer\\downloads.yaml",
+   "sha256": "88772dcc03e602872235483e12c946a20b50ef40d78118b5b08316eb8fb3f46d",
+   "bytes": 5530
+  },
+  {
+   "path": "mods\\ra-content\\installer\\firstdecade.yaml",
+   "sha256": "ad676bf90b626d6041eb20559d2ec721f10ffb6683a8a917093b294900a31c3d",
+   "bytes": 11090
+  },
+  {
+   "path": "mods\\ra-content\\installer\\origin.yaml",
+   "sha256": "74e01914e06b5bc3e286b67f9e8adee33e5e340d71bc7802b56edc1de1d9767c",
+   "bytes": 21025
+  },
+  {
+   "path": "mods\\ra-content\\installer\\soviet95.yaml",
+   "sha256": "05dd1b762a4328e22cf54d11a8409b8b01289a9e8ea08d02d8afbd68693d4b7f",
+   "bytes": 5017
+  },
+  {
+   "path": "mods\\ra-content\\installer\\steam.yaml",
+   "sha256": "67ca2c6e5a6efbd440876fdfbb9b569d35bfd269f879f2cebbea521bb66ac266",
+   "bytes": 21258
+  }
+ ]
+}

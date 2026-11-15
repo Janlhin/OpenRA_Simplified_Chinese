@@ -113,6 +113,7 @@ OpenRA_Simplified_Chinese\
 │   ├─ hotfix\                        可选引擎热修（PS1 脚本 + 两个 DLL；纯 CMD 入口由模板生成）
 │   └─ 安装说明.txt · 安装说明.md
 ├─ 📚 files\mods\                     208 个载荷（覆盖树）
+├─ 📦 release-20250330\               适配官方稳定版 release-20250330 的载荷（v2.0）
 ├─ 🔤 fonts\                          Noto Sans SC 两个字重
 ├─ 🛠️ tools\                          校验、载荷重建、打包、文档生成
 │   └─ cmd-templates\                 3 个纯 ASCII CMD 模板（.tpl；生成物只进发布包）
@@ -126,6 +127,7 @@ OpenRA_Simplified_Chinese\
 
 | 想了解 | 去哪看 |
 |---|---|
+| 🧩 给官方稳定版（Release）装中文 | [`release-20250330/README.md`](release-20250330/README.md) |
 | 🗂️ 每个文件是什么、载荷怎么构成 | [`docs/ANATOMY.md`](docs/ANATOMY.md) |
 | 🔧 怎么重建载荷、怎么发版、CI 有哪些门禁 | [`docs/MAINTAINING.md`](docs/MAINTAINING.md) |
 | ✍️ 想改一句译文 | [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) |

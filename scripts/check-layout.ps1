@@ -18,7 +18,7 @@ $root = Split-Path -Parent $PSScriptRoot
 $allowed = @(
     '.gitattributes', '.gitignore', '.github', '.githooks',
     'AGENTS.md', 'DECISIONS.md', 'LICENSE', 'LICENSE-OFL.txt', 'MANIFEST.md',
-    'README.md', 'TASKS.md', 'docs', 'files', 'fonts', 'scripts', 'src', 'tools'
+    'README.md', 'TASKS.md', 'docs', 'files', 'fonts', 'release-20250330', 'scripts', 'src', 'tools'
 )
 $required = @('README.md', 'AGENTS.md', 'DECISIONS.md', 'TASKS.md', 'MANIFEST.md',
     'src', 'files', 'fonts', 'tools', 'scripts', 'docs')
