@@ -27,6 +27,21 @@ if ($version -notmatch $semver) {
     $errors.Add("src/manifest.json: version '$version' 不是合法 SemVer 2.0.0")
 }
 
+# 1b) 适配分包版本线：release-<YYYYMMDD>/bin/manifest.json 声明自己的版本（D-012）
+$subLines = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue |
+    Where-Object { $_.Name -match '^release-\d{8}$' } |
+    ForEach-Object {
+        $subManifest = Join-Path $_.FullName 'bin/manifest.json'
+        if (-not (Test-Path -LiteralPath $subManifest)) { return }
+        $sub = Get-Content -LiteralPath $subManifest -Raw -Encoding utf8 | ConvertFrom-Json
+        $subVersion = [string]$sub.version
+        # 分包允许两位号（2.0 ↔ tag v2.0）：它标的是「第几版适配」，不是主包的 SemVer 修订粒度
+        if ($subVersion -notmatch '^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-[0-9A-Za-z.-]+)?$') {
+            $errors.Add("$($_.Name)/bin/manifest.json: version '$subVersion' 既不是 X.Y 也不是 X.Y.Z")
+        }
+        [pscustomobject]@{ Line = $_.Name; Version = $subVersion }
+    })
+
 # 2) CHANGELOG 顶层条目
 $changelogPath = Join-Path $root 'docs/CHANGELOG.md'
 $heading = Get-Content -LiteralPath $changelogPath -Encoding utf8 |
@@ -63,20 +78,31 @@ else {
 }
 
 # 4) tag 与版本（仅在 tag 指向 HEAD 时校验）
+$matchedLine = $null
 Push-Location $root
 try {
     $tag = & git describe --tags --exact-match 2>$null
     if ($LASTEXITCODE -eq 0 -and $tag) {
         $tag = $tag.Trim()
         if ($tag -ne "v$version") {
-            $errors.Add("当前 HEAD 的 tag 是 $tag，与 v$version 不一致（tag 已推送不得修改，改版本号发新 tag）")
+            # 允许 tag 指向某个适配分包声明的版本（D-012）
+            $subHit = $subLines | Where-Object { "v$($_.Version)" -ceq $tag } | Select-Object -First 1
+            if ($subHit) { $matchedLine = $subHit.Line }
+            else {
+                $errors.Add("当前 HEAD 的 tag 是 $tag，与 v$version 不一致，也不属于任何适配分包声明的版本（tag 已推送不得修改，改版本号发新 tag）")
+            }
         }
     }
 }
 finally { Pop-Location }
 
 if ($errors.Count -eq 0) {
-    Write-Host "  ✓ 版本号 $version（$releaseDate）三处一致" -ForegroundColor DarkGreen
+    if ($matchedLine) {
+        Write-Host "  ✓ tag 版本对应适配分包 $matchedLine（主包仍为 $version / $releaseDate）" -ForegroundColor DarkGreen
+    }
+    else {
+        Write-Host "  ✓ 版本号 $version（$releaseDate）三处一致" -ForegroundColor DarkGreen
+    }
     exit 0
 }
 
