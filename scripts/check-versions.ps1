@@ -35,9 +35,17 @@ $subLines = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyC
         if (-not (Test-Path -LiteralPath $subManifest)) { return }
         $sub = Get-Content -LiteralPath $subManifest -Raw -Encoding utf8 | ConvertFrom-Json
         $subVersion = [string]$sub.version
-        # 分包允许两位号（2.0 ↔ tag v2.0）：它标的是「第几版适配」，不是主包的 SemVer 修订粒度
-        if ($subVersion -notmatch '^(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-[0-9A-Za-z.-]+)?$') {
-            $errors.Add("$($_.Name)/bin/manifest.json: version '$subVersion' 既不是 X.Y 也不是 X.Y.Z")
+        # 两条线都按 SemVer 2.0.0 走：不存在两位号，`2.0` 只能写作 `2.0.0`
+        if ($subVersion -notmatch $semver) {
+            $errors.Add("$($_.Name)/bin/manifest.json: version '$subVersion' 不是合法 SemVer 2.0.0")
+        }
+        # 分包目录名 release-<YYYYMMDD> 必须与 engineVersion 对应，防止错标引擎
+        if ([string]$sub.engineVersion -ne $_.Name) {
+            $errors.Add("$($_.Name)/bin/manifest.json: engineVersion '$($sub.engineVersion)' 与目录名 '$($_.Name)' 不一致")
+        }
+        # 分包 manifest 必须与主包同 schema（同一套安装器只认这一份）
+        if (-not $sub.releaseDate -or -not $sub.font -or -not $sub.files) {
+            $errors.Add("$($_.Name)/bin/manifest.json: 缺少 releaseDate / font / files（分包 schema 应与 src/manifest.json 一致）")
         }
         [pscustomobject]@{ Line = $_.Name; Version = $subVersion }
     })

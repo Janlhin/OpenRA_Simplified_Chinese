@@ -4,7 +4,8 @@
     OpenRA 简体中文汉化补丁 - 安装 / 卸载脚本
 
 .DESCRIPTION
-    把 files\ 下的译文覆盖到目标 OpenRA 安装目录(playtest-20261026),
+    把 files\ 下的译文覆盖到目标 OpenRA 安装目录（适配的引擎版本由清单的
+    engineVersion 指定：playtest 线是 playtest-20261026，稳定版线是 release-20250330），
     并从本机 Windows 字体目录复制一个中文字体,使界面不再出现方块。
     所有被覆盖的文件都会备份到 <目标>\_zhcn-backup\<时间戳>\。
 
@@ -306,7 +307,7 @@ function Invoke-Install {
     }
     if (-not $Target) {
         Fail '没能找到 OpenRA 安装目录。请用 -Target 手动指定,例如:'
-        Say  '    setup.ps1 -Target "C:\Program Files\OpenRA (playtest)"' 'DarkGray'
+        Say  '    setup.ps1 -Target "C:\Program Files\OpenRA"' 'DarkGray'
         exit 1
     }
     $Target = (Resolve-Path $Target).Path.TrimEnd('\')

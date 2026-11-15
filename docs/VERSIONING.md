@@ -72,22 +72,28 @@
 6. 提交 → 打 tag `vX.Y.Z` → 推送 tag → CI 从 tag 构建发布包
 7. Release 正文附：变更、已知问题、回滚方式、发布包 SHA256
 
-## 7. 适配分包：第二条版本线（D-012）
+## 7. 两条产品线，一套版本规则（D-012）
 
-`release-<YYYYMMDD>/` 是「适配某个官方引擎版本」的成品分包，自带 `bin/manifest.json`（含 `version` / `released` / `target_engine`）。稳定版与 playtest 的载荷不兼容，两条线各有各的号：
+同一个项目、同一套安装器，产出两个包，分别适配两个引擎构建：
 
-| 版本线 | 真相源 | tag |
-|---|---|---|
-| 主包（playtest 引擎） | `src/manifest.json` → `version` | `vX.Y.Z` |
-| 适配分包（Release 引擎） | `release-<YYYYMMDD>/bin/manifest.json` → `version` | `v<该版本>`，允许与主包不同号 |
+| 包 | 载荷 | 目标引擎 | 版本真相 | tag |
+|---|---|---|---|---|
+| playtest 线 | 仓库根 `files/` + `fonts/` | `playtest-20261026` | `src/manifest.json` → `version`（1.6.1） | `v1.6.1` |
+| 稳定版线 | `release-20250330/files/` + 仓库根 `fonts/` | `release-20250330` | `release-20250330/bin/manifest.json` → `version`（2.0.0） | `v2.0.0` |
 
-在 tag 上，`scripts/check-versions.ps1` 接受「等于主包版本」或「等于任一适配分包声明的版本」，两者都不符才失败。
+两条线共用同一套安装器（`src/setup.ps1` 转发 → `src/install.ps1` 有业务逻辑，打包时再生成纯 CMD 双入口），
+包内布局完全一致（`setup.ps1` / `setup.bat` / `setup.cmd` / `bin/install.ps1` / `bin/manifest.json` /
+`bin/files.sha256` / `files/` / `fonts/`），差异只由清单的 `engineVersion` 与 `files[]` 驱动。
+`tools/build_release.py --profile` 选线，新增一条线只加一个 profile，安装器代码不分叉。
 
 约束：
 
-- 一个 tag 只对应一个包；Release 标题必须写明适配的引擎版本（如 `2.0 · 适配官方 Release（release-20250330）`）
-- 分包版本号独立递增，不追主包号；主包升 `1.7.0` 不代表分包要跟着变
-- 分包版本允许写两位（`2.0` ↔ tag `v2.0`）：它标的是「第几版适配」，不套主包的 `X.Y.Z` 粒度
-- 分包内的 `files/` 就是载荷覆盖树，`bin/manifest.json` 是它自己的逐文件真相
-- 第 1 节的「三处一致」只约束主包；分包只需自身 `manifest.json` 与 `release-<日期>` 目录名对应
+- **两条线都按 SemVer 2.0.0**：版本号必须是 `MAJOR.MINOR.PATCH`，**不存在两位号**——`2.0` 只能写作 `2.0.0`，tag 写 `v2.0.0`
+- 稳定版线的 `2.0.0` 是**主版本号**：目标引擎从 playtest 换成官方 Release，玩家必须换引擎，
+  属于「不兼容的变更」（SemVer 2.0.0 第 8 条），所以是 MAJOR，而不是换个修订号
+- 一个 tag 对应一个版本、一个包。同一 Release 允许**额外附上另一条线的最新包**，但文件名与正文
+  必须逐包写清各自适配的引擎，且不把那条线的号算进本 tag
+- 分包目录名 `release-<YYYYMMDD>` 必须等于自身 `manifest.engineVersion`（`check-versions.ps1` 校验）
+- 分包 `bin/manifest.json` 与 `src/manifest.json` **同 schema**（`version` / `releaseDate` / `engineVersion` / `font` / `files[]`），
+  同一套安装器只读这一份；第 1 节的「三处一致」只约束主包
 

@@ -21,7 +21,7 @@ rem ==========================================================================
 
 set "HERE=%~dp0"
 set "LIST=%HERE%bin\files.sha256"
-set "ENGINE=playtest-20261026"
+set "ENGINE=@@ENGINE@@"
 set "TARGET=%~1"
 set "ACTION=%~2"
 set "ERR=0"
@@ -76,7 +76,7 @@ echo Game dir : %TARGET%
 echo.
 
 if not defined ACTION (
-    echo   1  Install Chinese patch  [backup - fonts - 208 texts - SHA256]
+    echo   1  Install Chinese patch  [backup - fonts - @@TEXTCOUNT@@ texts - SHA256]
     echo   2  Restore English        [from the latest real pre-install backup]
     echo   3  Verify uninstall
     echo   0  Exit
@@ -111,21 +111,35 @@ echo Engine   : %VER%
 call :nextbackup
 if not defined STAMP goto :fail
 set "BACKUP=%TARGET%\_zhcn-backup\%STAMP%"
-echo [1/3] Backing up mods to %BACKUP% ...
+echo [1/3] Backing up the files to be replaced to %BACKUP% ...
 if not exist "%BACKUP%\" md "%BACKUP%" 2>nul
 if not exist "%BACKUP%\" (
     echo [ERROR] Cannot create backup dir. Check write permissions.
     goto :fail
 )
-robocopy "%TARGET%\mods" "%BACKUP%\mods" /E /NFL /NDL /NJH /NJS /NP >nul 2>&1
-if errorlevel 8 (
-    echo [ERROR] Backup failed, robocopy code !errorlevel!. No game file changed.
-    goto :fail
+rem Only the files this patch will overwrite get backed up (the deployment list),
+rem not the whole mods tree: a full copy costs tens of MB and restore only needs
+rem these. Entries absent from the game are recorded as "added" -> restore deletes them.
+set /a BAK=0
+for /f "usebackq tokens=1,2,3" %%A in ("%LIST%") do (
+    set "DST=%%C"
+    set "DSTPATH=%TARGET%\!DST:/=\!"
+    if exist "!DSTPATH!" (
+        set "BAKPATH=%BACKUP%\!DST:/=\!"
+        for %%F in ("!BAKPATH!") do if not exist "%%~dpF" md "%%~dpF" 2>nul
+        copy /y "!DSTPATH!" "!BAKPATH!" >nul 2>&1
+        set /a BAK+=1
+    )
 )
+if not exist "%BACKUP%\mods\common\fluent\chrome.ftl" (
+    rem Marker: this is a real pre-install backup even on an odd install layout.
+    echo preinstall> "%BACKUP%\.preinstall"
+)
+echo   backed up !BAK! existing files.
 
 rem List columns: SHA256 / source path in the package / relative game path.
 rem Fonts come first: deploying texts before fonts makes the engine fail to start.
-echo [2/3] Deploying fonts and 208 texts, verifying SHA256 per file ...
+echo [2/3] Deploying fonts and @@TEXTCOUNT@@ texts, verifying SHA256 per file ...
 set /a TOTAL=0
 set /a BAD=0
 for /f "usebackq tokens=1,2,3" %%A in ("%LIST%") do (
@@ -175,6 +189,9 @@ for /f "delims=" %%B in ('dir /b /ad /o-n "%TARGET%\_zhcn-backup" 2^>nul ^| find
         if exist "!CAND!\mods\common\fluent\chrome.ftl" (
             call :sha256 "!CAND!\mods\common\fluent\chrome.ftl"
             if /i not "!HASH!"=="!ZHCHROME!" set "BACKUP=!CAND!"
+        ) else (
+            rem No chrome.ftl in this backup: trust the marker written at install time.
+            if exist "!CAND!\.preinstall" set "BACKUP=!CAND!"
         )
     )
 )

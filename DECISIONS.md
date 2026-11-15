@@ -143,21 +143,25 @@
 - **复审条件**：上游修复 #22716 后随 T-007 移除 `hotfix\` 时，一并删除两个热修模板；
   若将来引入 `.lnk` 或单文件 exe 启动器，重新评估纯 CMD 路线是否仍有必要。
 
-### D-012 · 2026-11-15 · 适配分包拥有独立版本线，tag 允许与主包不同号
+### D-012 · 2026-11-15 · 两条产品线共用一套安装器，各持一份同 schema 清单
 
-- **决策**：新增 `release-<YYYYMMDD>/` 适配分包后，版本真相变为「每条产品线一份」——
-  主包仍是 `src/manifest.json`，分包是 `release-<YYYYMMDD>/bin/manifest.json`；
-  `scripts/check-versions.ps1` 在 tag 上同时接受两者：tag 等于主包版本，或等于任一分包声明的版本。
-- **背景**：官方稳定版 `release-20250330` 与 playtest 是两套互不兼容的载荷（地图 yaml 的简报
-  承载方式、`mod.yaml` 字段集都不同）。用户要求稳定版单独发 `v2.0` 并声明适配引擎；若让 tag
-  只能对应 `src` 的 1.6.1，`2.0` 这个号无处安放；若把 `src` 抬到 2.0，又把 playtest 那条线错标。
-- **被采纳**：分包自带 `bin/manifest.json`（`version` / `released` / `target_engine`），
-  守卫读它作为第二真相；一个 tag 仍只对应一个包，Release 标题必须写明适配的引擎版本。
-- **被否决**：① 把分包塞进 `src/` 复用同一版本号——两条线载荷不同，同号必然误导；
-  ② 用 `v2.0-release20250330` 这类复合 tag——与 `vX.Y.Z` 约定冲突，玩家也难认；
-  ③ 干脆取消 tag 与版本的校验——正是这条守卫挡住版本漂移，不能为一次发布拆掉。
-- **影响范围**：`scripts/check-versions.ps1`、`docs/VERSIONING.md` 第 7 节、
-  `release-20250330/bin/manifest.json`、`scripts/check-layout.ps1` 白名单。
-- **复审条件**：若官方稳定版与 playtest 的载荷重新统一（一份 `.ftl` 通吃），
-  合并回单版本线并删除本例外。
+- **决策**：`release-<YYYYMMDD>/` 与主包是**同一项目的两条产品线**：`tools/build_release.py --profile`
+  分线打包，两条线共用 `src/setup.ps1` / `src/install.ps1` 与纯 CMD 模板，包内布局完全一致；
+  差异只由清单的 `engineVersion` 与 `files[]` 驱动，分包 `bin/manifest.json` 与 `src/manifest.json` 同 schema。
+  版本一律按 SemVer 2.0.0 写 `MAJOR.MINOR.PATCH`（稳定版线为 `2.0.0`，tag `v2.0.0`）。
+- **背景**：官方稳定版 `release-20250330` 与 playtest 是两套互不兼容的载荷（地图 yaml 的简报承载方式、
+  `mod.yaml` 字段集都不同）。用户要稳定版单独发版并声明适配引擎：目标引擎换线对玩家是**不兼容变更**，
+  按 SemVer 2.0.0 第 8 条属 MAJOR，故号是 `2.0.0`（口语里说的「2.0」）；同时要求一个 Release 同时
+  提供两条线的包并分清。
+- **被采纳**：① 分包自带同 schema 的 `bin/manifest.json`（`version` / `releaseDate` / `engineVersion` / `font` / `files[]`），
+  守卫读它作为第二真相；② `check-versions.ps1` 在 tag 上接受「等于主包版本」或「等于任一分包声明的版本」，
+  并要求分包目录名 `release-<YYYYMMDD>` 等于 `engineVersion`；③ Release 可同时挂两个包，逐包标注适配引擎。
+- **被否决**：① **分包版本写两位（`2.0` ↔ tag `v2.0`）**——违反 SemVer 2.0.0（版本号必须三段），
+  本条目初版曾这样放行，同日撤销；② 用 `v2.0-release20250330` 这类复合 tag——与 `vX.Y.Z` 约定冲突；
+  ③ 把分包塞进 `src/` 复用同一版本号——两条线载荷不同，同号必然误导；④ 拆掉 tag 与版本的校验——
+  正是这条守卫挡住版本漂移。
+- **影响范围**：`tools/build_release.py`（新增 `--profile` 与两条线配置）、`tools/cmd-templates/setup.cmd.tpl`
+  （引擎号与载荷数改为打包时填入的占位符）、`scripts/check-versions.ps1`、`docs/VERSIONING.md` 第 7 节、
+  `release-20250330/bin/manifest.json`（改同 schema）、`scripts/check-layout.ps1` 白名单、仓库 README。
+- **复审条件**：若官方稳定版与 playtest 的载荷重新统一（一份 `.ftl` 通吃），合并回单版本线并删除本例外。
 

@@ -134,10 +134,30 @@ git add -A && git commit -m "..." && git push
 
 ```
 src/setup.ps1  src/安装说明.txt  src/安装说明.md  LICENSE  LICENSE-OFL.txt   ← 原样落到包根
-src/install.ps1   src/manifest.json          ← 按 PACKAGE_LAYOUT 收进 bin/
+src/install.ps1   src/manifest.json          ← 按 profile 的 layout 收进 bin/
 src/PACKAGE-README.md                        ← 改名成包内的 README.md
 fonts/NotoSansSC-Regular.ttf  fonts/NotoSansSC-Bold.ttf  files/**
 ```
+
+### 两条产品线共用一套打包与安装器
+
+`--profile` 选线，安装器代码只有一份：
+
+```powershell
+python tools/build_release.py                      # playtest 线（1.6.1，默认）
+python tools/build_release.py --profile release-20250330 --verify
+```
+
+| profile | 载荷 | 目标引擎 | 版本真相 |
+|---|---|---|---|
+| `playtest`（默认） | 仓库根 `files/` + `fonts/` | `playtest-20261026` | `src/manifest.json` |
+| `release-20250330` | `release-20250330/files/` + 仓库根 `fonts/` | `release-20250330` | `release-20250330/bin/manifest.json` |
+
+两条线产出的包内布局完全一致（`setup.ps1` / `setup.bat` / `setup.cmd` / `bin/install.ps1` /
+`bin/manifest.json` / `bin/files.sha256` / `files/` / `fonts/`）；模板里的 `@@ENGINE@@` 与
+`@@TEXTCOUNT@@` 在打包时按清单填入，所以同一份模板不用改就能给第二条线用。
+新增一条线只需在 `PROFILES` 里加一项（`manifest` / `payload` / `layout` / `templates` / `suffix`）。
+
 
 `src/安装说明.txt` 是**生成物**：手改会在 CI 第 9 步被 `build_install_txt.py --check` 挡下来。
 
@@ -195,12 +215,14 @@ python tools/check_font_coverage.py
 ## 脚本与入口约定
 
 **仓库里不允许任何 `.bat` / `.cmd`；Windows 侧脚本一律 `.ps1`。** CI 有守卫，仓库内出现即失败。
-发布包是唯一例外：`tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成 6 个纯 CMD
-入口与 1 份 `bin\files.sha256` 部署清单，**生成物只进 zip、不入库**（见 `DECISIONS.md` D-010 / D-011）。
+发布包是唯一例外：`tools/build_release.py` 从 `tools/cmd-templates/*.tpl` 现场生成纯 CMD
+入口（playtest 线 6 个、稳定版线 2 个）与 1 份 `bin\files.sha256` 部署清单，**生成物只进 zip、不入库**
+（见 `DECISIONS.md` D-010 / D-011）。
 
 入口是 `src/setup.ps1`：只做参数转发，**不含业务逻辑**，逻辑全在 `src/install.ps1`。
 PS 不可用的玩家走纯 CMD 路线：`setup.bat` / `setup.cmd` 自带安装 / 还原 / 卸载校验，
 读 `bin\files.sha256` 逐文件校验；`hotfix\` 也有同名的纯 CMD 应用 / 还原入口。
+两条线共用同一份 `src/install.ps1` 与同一份 `setup.cmd.tpl`，差异由清单的 `engineVersion` 与 `files[]` 驱动。
 
 **模板必须纯 ASCII**：`cmd.exe` 在 `chcp 65001` 下会把 UTF-8 中文批处理行拆成命令
 （实测出现过 `'备份在' is not recognized`），括号块内的裸 `)` 也会提前闭合块。所以模板只用

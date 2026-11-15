@@ -1,1004 +1,1026 @@
 {
- "name": "OpenRA_简体中文补丁",
- "version": "2.0",
- "target_engine": "release-20250330",
- "released": "2026-11-15",
- "file_count": 199,
- "files": [
-  {
-   "path": "mods\\cnc-content\\fluent\\chrome.ftl",
-   "sha256": "614e9d622ca7e9f477724fe85509c0f0c4e554f83bbbe48433c640810d6b5919",
-   "bytes": 809
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\covertops.yaml",
-   "sha256": "3d5f01c77c203be2d9a4c9a6a331d91b4a440a8d825300ac2df0ea5243c8bee9",
-   "bytes": 376
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\downloads.yaml",
-   "sha256": "be3f5d808526144cdcead8cd4f53fe30805b1dda6c09d1b32b8b9fada673a267",
-   "bytes": 625
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\firstdecade.yaml",
-   "sha256": "76b2bec4aae32af965ec6473b0595c0e0da7e17990f583bb91e37926469640aa",
-   "bytes": 9351
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\gdi95.yaml",
-   "sha256": "5a2948d852c4a0f73a4b60f6e18ff7aaaba6f7c84b08e93e4ebfb38f04fd09eb",
-   "bytes": 4926
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\nod95.yaml",
-   "sha256": "2e77ad6e72d320522f2aab5e1fa2d72603e00131c01fd20a1a5d0f1d24db293c",
-   "bytes": 4670
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\origin.yaml",
-   "sha256": "597f48d240cc13bffd0db83f9ca5eabd905e171e86f2ed8aba40443d061de151",
-   "bytes": 18186
-  },
-  {
-   "path": "mods\\cnc-content\\installer\\steam.yaml",
-   "sha256": "2339440668519cb8e276647f5270804e19a1f6aa6fb8946d0cfd45e3d75a5ed1",
-   "bytes": 17856
-  },
-  {
-   "path": "mods\\cnc-content\\mod.yaml",
-   "sha256": "400e9d7465636321b9c8ec2f31394e0c2f166420a9a8aafc3ea8feb5f891b464",
-   "bytes": 8343
-  },
-  {
-   "path": "mods\\cnc\\chrome\\multiplayer-createserver.yaml",
-   "sha256": "8db222d875baa9985ac4a95412d64348150009a0e0648637118ccbad7b864ae2",
-   "bytes": 4880
-  },
-  {
-   "path": "mods\\cnc\\fluent\\campaign.ftl",
-   "sha256": "22691bce39a672dbadb823fb2e6b345cd45eb3480addfaa5fbcc2e25f44128ef",
-   "bytes": 585
-  },
-  {
-   "path": "mods\\cnc\\fluent\\chrome.ftl",
-   "sha256": "12dcc9fae4e1c207b5d755152a387a4a9c73796eefbebc1e515a88d732acf433",
-   "bytes": 29450
-  },
-  {
-   "path": "mods\\cnc\\fluent\\cnc.ftl",
-   "sha256": "0d7426217292d70aef62404f9809c53eee6f774a2296a8fe454fc7fa3d3de6bc",
-   "bytes": 138
-  },
-  {
-   "path": "mods\\cnc\\fluent\\hotkeys.ftl",
-   "sha256": "937d47d52b999cf4b50b20e25b77c2c61831c72c50840cc0f054a035eea12af8",
-   "bytes": 401
-  },
-  {
-   "path": "mods\\cnc\\fluent\\lua.ftl",
-   "sha256": "47fbe6b4373542ba5474550d57c38dc16e198934b62da08d3c768a4618d1b693",
-   "bytes": 4987
-  },
-  {
-   "path": "mods\\cnc\\fluent\\rules.ftl",
-   "sha256": "8d1a156314f375b7fe1aa50e9856e43915fcc45615ce5211b53faf4c6696c2f1",
-   "bytes": 27099
-  },
-  {
-   "path": "mods\\cnc\\maps\\cnc64gdi01\\rules.yaml",
-   "sha256": "7ead0be32b1d5f8b0cf70f4b6522d0af941915aeab15f23f8c4b39d02244233a",
-   "bytes": 775
-  },
-  {
-   "path": "mods\\cnc\\maps\\eviction-notice\\rules.yaml",
-   "sha256": "5c5f853d92f078099ae79f34a1afb9825cbed948c70e100e8240b4ae0412a0d6",
-   "bytes": 2367
-  },
-  {
-   "path": "mods\\cnc\\maps\\funpark01\\rules.yaml",
-   "sha256": "ea970478c5d25faf11a2fab6cd23f807e24e4918fc690bcb393ed8b6dedab65d",
-   "bytes": 1271
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi01\\rules.yaml",
-   "sha256": "b38cff2ecb74cc103a2cd819551b37fab02e716913db7883564043726998c9c6",
-   "bytes": 1649
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi02\\rules.yaml",
-   "sha256": "d5ec0c7c290069c01f3c28b66f72457b7f5c63f062ddc54f3e6ce7cb49d8669f",
-   "bytes": 1592
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi03\\rules.yaml",
-   "sha256": "e7dab3019c728ea1f39ef54140d2e5e6e49882cf692212659b300724a5e16a6e",
-   "bytes": 1441
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi04a\\rules.yaml",
-   "sha256": "fbf57affe67323fbf61eb6f7755bcc086de77b0388e6ff1698c3140b8c0aebbc",
-   "bytes": 515
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi04b\\rules.yaml",
-   "sha256": "560b4e4a03f2ebdd40d170f06ec61d873b1689ef4aa86df712fa93f59afce89c",
-   "bytes": 549
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi04c\\rules.yaml",
-   "sha256": "3f4da657cdeff113510bd4a437ec3793335ae48f9d58eebecb8b8e261ec39e49",
-   "bytes": 1120
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi05a\\rules.yaml",
-   "sha256": "a5d7205250a163adac552ee0c8140de38a1b148649d2f7b9dbb11676d9414f1d",
-   "bytes": 2759
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi05b\\rules.yaml",
-   "sha256": "74d77b0b5f8e657dcf904b13a9cda8fb8ab5506a6a1ad839633d26e570df3f70",
-   "bytes": 2242
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi05c\\rules.yaml",
-   "sha256": "2065913757cbcdc4951df478e2b1d0699fc351a7747e87b6c612819d04ab2691",
-   "bytes": 2832
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi06\\rules.yaml",
-   "sha256": "c6d50e6d7462ee67a99c304f020e90fbaf11a3f3670c2f5fc7dd379912502c67",
-   "bytes": 1848
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi07\\rules.yaml",
-   "sha256": "32004efdedff9d81e107fb1241bd088cd14237f32d09f879570c5fc632e0d884",
-   "bytes": 1568
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi08a\\rules.yaml",
-   "sha256": "b1fac8f7b0d8faa9cff904b40bf4161595c34d276d21dd48dc70e68fe246bfb0",
-   "bytes": 2201
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi08b\\rules.yaml",
-   "sha256": "6462c8fd5258c4a0936fea6943b2da2d266a81e1f34a0f04e35f80effc959087",
-   "bytes": 2845
-  },
-  {
-   "path": "mods\\cnc\\maps\\gdi09\\rules.yaml",
-   "sha256": "7e7e6553d732fef06ba76a311368732e7980003803e675bfb2d3c1e7bae5cbce",
-   "bytes": 2078
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod01\\rules.yaml",
-   "sha256": "da04d365cfcdbace6e0e7bdfaa7b5e02d60b2e04d460608a911af5ea3bc470f1",
-   "bytes": 926
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod02a\\rules.yaml",
-   "sha256": "010ea28b949693b02d961edba9b0ef1db5d7c811fbe060eb3b65d48a2e9ead28",
-   "bytes": 1709
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod02b\\rules.yaml",
-   "sha256": "2f0f69d278c27362191c02d60f3712f4d524fd889ac0dbec9fa83f79d87c7ad8",
-   "bytes": 2781
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod03a\\rules.yaml",
-   "sha256": "9a021bd6b1b5551e3e118dd3e78023026c3035f8cc5b753b3c6abb96ddaa531b",
-   "bytes": 1489
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod03b\\rules.yaml",
-   "sha256": "aa8bcd335b10ed59dada5efd6a46e87cf1fb8a29a5a46b95038c0ddaeab50d6b",
-   "bytes": 1479
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod04a\\rules.yaml",
-   "sha256": "72fd184fbf8da4a311a9de8ac453c493ba88d6d2460f4ceb9ea751fe15eed95c",
-   "bytes": 573
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod04b\\rules.yaml",
-   "sha256": "74bc6ad317006a51eeb660e67a1267ce349d9fe63b2956380d82bf61717c872b",
-   "bytes": 1966
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod05\\rules.yaml",
-   "sha256": "8ef5363d185ecce58e342e69e6f1a00c9a2d8cea5b95088bc437b0ac0d482984",
-   "bytes": 2115
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod06a\\map.ftl",
-   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
-   "bytes": 178
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod06a\\rules.yaml",
-   "sha256": "71af2fcc1bfa7a9f0674ae512493ba435a63e378858b5bd8eb0600f7573d5e60",
-   "bytes": 939
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod06b\\map.ftl",
-   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
-   "bytes": 178
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod06b\\rules.yaml",
-   "sha256": "3094b89dc3c06901e472b936761ed2a95d2333750dac58432777ce5720e65217",
-   "bytes": 1127
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod06c\\rules.yaml",
-   "sha256": "da1b6a1bdc6c386a1348b6765fa410c3f87a2cc12fda2b6467f1c8ba367b398b",
-   "bytes": 2099
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod07a\\rules.yaml",
-   "sha256": "28e13b2b462226429b27c2df43db491fcc84a10ad99a5a95e9e1dbc3efaf3c8b",
-   "bytes": 2101
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod07b\\rules.yaml",
-   "sha256": "0c6dffef19110ec7f2910189255f8879f1eff3242614f4bce3e04672ef726f27",
-   "bytes": 1883
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod07c\\rules.yaml",
-   "sha256": "ace3b74b35c157d944b0bd18750abc0407ac38b07b36f4085af4e6fec375cf9c",
-   "bytes": 2509
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod08a\\rules.yaml",
-   "sha256": "f256d5e6e017c7b9d9cd40ad521ebf7445ef0bc9ffeb118b1c9d2fbaa4329735",
-   "bytes": 2755
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod08b\\rules.yaml",
-   "sha256": "2745b4a72f58ae6cd8043cff0ddd95ffe7f2e7ce294c7bf9d5d27fd407d5342a",
-   "bytes": 3270
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod09\\rules.yaml",
-   "sha256": "1bb68cb4fc12635f84f0e2e721d4d4919ad193c5d4ecdc19ef91040c9c7fb2c9",
-   "bytes": 2963
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod10a\\rules.yaml",
-   "sha256": "8974cffb1e24592eaedb40ad37d3adfd87ee2a055bfc11656961215f2e108efb",
-   "bytes": 1295
-  },
-  {
-   "path": "mods\\cnc\\maps\\nod10b\\rules.yaml",
-   "sha256": "00e5912c372b0ea6e5ca184d13fb334e073ba5787f5dcdefb4d83cc0b1a49e64",
-   "bytes": 1187
-  },
-  {
-   "path": "mods\\cnc\\maps\\twist-of-fate\\rules.yaml",
-   "sha256": "2ab11a77e32d554b4da23c0d9e9d9d1a475e0bfe4ffab2c43efa8f2a95a9104a",
-   "bytes": 2775
-  },
-  {
-   "path": "mods\\cnc\\missions.yaml",
-   "sha256": "da4e2fe63ee54f85455763c3dedfa121296224a215e1f56a50febaa481716da9",
-   "bytes": 383
-  },
-  {
-   "path": "mods\\cnc\\mod.yaml",
-   "sha256": "eea96dc590fd77a305d314833b595e778ef98303341cab1d64069d212898d4cf",
-   "bytes": 6267
-  },
-  {
-   "path": "mods\\common-content\\fluent\\chrome.ftl",
-   "sha256": "ba6f3eb973f88220da3da41e97ad7912dd536adf6eac76fcdfc0927e80a1662d",
-   "bytes": 571
-  },
-  {
-   "path": "mods\\common-content\\fluent\\content.ftl",
-   "sha256": "442408d9fe7c75421838b08201566635edeabc19d3ce3c9ae25d9d321c39c676",
-   "bytes": 46
-  },
-  {
-   "path": "mods\\common\\chrome\\multiplayer-createserver.yaml",
-   "sha256": "347be94965ba858f7f1a304ff7ba1e1eb2f3081118428209191bea6df1e3a797",
-   "bytes": 4566
-  },
-  {
-   "path": "mods\\common\\fluent\\chrome.ftl",
-   "sha256": "0094ee5f0420d20225a2ba66a369207d9506d342038aadeac5900684ce2a3945",
-   "bytes": 24144
-  },
-  {
-   "path": "mods\\common\\fluent\\common.ftl",
-   "sha256": "90c4c18d4ea64addc7a30cfe86257fc3bed362dba931ba16de97ce8f1822a6a8",
-   "bytes": 34722
-  },
-  {
-   "path": "mods\\common\\fluent\\hotkeys.ftl",
-   "sha256": "86e2887c1c676c1677748b8a810a98c54ce40ce011a20fab60a217e634c70057",
-   "bytes": 8863
-  },
-  {
-   "path": "mods\\common\\fluent\\rules.ftl",
-   "sha256": "b09cd214931b1cc74ab5c4e80ceab7ce75453a5816f3860e6f7f0367383631b3",
-   "bytes": 1572
-  },
-  {
-   "path": "mods\\common\\NotoSansSC-Bold.ttf",
-   "sha256": "f9ec901913a6b47200a63096a1044fd38298ee89d6930af1acb2851601120e32",
-   "bytes": 10585400
-  },
-  {
-   "path": "mods\\common\\NotoSansSC-Regular.ttf",
-   "sha256": "3ee4c70117ea2a94369dec831e43445d4f73cd0bb419fc7c558ff933e4c2a5b1",
-   "bytes": 10595876
-  },
-  {
-   "path": "mods\\d2k-content\\fluent\\chrome.ftl",
-   "sha256": "9cf35b82340ff3e79e60b7f615e0b68a8a5e5998a5ad5cdddb8b602bd1f2ab24",
-   "bytes": 637
-  },
-  {
-   "path": "mods\\d2k-content\\installer\\d2k.yaml",
-   "sha256": "ea314335730e5a90e5aec0a43440b6830dc2743ab5d56467ac0f51e4d73943ef",
-   "bytes": 21456
-  },
-  {
-   "path": "mods\\d2k-content\\installer\\downloads.yaml",
-   "sha256": "4c133a582f97cc04d7856420f821a1375529f4e17a379936d1cdae3bcc4a4232",
-   "bytes": 39102
-  },
-  {
-   "path": "mods\\d2k-content\\installer\\gruntmods.yaml",
-   "sha256": "7445919178e69690a63afafdbfcc40089d5e2e1cb3d71c4499488bec39158386",
-   "bytes": 19080
-  },
-  {
-   "path": "mods\\d2k-content\\mod.yaml",
-   "sha256": "1f574de744c08fc7262c40fc6b65f286bc532e8ef3fb6e87159aa6607def1546",
-   "bytes": 2613
-  },
-  {
-   "path": "mods\\d2k\\fluent\\campaign.ftl",
-   "sha256": "176d5e4f54c8bf6a975d9dbcfc92cc579fe7229c208bcb04ff0f566cfbe844aa",
-   "bytes": 345
-  },
-  {
-   "path": "mods\\d2k\\fluent\\chrome.ftl",
-   "sha256": "71c16908a5f75864a590d3dd9dd2aa2c1eb8e759ca9342f0e0eb959a24a81abe",
-   "bytes": 6217
-  },
-  {
-   "path": "mods\\d2k\\fluent\\d2k.ftl",
-   "sha256": "9ebe1b40e8fc05b890843dab83aad4cfcc597d384e1c333631719e66bf448962",
-   "bytes": 298
-  },
-  {
-   "path": "mods\\d2k\\fluent\\hotkeys.ftl",
-   "sha256": "875a526425e52fbbd3313799e7b5513da9c6b5bc7bde408050c313f593893be0",
-   "bytes": 435
-  },
-  {
-   "path": "mods\\d2k\\fluent\\lua.ftl",
-   "sha256": "ea90f2d611b9db4306df8f6d65b39d3c0095321bff7a9bfda8ca55574760b120",
-   "bytes": 6814
-  },
-  {
-   "path": "mods\\d2k\\fluent\\rules.ftl",
-   "sha256": "f0ec72506ae8849cd4e0ee6921dc9d90cdf71aaa9be92b4e48002b74b1c0cc17",
-   "bytes": 22111
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-01a\\rules.yaml",
-   "sha256": "d583d504b1c620286e47f63a139248adec7345e4aed6d92b43f2762a0b205e3f",
-   "bytes": 1471
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-01b\\rules.yaml",
-   "sha256": "f2e04a3d0751deed48e27b521fcb5237fb55009256aaf37b240dfe64b3478d76",
-   "bytes": 1471
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-02a\\rules.yaml",
-   "sha256": "586def28501aec8d6b48e11822be2d6031d5f03986453b154182705e4451eaa7",
-   "bytes": 1387
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-02b\\rules.yaml",
-   "sha256": "88afac5fddda15cdac5cbc967801a4421023ac5205f6adb1ca8cda17c18ffa80",
-   "bytes": 1558
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-03a\\rules.yaml",
-   "sha256": "ef387a74d0013e97dc7fe1f5eade71f60084b82f904311f857ee6c6598670f1e",
-   "bytes": 1319
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-03b\\rules.yaml",
-   "sha256": "3e336293a076891f3d0fb4a87a6b12153940994d3e41a5835479b1d496cf6c3e",
-   "bytes": 1319
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-04\\rules.yaml",
-   "sha256": "b9d640d4db64abeb7c5ca88c0adf75c36f349c218d209e9d08492c1a48202c81",
-   "bytes": 1981
-  },
-  {
-   "path": "mods\\d2k\\maps\\atreides-05\\rules.yaml",
-   "sha256": "5d406e6d2518b5c54cdcf7a46ee3a49f0e3120e46bde7d06e38dbfb566fb8707",
-   "bytes": 1771
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-01a\\rules.yaml",
-   "sha256": "cc73dfbd7d26bc37909499ac78182c0c423f9ac4e50371885e87f0f8e18eb7a0",
-   "bytes": 1282
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-01b\\rules.yaml",
-   "sha256": "b24b42c4844966024d79db72d32ecabd9d9b2226f56b4ea2f779218885c1e9fb",
-   "bytes": 1291
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-02a\\rules.yaml",
-   "sha256": "e99f27be555eb27cacc46d8be30fa614b4534aab1bafb1cf4bb3fd5a1db13053",
-   "bytes": 1213
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-02b\\rules.yaml",
-   "sha256": "2d956cddaa54b5e89e30e98aeb020225da36a989e570182e3438eb49acc9b54d",
-   "bytes": 1213
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-03a\\rules.yaml",
-   "sha256": "499963a246f5c6fcb9c7c5952a347a6ce095c984dce75fe604aeda88fd741e1f",
-   "bytes": 1154
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-03b\\rules.yaml",
-   "sha256": "94026ffe30a9c6ad29698944bb6facb5e4c760c1565e71b94bb973142b616969",
-   "bytes": 1154
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-04\\rules.yaml",
-   "sha256": "b9f36271956a09bcb3059ebc0b73bf28004b40363e29feca516b83199e7966c3",
-   "bytes": 1562
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-05\\rules.yaml",
-   "sha256": "dd540561289b54f05913466b7cc65d6635659b88bc98e3bd8512974197db1f09",
-   "bytes": 1919
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-06a\\rules.yaml",
-   "sha256": "07e56af3bada503a95df9f713698cf252586a17641e1bf61f19fa17fe12a1250",
-   "bytes": 2563
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-06b\\rules.yaml",
-   "sha256": "7a07bc62d7a4ec94d159439b38cc99c7f1e959975b6ed291c66fc8935661d969",
-   "bytes": 2563
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-07\\rules.yaml",
-   "sha256": "f65624d8807e00609309bafe5a5aeadd0f9039aa67f5c2c61b671884d1595097",
-   "bytes": 2365
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-08\\rules.yaml",
-   "sha256": "1343c163aec1e9dde7543115e3bd5d0ea8dbb88474239a98f73e5aa8d39cda89",
-   "bytes": 2382
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-09a\\rules.yaml",
-   "sha256": "21c3662932de58ace3dd881af1aa728529faf461795e0090f8f06193f3983413",
-   "bytes": 1993
-  },
-  {
-   "path": "mods\\d2k\\maps\\harkonnen-09b\\rules.yaml",
-   "sha256": "29e688330bd21c7e457bc64fba2b5033a95061ac0af411a87eb83bc1d6aa9812",
-   "bytes": 2495
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-01a\\rules.yaml",
-   "sha256": "f1a1b9133886644b0205dbf6c58efdeec8a0d982e6e451b8bb19456fcaf23271",
-   "bytes": 1311
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-01b\\rules.yaml",
-   "sha256": "e8ec0f99e0dda7bec38f96ccec44ffa027de6da64572b3d1273ef5caae8ee625",
-   "bytes": 1311
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-02a\\rules.yaml",
-   "sha256": "b82fc6274cfd1e198d1db36479f1eca5a51a9320c156ac60d30c57b131eba2ab",
-   "bytes": 1129
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-02b\\rules.yaml",
-   "sha256": "a78fe03ebdd5ad349978a166be77621f05bbac6049507f5f3df8323d5f6035cf",
-   "bytes": 1129
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-03a\\rules.yaml",
-   "sha256": "4bd2dd60e3f3909432504fb8e547003aef587a862c3137d1f988e52fdf401337",
-   "bytes": 1185
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-03b\\rules.yaml",
-   "sha256": "6e0c925d9965b16f871aba812b862d5329703cb60e09edd2686c7d89e810897d",
-   "bytes": 1137
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-04\\rules.yaml",
-   "sha256": "16e8ce0a167bfd58e76b93deac3d8758098dc56098dfe3fcc41b895a719b2192",
-   "bytes": 1589
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-05\\rules.yaml",
-   "sha256": "56126b7704c1c672015cfe5e3a80ae528eb412f2016607b82d29af8db3b99544",
-   "bytes": 2035
-  },
-  {
-   "path": "mods\\d2k\\maps\\ordos-06a\\rules.yaml",
-   "sha256": "78c6ca36f5fe3e6ef6b88d950d0b5f37797fa9ea8b2d05349ffd7e77fa753198",
-   "bytes": 1351
-  },
-  {
-   "path": "mods\\d2k\\missions.yaml",
-   "sha256": "376e113644e7d83f3b536e37aff42ce21a3b6746ffe3102c3962b741f80885ac",
-   "bytes": 468
-  },
-  {
-   "path": "mods\\d2k\\mod.yaml",
-   "sha256": "7e01d1ad32a808f42350c3e9bb4d563181ba887c93f0e5c0bb1c5bb7b4ee55c2",
-   "bytes": 6203
-  },
-  {
-   "path": "mods\\ra-content\\fluent\\chrome.ftl",
-   "sha256": "88e54c42292a069291d6c4e3d2f772f89a4c17c35a21f741859418a072c7dbb3",
-   "bytes": 986
-  },
-  {
-   "path": "mods\\ra-content\\installer\\aftermath.yaml",
-   "sha256": "13742b575e76010d03b76c9fad532cd765422c010b1798dbd333429618a37d14",
-   "bytes": 3182
-  },
-  {
-   "path": "mods\\ra-content\\installer\\allies95.yaml",
-   "sha256": "fe166e19a5609d9ab6257eaf767aaa2b29e23862a5f768d140073e78f06e50bf",
-   "bytes": 4697
-  },
-  {
-   "path": "mods\\ra-content\\installer\\cnc95.yaml",
-   "sha256": "d4795e438768bc270959043244ab4f96b3b589a199fe43bb9513f4adbfb6492b",
-   "bytes": 295
-  },
-  {
-   "path": "mods\\ra-content\\installer\\counterstrike.yaml",
-   "sha256": "052798a1e39cbeba7e61b32e18883e0b1116457a8a409f0b3e7b8cb0d0fa05a3",
-   "bytes": 1033
-  },
-  {
-   "path": "mods\\ra-content\\installer\\downloads.yaml",
-   "sha256": "88772dcc03e602872235483e12c946a20b50ef40d78118b5b08316eb8fb3f46d",
-   "bytes": 5530
-  },
-  {
-   "path": "mods\\ra-content\\installer\\firstdecade.yaml",
-   "sha256": "ad676bf90b626d6041eb20559d2ec721f10ffb6683a8a917093b294900a31c3d",
-   "bytes": 11090
-  },
-  {
-   "path": "mods\\ra-content\\installer\\origin.yaml",
-   "sha256": "74e01914e06b5bc3e286b67f9e8adee33e5e340d71bc7802b56edc1de1d9767c",
-   "bytes": 21025
-  },
-  {
-   "path": "mods\\ra-content\\installer\\soviet95.yaml",
-   "sha256": "05dd1b762a4328e22cf54d11a8409b8b01289a9e8ea08d02d8afbd68693d4b7f",
-   "bytes": 5017
-  },
-  {
-   "path": "mods\\ra-content\\installer\\steam.yaml",
-   "sha256": "67ca2c6e5a6efbd440876fdfbb9b569d35bfd269f879f2cebbea521bb66ac266",
-   "bytes": 21258
-  },
-  {
-   "path": "mods\\ra-content\\mod.yaml",
-   "sha256": "ef7a043b18d4689cb339e590755060563779e08a36e44771e793e4a3badc821d",
-   "bytes": 10727
-  },
-  {
-   "path": "mods\\ra\\fluent\\campaign.ftl",
-   "sha256": "1c13aed4fb479b7f5eabe80af4ef53d15e92b1a9c9912bf4e9a849e8623ac305",
-   "bytes": 1634
-  },
-  {
-   "path": "mods\\ra\\fluent\\chrome.ftl",
-   "sha256": "930da0c5944b666305faac4d65d70d87b835feef2eab59db6c6e04c17037b1f9",
-   "bytes": 6362
-  },
-  {
-   "path": "mods\\ra\\fluent\\hotkeys.ftl",
-   "sha256": "75c97c55b1aa50149572aa712c0f83ee35c03f6a806d70dabe09ee27dfba586f",
-   "bytes": 418
-  },
-  {
-   "path": "mods\\ra\\fluent\\lua.ftl",
-   "sha256": "34e32ee4f56cd5fa373007e309f72e7b80ffe4f49073be635155e5f1dd6b1fe7",
-   "bytes": 19257
-  },
-  {
-   "path": "mods\\ra\\fluent\\ra.ftl",
-   "sha256": "7397f2f4121970b5c9584233f5c97aa19855e35e93547ac0ba6cbc3eeffa0536",
-   "bytes": 368
-  },
-  {
-   "path": "mods\\ra\\fluent\\rules.ftl",
-   "sha256": "e20621a04d4c2e907215723c882c0a05fa03fe26baaba72bd248851c79758325",
-   "bytes": 23522
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-01\\rules.yaml",
-   "sha256": "f91de4ec9ccf3332ccde388718b130816c87980277782c7c3383743ed4d8199f",
-   "bytes": 932
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-02\\map.ftl",
-   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
-   "bytes": 178
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-02\\rules.yaml",
-   "sha256": "6f235fc9f60552d7b5e30cba5780cc2d79cf984ab4f0d745ceba6883b0a27ea3",
-   "bytes": 1833
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-03a\\rules.yaml",
-   "sha256": "3e50c02b81d9d9000d18828aa0aaba0984083cacc7f262d8c1d877c00de76e2a",
-   "bytes": 2975
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-03b\\rules.yaml",
-   "sha256": "aee58498e12672fca2ab95845b148751bb228d9781ac66967cccac1964e27d92",
-   "bytes": 2675
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-04\\map.ftl",
-   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
-   "bytes": 178
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-04\\rules.yaml",
-   "sha256": "2f9861fbb866c2b199b82fccbb92e3e5d2c16a10bc0467d4e00680b1190137e6",
-   "bytes": 1759
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-05a\\map.ftl",
-   "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5",
-   "bytes": 178
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-05a\\rules.yaml",
-   "sha256": "96d0d1a0883962e48126e38163c4c161b32ab2db94632ad8ee6fc3d4fd306649",
-   "bytes": 3390
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-05b\\rules.yaml",
-   "sha256": "138e3f460760839983b560de9c003181b7888627f1386ed47ac9149925994f8c",
-   "bytes": 3047
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-05c\\rules.yaml",
-   "sha256": "dcca43853cb6ff746c387235e9497934acf258bc73d396f001fead02f54cf725",
-   "bytes": 3342
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-06a\\rules.yaml",
-   "sha256": "1a0a4e02cb9346b795a3dbeeef088d1d2b777944f49b0f8db80499e68249907a",
-   "bytes": 1644
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-06b\\rules.yaml",
-   "sha256": "0f34fed24a3b2a84458293f76ef2cfc99bf2ef68c1e64884fed5376044ae1426",
-   "bytes": 1614
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-07\\rules.yaml",
-   "sha256": "d6f09892120d00518b6015f04f03638641d22a270109c9bc4aca74c10a8c8cc1",
-   "bytes": 2206
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-08a\\rules.yaml",
-   "sha256": "d989187cffe569ef84d031cc68cea14b48bba08046e495c1c2bf9ef3384d4b50",
-   "bytes": 2153
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-08b\\rules.yaml",
-   "sha256": "e8b655ad5ae6fb7d8286d762120ffee7dd8114e0b58c53b898cc4d9a8a23d2cb",
-   "bytes": 2153
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-09a\\rules.yaml",
-   "sha256": "b8d6ff71748c964517311076ed2d68e9ce58291ffad2ab8f8914e79fab0de1c6",
-   "bytes": 2428
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-10a\\rules.yaml",
-   "sha256": "e1eac38b19530fa96ed6c13b2ffe1455e33ea3cb46aba612abf4cc3ac369c115",
-   "bytes": 1795
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-10b\\rules.yaml",
-   "sha256": "52be9241ad2f114d22989de13a49be182d98debd5428d13a814f04fac644f1eb",
-   "bytes": 555
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-13\\allies13.lua",
-   "sha256": "c81dd16b123c085bee81255cc74fcb98332aca75ccb24f5d5ea5f1558dff0361",
-   "bytes": 12107
-  },
-  {
-   "path": "mods\\ra\\maps\\allies-13\\rules.yaml",
-   "sha256": "f60171e3ce7cb33c348faab1bb02835e0cf11ec20ec65a64da225378fcdfaa67",
-   "bytes": 1151
-  },
-  {
-   "path": "mods\\ra\\maps\\ant-01\\rules.yaml",
-   "sha256": "1ca2355d9d6919129c6c0062b5331ea34dcaeda163e4cef48bc89e2c830f2e2f",
-   "bytes": 2757
-  },
-  {
-   "path": "mods\\ra\\maps\\ant-03\\rules.yaml",
-   "sha256": "df218d5afcd28b362028d6a481ce33863623c79fe1f7af3c9b2060bd0d4510a3",
-   "bytes": 2144
-  },
-  {
-   "path": "mods\\ra\\maps\\bomber-john\\map.ftl",
-   "sha256": "83e4957ddaaf08176b7cb723c3e9d82717180343bf26177f39b953cc1988175c",
-   "bytes": 537
-  },
-  {
-   "path": "mods\\ra\\maps\\drop-zone-battle-of-tikiaki\\map.ftl",
-   "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad",
-   "bytes": 45
-  },
-  {
-   "path": "mods\\ra\\maps\\drop-zone-w\\map.ftl",
-   "sha256": "3a85e22fa1b69a8b11d475eebbdfb2e8b969d3597bb5662285e5f4a22197b5b5",
-   "bytes": 56
-  },
-  {
-   "path": "mods\\ra\\maps\\drop-zone\\map.ftl",
-   "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad",
-   "bytes": 45
-  },
-  {
-   "path": "mods\\ra\\maps\\evacuation\\rules.yaml",
-   "sha256": "dd305a3498021499efbd4acd696e588027ca090cc280c607dac16d9d90301865",
-   "bytes": 3721
-  },
-  {
-   "path": "mods\\ra\\maps\\exodus\\rules.yaml",
-   "sha256": "ce03cd2db62b8a5d5946b4788d4752bdb91dbb4089dc0ecc6ffd9468b50f94c9",
-   "bytes": 2687
-  },
-  {
-   "path": "mods\\ra\\maps\\fall-of-greece-1-personal-war\\rules.yaml",
-   "sha256": "28d48d17de8d3d9ecd7bd69836e479114e83807af00b1a44a847d3a04f1fa2f4",
-   "bytes": 1855
-  },
-  {
-   "path": "mods\\ra\\maps\\fall-of-greece-2-evacuation\\rules.yaml",
-   "sha256": "f75bea6218a8530be405738427381bad293ee6bb0d6b2d4862f7f88b9c787b58",
-   "bytes": 1888
-  },
-  {
-   "path": "mods\\ra\\maps\\fort-lonestar\\map.ftl",
-   "sha256": "6ecb413d95f3fbec5368b08b4991bb954b5825e28d1c5133be4c9510700bc4f2",
-   "bytes": 663
-  },
-  {
-   "path": "mods\\ra\\maps\\in-the-nick-of-time\\rules.yaml",
-   "sha256": "d77fbedf542367005cb933ba098dba15b028c7c4b5e2508e784877e245d5a1c5",
-   "bytes": 1614
-  },
-  {
-   "path": "mods\\ra\\maps\\infiltration\\rules.yaml",
-   "sha256": "de3edf8373e94f11e0e65146d5928ab3bf61216c6ac482412839080809825a44",
-   "bytes": 4263
-  },
-  {
-   "path": "mods\\ra\\maps\\intervention\\rules.yaml",
-   "sha256": "07a49487fb6b233f027ce4c5533a190b47d12a2e8879e21755622dd6ac5d2a58",
-   "bytes": 2836
-  },
-  {
-   "path": "mods\\ra\\maps\\monster-tank-madness\\rules.yaml",
-   "sha256": "ff4e1ea1f8d664512970b25283ca901701862883010831444e863d9e4e4bcc5e",
-   "bytes": 5796
-  },
-  {
-   "path": "mods\\ra\\maps\\mousetrap\\rules.yaml",
-   "sha256": "d73d051cf7b499be52d3930031daad078170a7040658fbd4811cf6d8f93e2701",
-   "bytes": 3141
-  },
-  {
-   "path": "mods\\ra\\maps\\negotiations\\rules.yaml",
-   "sha256": "7b79ae5b42751044b31a160b580da8e732af8082636a3958300e558e8734546a",
-   "bytes": 4290
-  },
-  {
-   "path": "mods\\ra\\maps\\oil-spill\\map.ftl",
-   "sha256": "302fa71ac664a293f0f773db2532463e19fa588274398cb15d22d497a2edb65e",
-   "bytes": 62
-  },
-  {
-   "path": "mods\\ra\\maps\\production-disruption\\rules.yaml",
-   "sha256": "98a184d5c9bd62165ac5eee728f2ce6d7f70d1d8ba658ef803ec8f3a4bde065d",
-   "bytes": 1759
-  },
-  {
-   "path": "mods\\ra\\maps\\sarin-gas-1-crackdown\\rules.yaml",
-   "sha256": "543e5626cc2a24dfa501413d91d3a53374a8149d4807b759a5e2cf05f0e9bf8c",
-   "bytes": 1960
-  },
-  {
-   "path": "mods\\ra\\maps\\sarin-gas-2-down-under\\rules.yaml",
-   "sha256": "85cf2618af06985976be4c5568ea9720559c8cc8109ffc588e84aadcac1ba95a",
-   "bytes": 1206
-  },
-  {
-   "path": "mods\\ra\\maps\\sarin-gas-3-controlled-burn\\rules.yaml",
-   "sha256": "49e468805ef1fcf5dc9646bf9fc31874f235c0553a367592603abdb62e723fee",
-   "bytes": 1501
-  },
-  {
-   "path": "mods\\ra\\maps\\shock-therapy\\rules.yaml",
-   "sha256": "9e7602d9e8bcf20de5a5a568885afea1c808a60a2f34b294344aacdca72bfe9e",
-   "bytes": 883
-  },
-  {
-   "path": "mods\\ra\\maps\\siberian-conflict-1-fresh-tracks\\rules.yaml",
-   "sha256": "f35f3808b842bd340314ad633cf7ab6a8a57ff67f66b6e70baea3e692ea5f9fe",
-   "bytes": 1344
-  },
-  {
-   "path": "mods\\ra\\maps\\siberian-conflict-3-wasteland\\rules.yaml",
-   "sha256": "6da0e5910519e409d4b8861c3299da741ed5ad312d6a9ee1e3f2f3f16e96b527",
-   "bytes": 1826
-  },
-  {
-   "path": "mods\\ra\\maps\\situation-critical\\rules.yaml",
-   "sha256": "d2de5865e35c404175cb07823cd80a1a46ade96ae492c7c050edaa723eab5887",
-   "bytes": 1730
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-01\\rules.yaml",
-   "sha256": "eaed44d4998732752ca160eca9fb5150f4c0ec0c34025030fbbb51a11a163fbf",
-   "bytes": 1241
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-02a\\rules.yaml",
-   "sha256": "152a45a8b0774f289e56bc304e49860fb9d8ed3fe5965acb1e4334d9cc274885",
-   "bytes": 1431
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-02b\\rules.yaml",
-   "sha256": "1a2f48bb728f805afc6ee5295e58b3eae865c9a555410bc715c2a557991e92ca",
-   "bytes": 1711
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-03\\rules.yaml",
-   "sha256": "40338aa675e739d395c36fb37389ff6f85b41c1fa43b06d66ba2b960f3fd6613",
-   "bytes": 1235
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-04a\\rules.yaml",
-   "sha256": "0749513d3cb49c71774257c311674e31d0e0af6cd893321a12974ebc175d35a9",
-   "bytes": 1623
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-04b\\rules.yaml",
-   "sha256": "e338031af2af3b70a8bbd478db96b099b5c89233cf90b1174971a3f0524af226",
-   "bytes": 1531
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-05\\rules.yaml",
-   "sha256": "d2e420856fc313b301f5fd9cbc843a08f89b6e7050d2fad484afe508ded23cfd",
-   "bytes": 2997
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-06a\\rules.yaml",
-   "sha256": "6231c9a597eaeae948c687898dafba99bf5d23b1b680c5869ca9a7888dc2f244",
-   "bytes": 2419
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-06b\\rules.yaml",
-   "sha256": "29c4270aae96abdff9a01defb5f9ab0b0213d5295850aea8aad19febb1e6a01c",
-   "bytes": 2328
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-07\\rules.yaml",
-   "sha256": "c3bce20cd20aa99fd4e8bea2e035f9268855838da1fcfaf4284404f4ea98369c",
-   "bytes": 1126
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-08a\\rules.yaml",
-   "sha256": "7cbb29a8cbdefde73e7da01dcfb22bf757df6bf265256cbcfdf27f981f612462",
-   "bytes": 2165
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-08b\\rules.yaml",
-   "sha256": "8519a5cbe94fe05730e5a3fee8f0f946c2ee50e47f3d7ebe543fb911e2ec9b37",
-   "bytes": 2165
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-09\\rules.yaml",
-   "sha256": "40689c973a1de14967bb359acde62f87a631671f73436b6118869fa303fba69b",
-   "bytes": 1941
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-10\\rules.yaml",
-   "sha256": "3e6852f800b8a8b8acd24cdc7d28c5c584f8f4576dfb0a432a4d0cb6e6c34f92",
-   "bytes": 1731
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-11a\\rules.yaml",
-   "sha256": "edc5c1d25beb565e34477ada4f41cd84bb94159d5f633e1d608318b4d249332f",
-   "bytes": 1518
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-11b\\rules.yaml",
-   "sha256": "c4a70cd7f094ec4080e89392f9c6fdd598bcd0e2ba3ea7b5e9e2087666df7eee",
-   "bytes": 1518
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-13a\\rules.yaml",
-   "sha256": "795ddf783bef77cbde6f813ce30631717be19f248c183f13808dd4aec2337be4",
-   "bytes": 1446
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-13b\\rules.yaml",
-   "sha256": "60621513a23937587671e0c0a7b80e72191feced0bb43fbb9c0962573c54f10d",
-   "bytes": 1446
-  },
-  {
-   "path": "mods\\ra\\maps\\soviet-soldier-volkov-n-chitzkoi\\rules.yaml",
-   "sha256": "c9530fc29e45859de407035a136fdf54284aecfa7e8a26b0c52d35e14cea2607",
-   "bytes": 2958
-  },
-  {
-   "path": "mods\\ra\\maps\\survival01\\rules.yaml",
-   "sha256": "faa5aa911687892f973f1b4047ab67761d25852d5c50359c7224730718a0a4d4",
-   "bytes": 2525
-  },
-  {
-   "path": "mods\\ra\\maps\\survival02\\rules.yaml",
-   "sha256": "57e93922e2c34a04ed537c4b296972640b9da979b11aafe2680245fca67d5e34",
-   "bytes": 1888
-  },
-  {
-   "path": "mods\\ra\\maps\\top-o-the-world\\map.ftl",
-   "sha256": "18e19308b47dfc8426ab610a4a13d53d1fe57aea113011226bc2437b1885f9d3",
-   "bytes": 201
-  },
-  {
-   "path": "mods\\ra\\maps\\top-o-the-world\\rules.yaml",
-   "sha256": "85fd28ad12c7f63dd6a2283b6faed77d1ee39120a8d9212e1f72d6c1f39aa7a9",
-   "bytes": 2154
-  },
-  {
-   "path": "mods\\ra\\missions.yaml",
-   "sha256": "bc33af4e66b4541b1565c65436e02110a3a2c3ff1765d4e778ede89e773695ae",
-   "bytes": 1042
-  },
-  {
-   "path": "mods\\ra\\mod.yaml",
-   "sha256": "a40f368c2dc65eb2e8d2519c12f0af291a4f4d111eea15a3debd9f7e9cf93e34",
-   "bytes": 7238
-  }
- ]
+  "name": "OpenRA_Simplified_Chinese",
+  "displayName": "OpenRA 简体中文汉化补丁（官方 Release 版）",
+  "version": "2.0.0",
+  "releaseDate": "2026-11-15",
+  "engineVersion": "release-20250330",
+  "license": "GPL-3.0-or-later",
+  "repository": "https://github.com/Janlhin/OpenRA_Simplified_Chinese",
+  "stats": {
+    "fluentMessages": 2711,
+    "translatedMessages": 2487,
+    "mapBriefings": 127,
+    "payloadFiles": 199
+  },
+  "font": {
+    "bundled": [
+      {
+        "path": "fonts/NotoSansSC-Regular.ttf",
+        "deployTo": "mods/common/NotoSansSC-Regular.ttf",
+        "size": 10595876,
+        "sha256": "3ee4c70117ea2a94369dec831e43445d4f73cd0bb419fc7c558ff933e4c2a5b1"
+      },
+      {
+        "path": "fonts/NotoSansSC-Bold.ttf",
+        "deployTo": "mods/common/NotoSansSC-Bold.ttf",
+        "size": 10585400,
+        "sha256": "f9ec901913a6b47200a63096a1044fd38298ee89d6930af1acb2851601120e32"
+      }
+    ],
+    "fallbackCandidates": [
+      "simhei.ttf",
+      "Deng.ttf",
+      "msyh.ttc",
+      "simsun.ttc"
+    ],
+    "license": "SIL Open Font License 1.1，见 LICENSE-OFL.txt",
+    "note": "字体随包分发（Noto Sans SC 全量字形，已固化为 Regular/Bold 两个静态实例）；安装时优先部署包内字体，包内缺失才回退系统字体"
+  },
+  "files": [
+    {
+      "path": "mods/cnc-content/fluent/chrome.ftl",
+      "size": 809,
+      "sha256": "614e9d622ca7e9f477724fe85509c0f0c4e554f83bbbe48433c640810d6b5919"
+    },
+    {
+      "path": "mods/cnc-content/installer/covertops.yaml",
+      "size": 376,
+      "sha256": "3d5f01c77c203be2d9a4c9a6a331d91b4a440a8d825300ac2df0ea5243c8bee9"
+    },
+    {
+      "path": "mods/cnc-content/installer/downloads.yaml",
+      "size": 625,
+      "sha256": "be3f5d808526144cdcead8cd4f53fe30805b1dda6c09d1b32b8b9fada673a267"
+    },
+    {
+      "path": "mods/cnc-content/installer/firstdecade.yaml",
+      "size": 9351,
+      "sha256": "76b2bec4aae32af965ec6473b0595c0e0da7e17990f583bb91e37926469640aa"
+    },
+    {
+      "path": "mods/cnc-content/installer/gdi95.yaml",
+      "size": 4926,
+      "sha256": "5a2948d852c4a0f73a4b60f6e18ff7aaaba6f7c84b08e93e4ebfb38f04fd09eb"
+    },
+    {
+      "path": "mods/cnc-content/installer/nod95.yaml",
+      "size": 4670,
+      "sha256": "2e77ad6e72d320522f2aab5e1fa2d72603e00131c01fd20a1a5d0f1d24db293c"
+    },
+    {
+      "path": "mods/cnc-content/installer/origin.yaml",
+      "size": 18186,
+      "sha256": "597f48d240cc13bffd0db83f9ca5eabd905e171e86f2ed8aba40443d061de151"
+    },
+    {
+      "path": "mods/cnc-content/installer/steam.yaml",
+      "size": 17856,
+      "sha256": "2339440668519cb8e276647f5270804e19a1f6aa6fb8946d0cfd45e3d75a5ed1"
+    },
+    {
+      "path": "mods/cnc-content/mod.yaml",
+      "size": 8343,
+      "sha256": "400e9d7465636321b9c8ec2f31394e0c2f166420a9a8aafc3ea8feb5f891b464"
+    },
+    {
+      "path": "mods/cnc/chrome/multiplayer-createserver.yaml",
+      "size": 4880,
+      "sha256": "8db222d875baa9985ac4a95412d64348150009a0e0648637118ccbad7b864ae2"
+    },
+    {
+      "path": "mods/cnc/fluent/campaign.ftl",
+      "size": 585,
+      "sha256": "22691bce39a672dbadb823fb2e6b345cd45eb3480addfaa5fbcc2e25f44128ef"
+    },
+    {
+      "path": "mods/cnc/fluent/chrome.ftl",
+      "size": 29450,
+      "sha256": "12dcc9fae4e1c207b5d755152a387a4a9c73796eefbebc1e515a88d732acf433"
+    },
+    {
+      "path": "mods/cnc/fluent/cnc.ftl",
+      "size": 138,
+      "sha256": "0d7426217292d70aef62404f9809c53eee6f774a2296a8fe454fc7fa3d3de6bc"
+    },
+    {
+      "path": "mods/cnc/fluent/hotkeys.ftl",
+      "size": 401,
+      "sha256": "937d47d52b999cf4b50b20e25b77c2c61831c72c50840cc0f054a035eea12af8"
+    },
+    {
+      "path": "mods/cnc/fluent/lua.ftl",
+      "size": 4987,
+      "sha256": "47fbe6b4373542ba5474550d57c38dc16e198934b62da08d3c768a4618d1b693"
+    },
+    {
+      "path": "mods/cnc/fluent/rules.ftl",
+      "size": 27099,
+      "sha256": "8d1a156314f375b7fe1aa50e9856e43915fcc45615ce5211b53faf4c6696c2f1"
+    },
+    {
+      "path": "mods/cnc/maps/cnc64gdi01/rules.yaml",
+      "size": 775,
+      "sha256": "7ead0be32b1d5f8b0cf70f4b6522d0af941915aeab15f23f8c4b39d02244233a"
+    },
+    {
+      "path": "mods/cnc/maps/eviction-notice/rules.yaml",
+      "size": 2367,
+      "sha256": "5c5f853d92f078099ae79f34a1afb9825cbed948c70e100e8240b4ae0412a0d6"
+    },
+    {
+      "path": "mods/cnc/maps/funpark01/rules.yaml",
+      "size": 1271,
+      "sha256": "ea970478c5d25faf11a2fab6cd23f807e24e4918fc690bcb393ed8b6dedab65d"
+    },
+    {
+      "path": "mods/cnc/maps/gdi01/rules.yaml",
+      "size": 1649,
+      "sha256": "b38cff2ecb74cc103a2cd819551b37fab02e716913db7883564043726998c9c6"
+    },
+    {
+      "path": "mods/cnc/maps/gdi02/rules.yaml",
+      "size": 1592,
+      "sha256": "d5ec0c7c290069c01f3c28b66f72457b7f5c63f062ddc54f3e6ce7cb49d8669f"
+    },
+    {
+      "path": "mods/cnc/maps/gdi03/rules.yaml",
+      "size": 1441,
+      "sha256": "e7dab3019c728ea1f39ef54140d2e5e6e49882cf692212659b300724a5e16a6e"
+    },
+    {
+      "path": "mods/cnc/maps/gdi04a/rules.yaml",
+      "size": 515,
+      "sha256": "fbf57affe67323fbf61eb6f7755bcc086de77b0388e6ff1698c3140b8c0aebbc"
+    },
+    {
+      "path": "mods/cnc/maps/gdi04b/rules.yaml",
+      "size": 549,
+      "sha256": "560b4e4a03f2ebdd40d170f06ec61d873b1689ef4aa86df712fa93f59afce89c"
+    },
+    {
+      "path": "mods/cnc/maps/gdi04c/rules.yaml",
+      "size": 1120,
+      "sha256": "3f4da657cdeff113510bd4a437ec3793335ae48f9d58eebecb8b8e261ec39e49"
+    },
+    {
+      "path": "mods/cnc/maps/gdi05a/rules.yaml",
+      "size": 2759,
+      "sha256": "a5d7205250a163adac552ee0c8140de38a1b148649d2f7b9dbb11676d9414f1d"
+    },
+    {
+      "path": "mods/cnc/maps/gdi05b/rules.yaml",
+      "size": 2242,
+      "sha256": "74d77b0b5f8e657dcf904b13a9cda8fb8ab5506a6a1ad839633d26e570df3f70"
+    },
+    {
+      "path": "mods/cnc/maps/gdi05c/rules.yaml",
+      "size": 2832,
+      "sha256": "2065913757cbcdc4951df478e2b1d0699fc351a7747e87b6c612819d04ab2691"
+    },
+    {
+      "path": "mods/cnc/maps/gdi06/rules.yaml",
+      "size": 1848,
+      "sha256": "c6d50e6d7462ee67a99c304f020e90fbaf11a3f3670c2f5fc7dd379912502c67"
+    },
+    {
+      "path": "mods/cnc/maps/gdi07/rules.yaml",
+      "size": 1568,
+      "sha256": "32004efdedff9d81e107fb1241bd088cd14237f32d09f879570c5fc632e0d884"
+    },
+    {
+      "path": "mods/cnc/maps/gdi08a/rules.yaml",
+      "size": 2201,
+      "sha256": "b1fac8f7b0d8faa9cff904b40bf4161595c34d276d21dd48dc70e68fe246bfb0"
+    },
+    {
+      "path": "mods/cnc/maps/gdi08b/rules.yaml",
+      "size": 2845,
+      "sha256": "6462c8fd5258c4a0936fea6943b2da2d266a81e1f34a0f04e35f80effc959087"
+    },
+    {
+      "path": "mods/cnc/maps/gdi09/rules.yaml",
+      "size": 2078,
+      "sha256": "7e7e6553d732fef06ba76a311368732e7980003803e675bfb2d3c1e7bae5cbce"
+    },
+    {
+      "path": "mods/cnc/maps/nod01/rules.yaml",
+      "size": 926,
+      "sha256": "da04d365cfcdbace6e0e7bdfaa7b5e02d60b2e04d460608a911af5ea3bc470f1"
+    },
+    {
+      "path": "mods/cnc/maps/nod02a/rules.yaml",
+      "size": 1709,
+      "sha256": "010ea28b949693b02d961edba9b0ef1db5d7c811fbe060eb3b65d48a2e9ead28"
+    },
+    {
+      "path": "mods/cnc/maps/nod02b/rules.yaml",
+      "size": 2781,
+      "sha256": "2f0f69d278c27362191c02d60f3712f4d524fd889ac0dbec9fa83f79d87c7ad8"
+    },
+    {
+      "path": "mods/cnc/maps/nod03a/rules.yaml",
+      "size": 1489,
+      "sha256": "9a021bd6b1b5551e3e118dd3e78023026c3035f8cc5b753b3c6abb96ddaa531b"
+    },
+    {
+      "path": "mods/cnc/maps/nod03b/rules.yaml",
+      "size": 1479,
+      "sha256": "aa8bcd335b10ed59dada5efd6a46e87cf1fb8a29a5a46b95038c0ddaeab50d6b"
+    },
+    {
+      "path": "mods/cnc/maps/nod04a/rules.yaml",
+      "size": 573,
+      "sha256": "72fd184fbf8da4a311a9de8ac453c493ba88d6d2460f4ceb9ea751fe15eed95c"
+    },
+    {
+      "path": "mods/cnc/maps/nod04b/rules.yaml",
+      "size": 1966,
+      "sha256": "74bc6ad317006a51eeb660e67a1267ce349d9fe63b2956380d82bf61717c872b"
+    },
+    {
+      "path": "mods/cnc/maps/nod05/rules.yaml",
+      "size": 2115,
+      "sha256": "8ef5363d185ecce58e342e69e6f1a00c9a2d8cea5b95088bc437b0ac0d482984"
+    },
+    {
+      "path": "mods/cnc/maps/nod06a/map.ftl",
+      "size": 178,
+      "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5"
+    },
+    {
+      "path": "mods/cnc/maps/nod06a/rules.yaml",
+      "size": 939,
+      "sha256": "71af2fcc1bfa7a9f0674ae512493ba435a63e378858b5bd8eb0600f7573d5e60"
+    },
+    {
+      "path": "mods/cnc/maps/nod06b/map.ftl",
+      "size": 178,
+      "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5"
+    },
+    {
+      "path": "mods/cnc/maps/nod06b/rules.yaml",
+      "size": 1127,
+      "sha256": "3094b89dc3c06901e472b936761ed2a95d2333750dac58432777ce5720e65217"
+    },
+    {
+      "path": "mods/cnc/maps/nod06c/rules.yaml",
+      "size": 2099,
+      "sha256": "da1b6a1bdc6c386a1348b6765fa410c3f87a2cc12fda2b6467f1c8ba367b398b"
+    },
+    {
+      "path": "mods/cnc/maps/nod07a/rules.yaml",
+      "size": 2101,
+      "sha256": "28e13b2b462226429b27c2df43db491fcc84a10ad99a5a95e9e1dbc3efaf3c8b"
+    },
+    {
+      "path": "mods/cnc/maps/nod07b/rules.yaml",
+      "size": 1883,
+      "sha256": "0c6dffef19110ec7f2910189255f8879f1eff3242614f4bce3e04672ef726f27"
+    },
+    {
+      "path": "mods/cnc/maps/nod07c/rules.yaml",
+      "size": 2509,
+      "sha256": "ace3b74b35c157d944b0bd18750abc0407ac38b07b36f4085af4e6fec375cf9c"
+    },
+    {
+      "path": "mods/cnc/maps/nod08a/rules.yaml",
+      "size": 2755,
+      "sha256": "f256d5e6e017c7b9d9cd40ad521ebf7445ef0bc9ffeb118b1c9d2fbaa4329735"
+    },
+    {
+      "path": "mods/cnc/maps/nod08b/rules.yaml",
+      "size": 3270,
+      "sha256": "2745b4a72f58ae6cd8043cff0ddd95ffe7f2e7ce294c7bf9d5d27fd407d5342a"
+    },
+    {
+      "path": "mods/cnc/maps/nod09/rules.yaml",
+      "size": 2963,
+      "sha256": "1bb68cb4fc12635f84f0e2e721d4d4919ad193c5d4ecdc19ef91040c9c7fb2c9"
+    },
+    {
+      "path": "mods/cnc/maps/nod10a/rules.yaml",
+      "size": 1295,
+      "sha256": "8974cffb1e24592eaedb40ad37d3adfd87ee2a055bfc11656961215f2e108efb"
+    },
+    {
+      "path": "mods/cnc/maps/nod10b/rules.yaml",
+      "size": 1187,
+      "sha256": "00e5912c372b0ea6e5ca184d13fb334e073ba5787f5dcdefb4d83cc0b1a49e64"
+    },
+    {
+      "path": "mods/cnc/maps/twist-of-fate/rules.yaml",
+      "size": 2775,
+      "sha256": "2ab11a77e32d554b4da23c0d9e9d9d1a475e0bfe4ffab2c43efa8f2a95a9104a"
+    },
+    {
+      "path": "mods/cnc/missions.yaml",
+      "size": 383,
+      "sha256": "da4e2fe63ee54f85455763c3dedfa121296224a215e1f56a50febaa481716da9"
+    },
+    {
+      "path": "mods/cnc/mod.yaml",
+      "size": 6267,
+      "sha256": "eea96dc590fd77a305d314833b595e778ef98303341cab1d64069d212898d4cf"
+    },
+    {
+      "path": "mods/common-content/fluent/chrome.ftl",
+      "size": 571,
+      "sha256": "ba6f3eb973f88220da3da41e97ad7912dd536adf6eac76fcdfc0927e80a1662d"
+    },
+    {
+      "path": "mods/common-content/fluent/content.ftl",
+      "size": 46,
+      "sha256": "442408d9fe7c75421838b08201566635edeabc19d3ce3c9ae25d9d321c39c676"
+    },
+    {
+      "path": "mods/common/chrome/multiplayer-createserver.yaml",
+      "size": 4566,
+      "sha256": "347be94965ba858f7f1a304ff7ba1e1eb2f3081118428209191bea6df1e3a797"
+    },
+    {
+      "path": "mods/common/fluent/chrome.ftl",
+      "size": 24144,
+      "sha256": "0094ee5f0420d20225a2ba66a369207d9506d342038aadeac5900684ce2a3945"
+    },
+    {
+      "path": "mods/common/fluent/common.ftl",
+      "size": 34722,
+      "sha256": "90c4c18d4ea64addc7a30cfe86257fc3bed362dba931ba16de97ce8f1822a6a8"
+    },
+    {
+      "path": "mods/common/fluent/hotkeys.ftl",
+      "size": 8863,
+      "sha256": "86e2887c1c676c1677748b8a810a98c54ce40ce011a20fab60a217e634c70057"
+    },
+    {
+      "path": "mods/common/fluent/rules.ftl",
+      "size": 1572,
+      "sha256": "b09cd214931b1cc74ab5c4e80ceab7ce75453a5816f3860e6f7f0367383631b3"
+    },
+    {
+      "path": "mods/d2k-content/fluent/chrome.ftl",
+      "size": 637,
+      "sha256": "9cf35b82340ff3e79e60b7f615e0b68a8a5e5998a5ad5cdddb8b602bd1f2ab24"
+    },
+    {
+      "path": "mods/d2k-content/installer/d2k.yaml",
+      "size": 21456,
+      "sha256": "ea314335730e5a90e5aec0a43440b6830dc2743ab5d56467ac0f51e4d73943ef"
+    },
+    {
+      "path": "mods/d2k-content/installer/downloads.yaml",
+      "size": 39102,
+      "sha256": "4c133a582f97cc04d7856420f821a1375529f4e17a379936d1cdae3bcc4a4232"
+    },
+    {
+      "path": "mods/d2k-content/installer/gruntmods.yaml",
+      "size": 19080,
+      "sha256": "7445919178e69690a63afafdbfcc40089d5e2e1cb3d71c4499488bec39158386"
+    },
+    {
+      "path": "mods/d2k-content/mod.yaml",
+      "size": 2613,
+      "sha256": "1f574de744c08fc7262c40fc6b65f286bc532e8ef3fb6e87159aa6607def1546"
+    },
+    {
+      "path": "mods/d2k/fluent/campaign.ftl",
+      "size": 345,
+      "sha256": "176d5e4f54c8bf6a975d9dbcfc92cc579fe7229c208bcb04ff0f566cfbe844aa"
+    },
+    {
+      "path": "mods/d2k/fluent/chrome.ftl",
+      "size": 6217,
+      "sha256": "71c16908a5f75864a590d3dd9dd2aa2c1eb8e759ca9342f0e0eb959a24a81abe"
+    },
+    {
+      "path": "mods/d2k/fluent/d2k.ftl",
+      "size": 298,
+      "sha256": "9ebe1b40e8fc05b890843dab83aad4cfcc597d384e1c333631719e66bf448962"
+    },
+    {
+      "path": "mods/d2k/fluent/hotkeys.ftl",
+      "size": 435,
+      "sha256": "875a526425e52fbbd3313799e7b5513da9c6b5bc7bde408050c313f593893be0"
+    },
+    {
+      "path": "mods/d2k/fluent/lua.ftl",
+      "size": 6814,
+      "sha256": "ea90f2d611b9db4306df8f6d65b39d3c0095321bff7a9bfda8ca55574760b120"
+    },
+    {
+      "path": "mods/d2k/fluent/rules.ftl",
+      "size": 22111,
+      "sha256": "f0ec72506ae8849cd4e0ee6921dc9d90cdf71aaa9be92b4e48002b74b1c0cc17"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-01a/rules.yaml",
+      "size": 1471,
+      "sha256": "d583d504b1c620286e47f63a139248adec7345e4aed6d92b43f2762a0b205e3f"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-01b/rules.yaml",
+      "size": 1471,
+      "sha256": "f2e04a3d0751deed48e27b521fcb5237fb55009256aaf37b240dfe64b3478d76"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-02a/rules.yaml",
+      "size": 1387,
+      "sha256": "586def28501aec8d6b48e11822be2d6031d5f03986453b154182705e4451eaa7"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-02b/rules.yaml",
+      "size": 1558,
+      "sha256": "88afac5fddda15cdac5cbc967801a4421023ac5205f6adb1ca8cda17c18ffa80"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-03a/rules.yaml",
+      "size": 1319,
+      "sha256": "ef387a74d0013e97dc7fe1f5eade71f60084b82f904311f857ee6c6598670f1e"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-03b/rules.yaml",
+      "size": 1319,
+      "sha256": "3e336293a076891f3d0fb4a87a6b12153940994d3e41a5835479b1d496cf6c3e"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-04/rules.yaml",
+      "size": 1981,
+      "sha256": "b9d640d4db64abeb7c5ca88c0adf75c36f349c218d209e9d08492c1a48202c81"
+    },
+    {
+      "path": "mods/d2k/maps/atreides-05/rules.yaml",
+      "size": 1771,
+      "sha256": "5d406e6d2518b5c54cdcf7a46ee3a49f0e3120e46bde7d06e38dbfb566fb8707"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-01a/rules.yaml",
+      "size": 1282,
+      "sha256": "cc73dfbd7d26bc37909499ac78182c0c423f9ac4e50371885e87f0f8e18eb7a0"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-01b/rules.yaml",
+      "size": 1291,
+      "sha256": "b24b42c4844966024d79db72d32ecabd9d9b2226f56b4ea2f779218885c1e9fb"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-02a/rules.yaml",
+      "size": 1213,
+      "sha256": "e99f27be555eb27cacc46d8be30fa614b4534aab1bafb1cf4bb3fd5a1db13053"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-02b/rules.yaml",
+      "size": 1213,
+      "sha256": "2d956cddaa54b5e89e30e98aeb020225da36a989e570182e3438eb49acc9b54d"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-03a/rules.yaml",
+      "size": 1154,
+      "sha256": "499963a246f5c6fcb9c7c5952a347a6ce095c984dce75fe604aeda88fd741e1f"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-03b/rules.yaml",
+      "size": 1154,
+      "sha256": "94026ffe30a9c6ad29698944bb6facb5e4c760c1565e71b94bb973142b616969"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-04/rules.yaml",
+      "size": 1562,
+      "sha256": "b9f36271956a09bcb3059ebc0b73bf28004b40363e29feca516b83199e7966c3"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-05/rules.yaml",
+      "size": 1919,
+      "sha256": "dd540561289b54f05913466b7cc65d6635659b88bc98e3bd8512974197db1f09"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-06a/rules.yaml",
+      "size": 2563,
+      "sha256": "07e56af3bada503a95df9f713698cf252586a17641e1bf61f19fa17fe12a1250"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-06b/rules.yaml",
+      "size": 2563,
+      "sha256": "7a07bc62d7a4ec94d159439b38cc99c7f1e959975b6ed291c66fc8935661d969"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-07/rules.yaml",
+      "size": 2365,
+      "sha256": "f65624d8807e00609309bafe5a5aeadd0f9039aa67f5c2c61b671884d1595097"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-08/rules.yaml",
+      "size": 2382,
+      "sha256": "1343c163aec1e9dde7543115e3bd5d0ea8dbb88474239a98f73e5aa8d39cda89"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-09a/rules.yaml",
+      "size": 1993,
+      "sha256": "21c3662932de58ace3dd881af1aa728529faf461795e0090f8f06193f3983413"
+    },
+    {
+      "path": "mods/d2k/maps/harkonnen-09b/rules.yaml",
+      "size": 2495,
+      "sha256": "29e688330bd21c7e457bc64fba2b5033a95061ac0af411a87eb83bc1d6aa9812"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-01a/rules.yaml",
+      "size": 1311,
+      "sha256": "f1a1b9133886644b0205dbf6c58efdeec8a0d982e6e451b8bb19456fcaf23271"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-01b/rules.yaml",
+      "size": 1311,
+      "sha256": "e8ec0f99e0dda7bec38f96ccec44ffa027de6da64572b3d1273ef5caae8ee625"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-02a/rules.yaml",
+      "size": 1129,
+      "sha256": "b82fc6274cfd1e198d1db36479f1eca5a51a9320c156ac60d30c57b131eba2ab"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-02b/rules.yaml",
+      "size": 1129,
+      "sha256": "a78fe03ebdd5ad349978a166be77621f05bbac6049507f5f3df8323d5f6035cf"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-03a/rules.yaml",
+      "size": 1185,
+      "sha256": "4bd2dd60e3f3909432504fb8e547003aef587a862c3137d1f988e52fdf401337"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-03b/rules.yaml",
+      "size": 1137,
+      "sha256": "6e0c925d9965b16f871aba812b862d5329703cb60e09edd2686c7d89e810897d"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-04/rules.yaml",
+      "size": 1589,
+      "sha256": "16e8ce0a167bfd58e76b93deac3d8758098dc56098dfe3fcc41b895a719b2192"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-05/rules.yaml",
+      "size": 2035,
+      "sha256": "56126b7704c1c672015cfe5e3a80ae528eb412f2016607b82d29af8db3b99544"
+    },
+    {
+      "path": "mods/d2k/maps/ordos-06a/rules.yaml",
+      "size": 1351,
+      "sha256": "78c6ca36f5fe3e6ef6b88d950d0b5f37797fa9ea8b2d05349ffd7e77fa753198"
+    },
+    {
+      "path": "mods/d2k/missions.yaml",
+      "size": 468,
+      "sha256": "376e113644e7d83f3b536e37aff42ce21a3b6746ffe3102c3962b741f80885ac"
+    },
+    {
+      "path": "mods/d2k/mod.yaml",
+      "size": 6203,
+      "sha256": "7e01d1ad32a808f42350c3e9bb4d563181ba887c93f0e5c0bb1c5bb7b4ee55c2"
+    },
+    {
+      "path": "mods/ra-content/fluent/chrome.ftl",
+      "size": 986,
+      "sha256": "88e54c42292a069291d6c4e3d2f772f89a4c17c35a21f741859418a072c7dbb3"
+    },
+    {
+      "path": "mods/ra-content/installer/aftermath.yaml",
+      "size": 3182,
+      "sha256": "13742b575e76010d03b76c9fad532cd765422c010b1798dbd333429618a37d14"
+    },
+    {
+      "path": "mods/ra-content/installer/allies95.yaml",
+      "size": 4697,
+      "sha256": "fe166e19a5609d9ab6257eaf767aaa2b29e23862a5f768d140073e78f06e50bf"
+    },
+    {
+      "path": "mods/ra-content/installer/cnc95.yaml",
+      "size": 295,
+      "sha256": "d4795e438768bc270959043244ab4f96b3b589a199fe43bb9513f4adbfb6492b"
+    },
+    {
+      "path": "mods/ra-content/installer/counterstrike.yaml",
+      "size": 1033,
+      "sha256": "052798a1e39cbeba7e61b32e18883e0b1116457a8a409f0b3e7b8cb0d0fa05a3"
+    },
+    {
+      "path": "mods/ra-content/installer/downloads.yaml",
+      "size": 5530,
+      "sha256": "88772dcc03e602872235483e12c946a20b50ef40d78118b5b08316eb8fb3f46d"
+    },
+    {
+      "path": "mods/ra-content/installer/firstdecade.yaml",
+      "size": 11090,
+      "sha256": "ad676bf90b626d6041eb20559d2ec721f10ffb6683a8a917093b294900a31c3d"
+    },
+    {
+      "path": "mods/ra-content/installer/origin.yaml",
+      "size": 21025,
+      "sha256": "74e01914e06b5bc3e286b67f9e8adee33e5e340d71bc7802b56edc1de1d9767c"
+    },
+    {
+      "path": "mods/ra-content/installer/soviet95.yaml",
+      "size": 5017,
+      "sha256": "05dd1b762a4328e22cf54d11a8409b8b01289a9e8ea08d02d8afbd68693d4b7f"
+    },
+    {
+      "path": "mods/ra-content/installer/steam.yaml",
+      "size": 21258,
+      "sha256": "67ca2c6e5a6efbd440876fdfbb9b569d35bfd269f879f2cebbea521bb66ac266"
+    },
+    {
+      "path": "mods/ra-content/mod.yaml",
+      "size": 10727,
+      "sha256": "ef7a043b18d4689cb339e590755060563779e08a36e44771e793e4a3badc821d"
+    },
+    {
+      "path": "mods/ra/fluent/campaign.ftl",
+      "size": 1634,
+      "sha256": "1c13aed4fb479b7f5eabe80af4ef53d15e92b1a9c9912bf4e9a849e8623ac305"
+    },
+    {
+      "path": "mods/ra/fluent/chrome.ftl",
+      "size": 6362,
+      "sha256": "930da0c5944b666305faac4d65d70d87b835feef2eab59db6c6e04c17037b1f9"
+    },
+    {
+      "path": "mods/ra/fluent/hotkeys.ftl",
+      "size": 418,
+      "sha256": "75c97c55b1aa50149572aa712c0f83ee35c03f6a806d70dabe09ee27dfba586f"
+    },
+    {
+      "path": "mods/ra/fluent/lua.ftl",
+      "size": 19257,
+      "sha256": "34e32ee4f56cd5fa373007e309f72e7b80ffe4f49073be635155e5f1dd6b1fe7"
+    },
+    {
+      "path": "mods/ra/fluent/ra.ftl",
+      "size": 368,
+      "sha256": "7397f2f4121970b5c9584233f5c97aa19855e35e93547ac0ba6cbc3eeffa0536"
+    },
+    {
+      "path": "mods/ra/fluent/rules.ftl",
+      "size": 23522,
+      "sha256": "e20621a04d4c2e907215723c882c0a05fa03fe26baaba72bd248851c79758325"
+    },
+    {
+      "path": "mods/ra/maps/allies-01/rules.yaml",
+      "size": 932,
+      "sha256": "f91de4ec9ccf3332ccde388718b130816c87980277782c7c3383743ed4d8199f"
+    },
+    {
+      "path": "mods/ra/maps/allies-02/map.ftl",
+      "size": 178,
+      "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5"
+    },
+    {
+      "path": "mods/ra/maps/allies-02/rules.yaml",
+      "size": 1833,
+      "sha256": "6f235fc9f60552d7b5e30cba5780cc2d79cf984ab4f0d745ceba6883b0a27ea3"
+    },
+    {
+      "path": "mods/ra/maps/allies-03a/rules.yaml",
+      "size": 2975,
+      "sha256": "3e50c02b81d9d9000d18828aa0aaba0984083cacc7f262d8c1d877c00de76e2a"
+    },
+    {
+      "path": "mods/ra/maps/allies-03b/rules.yaml",
+      "size": 2675,
+      "sha256": "aee58498e12672fca2ab95845b148751bb228d9781ac66967cccac1964e27d92"
+    },
+    {
+      "path": "mods/ra/maps/allies-04/map.ftl",
+      "size": 178,
+      "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5"
+    },
+    {
+      "path": "mods/ra/maps/allies-04/rules.yaml",
+      "size": 1759,
+      "sha256": "2f9861fbb866c2b199b82fccbb92e3e5d2c16a10bc0467d4e00680b1190137e6"
+    },
+    {
+      "path": "mods/ra/maps/allies-05a/map.ftl",
+      "size": 178,
+      "sha256": "eecdc2e8de21806717fdc297d9a1abb4b238b0ab07a5c07dcad5caa1d8f477b5"
+    },
+    {
+      "path": "mods/ra/maps/allies-05a/rules.yaml",
+      "size": 3390,
+      "sha256": "96d0d1a0883962e48126e38163c4c161b32ab2db94632ad8ee6fc3d4fd306649"
+    },
+    {
+      "path": "mods/ra/maps/allies-05b/rules.yaml",
+      "size": 3047,
+      "sha256": "138e3f460760839983b560de9c003181b7888627f1386ed47ac9149925994f8c"
+    },
+    {
+      "path": "mods/ra/maps/allies-05c/rules.yaml",
+      "size": 3342,
+      "sha256": "dcca43853cb6ff746c387235e9497934acf258bc73d396f001fead02f54cf725"
+    },
+    {
+      "path": "mods/ra/maps/allies-06a/rules.yaml",
+      "size": 1644,
+      "sha256": "1a0a4e02cb9346b795a3dbeeef088d1d2b777944f49b0f8db80499e68249907a"
+    },
+    {
+      "path": "mods/ra/maps/allies-06b/rules.yaml",
+      "size": 1614,
+      "sha256": "0f34fed24a3b2a84458293f76ef2cfc99bf2ef68c1e64884fed5376044ae1426"
+    },
+    {
+      "path": "mods/ra/maps/allies-07/rules.yaml",
+      "size": 2206,
+      "sha256": "d6f09892120d00518b6015f04f03638641d22a270109c9bc4aca74c10a8c8cc1"
+    },
+    {
+      "path": "mods/ra/maps/allies-08a/rules.yaml",
+      "size": 2153,
+      "sha256": "d989187cffe569ef84d031cc68cea14b48bba08046e495c1c2bf9ef3384d4b50"
+    },
+    {
+      "path": "mods/ra/maps/allies-08b/rules.yaml",
+      "size": 2153,
+      "sha256": "e8b655ad5ae6fb7d8286d762120ffee7dd8114e0b58c53b898cc4d9a8a23d2cb"
+    },
+    {
+      "path": "mods/ra/maps/allies-09a/rules.yaml",
+      "size": 2428,
+      "sha256": "b8d6ff71748c964517311076ed2d68e9ce58291ffad2ab8f8914e79fab0de1c6"
+    },
+    {
+      "path": "mods/ra/maps/allies-10a/rules.yaml",
+      "size": 1795,
+      "sha256": "e1eac38b19530fa96ed6c13b2ffe1455e33ea3cb46aba612abf4cc3ac369c115"
+    },
+    {
+      "path": "mods/ra/maps/allies-10b/rules.yaml",
+      "size": 555,
+      "sha256": "52be9241ad2f114d22989de13a49be182d98debd5428d13a814f04fac644f1eb"
+    },
+    {
+      "path": "mods/ra/maps/allies-13/allies13.lua",
+      "size": 12107,
+      "sha256": "c81dd16b123c085bee81255cc74fcb98332aca75ccb24f5d5ea5f1558dff0361"
+    },
+    {
+      "path": "mods/ra/maps/allies-13/rules.yaml",
+      "size": 1151,
+      "sha256": "f60171e3ce7cb33c348faab1bb02835e0cf11ec20ec65a64da225378fcdfaa67"
+    },
+    {
+      "path": "mods/ra/maps/ant-01/rules.yaml",
+      "size": 2757,
+      "sha256": "1ca2355d9d6919129c6c0062b5331ea34dcaeda163e4cef48bc89e2c830f2e2f"
+    },
+    {
+      "path": "mods/ra/maps/ant-03/rules.yaml",
+      "size": 2144,
+      "sha256": "df218d5afcd28b362028d6a481ce33863623c79fe1f7af3c9b2060bd0d4510a3"
+    },
+    {
+      "path": "mods/ra/maps/bomber-john/map.ftl",
+      "size": 537,
+      "sha256": "83e4957ddaaf08176b7cb723c3e9d82717180343bf26177f39b953cc1988175c"
+    },
+    {
+      "path": "mods/ra/maps/drop-zone-battle-of-tikiaki/map.ftl",
+      "size": 45,
+      "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad"
+    },
+    {
+      "path": "mods/ra/maps/drop-zone-w/map.ftl",
+      "size": 56,
+      "sha256": "3a85e22fa1b69a8b11d475eebbdfb2e8b969d3597bb5662285e5f4a22197b5b5"
+    },
+    {
+      "path": "mods/ra/maps/drop-zone/map.ftl",
+      "size": 45,
+      "sha256": "cc2f3c520a2a9ede556db261ba8505bb58b429a94abeae81c504c441e081b9ad"
+    },
+    {
+      "path": "mods/ra/maps/evacuation/rules.yaml",
+      "size": 3721,
+      "sha256": "dd305a3498021499efbd4acd696e588027ca090cc280c607dac16d9d90301865"
+    },
+    {
+      "path": "mods/ra/maps/exodus/rules.yaml",
+      "size": 2687,
+      "sha256": "ce03cd2db62b8a5d5946b4788d4752bdb91dbb4089dc0ecc6ffd9468b50f94c9"
+    },
+    {
+      "path": "mods/ra/maps/fall-of-greece-1-personal-war/rules.yaml",
+      "size": 1855,
+      "sha256": "28d48d17de8d3d9ecd7bd69836e479114e83807af00b1a44a847d3a04f1fa2f4"
+    },
+    {
+      "path": "mods/ra/maps/fall-of-greece-2-evacuation/rules.yaml",
+      "size": 1888,
+      "sha256": "f75bea6218a8530be405738427381bad293ee6bb0d6b2d4862f7f88b9c787b58"
+    },
+    {
+      "path": "mods/ra/maps/fort-lonestar/map.ftl",
+      "size": 663,
+      "sha256": "6ecb413d95f3fbec5368b08b4991bb954b5825e28d1c5133be4c9510700bc4f2"
+    },
+    {
+      "path": "mods/ra/maps/in-the-nick-of-time/rules.yaml",
+      "size": 1614,
+      "sha256": "d77fbedf542367005cb933ba098dba15b028c7c4b5e2508e784877e245d5a1c5"
+    },
+    {
+      "path": "mods/ra/maps/infiltration/rules.yaml",
+      "size": 4263,
+      "sha256": "de3edf8373e94f11e0e65146d5928ab3bf61216c6ac482412839080809825a44"
+    },
+    {
+      "path": "mods/ra/maps/intervention/rules.yaml",
+      "size": 2836,
+      "sha256": "07a49487fb6b233f027ce4c5533a190b47d12a2e8879e21755622dd6ac5d2a58"
+    },
+    {
+      "path": "mods/ra/maps/monster-tank-madness/rules.yaml",
+      "size": 5796,
+      "sha256": "ff4e1ea1f8d664512970b25283ca901701862883010831444e863d9e4e4bcc5e"
+    },
+    {
+      "path": "mods/ra/maps/mousetrap/rules.yaml",
+      "size": 3141,
+      "sha256": "d73d051cf7b499be52d3930031daad078170a7040658fbd4811cf6d8f93e2701"
+    },
+    {
+      "path": "mods/ra/maps/negotiations/rules.yaml",
+      "size": 4290,
+      "sha256": "7b79ae5b42751044b31a160b580da8e732af8082636a3958300e558e8734546a"
+    },
+    {
+      "path": "mods/ra/maps/oil-spill/map.ftl",
+      "size": 62,
+      "sha256": "302fa71ac664a293f0f773db2532463e19fa588274398cb15d22d497a2edb65e"
+    },
+    {
+      "path": "mods/ra/maps/production-disruption/rules.yaml",
+      "size": 1759,
+      "sha256": "98a184d5c9bd62165ac5eee728f2ce6d7f70d1d8ba658ef803ec8f3a4bde065d"
+    },
+    {
+      "path": "mods/ra/maps/sarin-gas-1-crackdown/rules.yaml",
+      "size": 1960,
+      "sha256": "543e5626cc2a24dfa501413d91d3a53374a8149d4807b759a5e2cf05f0e9bf8c"
+    },
+    {
+      "path": "mods/ra/maps/sarin-gas-2-down-under/rules.yaml",
+      "size": 1206,
+      "sha256": "85cf2618af06985976be4c5568ea9720559c8cc8109ffc588e84aadcac1ba95a"
+    },
+    {
+      "path": "mods/ra/maps/sarin-gas-3-controlled-burn/rules.yaml",
+      "size": 1501,
+      "sha256": "49e468805ef1fcf5dc9646bf9fc31874f235c0553a367592603abdb62e723fee"
+    },
+    {
+      "path": "mods/ra/maps/shock-therapy/rules.yaml",
+      "size": 883,
+      "sha256": "9e7602d9e8bcf20de5a5a568885afea1c808a60a2f34b294344aacdca72bfe9e"
+    },
+    {
+      "path": "mods/ra/maps/siberian-conflict-1-fresh-tracks/rules.yaml",
+      "size": 1344,
+      "sha256": "f35f3808b842bd340314ad633cf7ab6a8a57ff67f66b6e70baea3e692ea5f9fe"
+    },
+    {
+      "path": "mods/ra/maps/siberian-conflict-3-wasteland/rules.yaml",
+      "size": 1826,
+      "sha256": "6da0e5910519e409d4b8861c3299da741ed5ad312d6a9ee1e3f2f3f16e96b527"
+    },
+    {
+      "path": "mods/ra/maps/situation-critical/rules.yaml",
+      "size": 1730,
+      "sha256": "d2de5865e35c404175cb07823cd80a1a46ade96ae492c7c050edaa723eab5887"
+    },
+    {
+      "path": "mods/ra/maps/soviet-01/rules.yaml",
+      "size": 1241,
+      "sha256": "eaed44d4998732752ca160eca9fb5150f4c0ec0c34025030fbbb51a11a163fbf"
+    },
+    {
+      "path": "mods/ra/maps/soviet-02a/rules.yaml",
+      "size": 1431,
+      "sha256": "152a45a8b0774f289e56bc304e49860fb9d8ed3fe5965acb1e4334d9cc274885"
+    },
+    {
+      "path": "mods/ra/maps/soviet-02b/rules.yaml",
+      "size": 1711,
+      "sha256": "1a2f48bb728f805afc6ee5295e58b3eae865c9a555410bc715c2a557991e92ca"
+    },
+    {
+      "path": "mods/ra/maps/soviet-03/rules.yaml",
+      "size": 1235,
+      "sha256": "40338aa675e739d395c36fb37389ff6f85b41c1fa43b06d66ba2b960f3fd6613"
+    },
+    {
+      "path": "mods/ra/maps/soviet-04a/rules.yaml",
+      "size": 1623,
+      "sha256": "0749513d3cb49c71774257c311674e31d0e0af6cd893321a12974ebc175d35a9"
+    },
+    {
+      "path": "mods/ra/maps/soviet-04b/rules.yaml",
+      "size": 1531,
+      "sha256": "e338031af2af3b70a8bbd478db96b099b5c89233cf90b1174971a3f0524af226"
+    },
+    {
+      "path": "mods/ra/maps/soviet-05/rules.yaml",
+      "size": 2997,
+      "sha256": "d2e420856fc313b301f5fd9cbc843a08f89b6e7050d2fad484afe508ded23cfd"
+    },
+    {
+      "path": "mods/ra/maps/soviet-06a/rules.yaml",
+      "size": 2419,
+      "sha256": "6231c9a597eaeae948c687898dafba99bf5d23b1b680c5869ca9a7888dc2f244"
+    },
+    {
+      "path": "mods/ra/maps/soviet-06b/rules.yaml",
+      "size": 2328,
+      "sha256": "29c4270aae96abdff9a01defb5f9ab0b0213d5295850aea8aad19febb1e6a01c"
+    },
+    {
+      "path": "mods/ra/maps/soviet-07/rules.yaml",
+      "size": 1126,
+      "sha256": "c3bce20cd20aa99fd4e8bea2e035f9268855838da1fcfaf4284404f4ea98369c"
+    },
+    {
+      "path": "mods/ra/maps/soviet-08a/rules.yaml",
+      "size": 2165,
+      "sha256": "7cbb29a8cbdefde73e7da01dcfb22bf757df6bf265256cbcfdf27f981f612462"
+    },
+    {
+      "path": "mods/ra/maps/soviet-08b/rules.yaml",
+      "size": 2165,
+      "sha256": "8519a5cbe94fe05730e5a3fee8f0f946c2ee50e47f3d7ebe543fb911e2ec9b37"
+    },
+    {
+      "path": "mods/ra/maps/soviet-09/rules.yaml",
+      "size": 1941,
+      "sha256": "40689c973a1de14967bb359acde62f87a631671f73436b6118869fa303fba69b"
+    },
+    {
+      "path": "mods/ra/maps/soviet-10/rules.yaml",
+      "size": 1731,
+      "sha256": "3e6852f800b8a8b8acd24cdc7d28c5c584f8f4576dfb0a432a4d0cb6e6c34f92"
+    },
+    {
+      "path": "mods/ra/maps/soviet-11a/rules.yaml",
+      "size": 1518,
+      "sha256": "edc5c1d25beb565e34477ada4f41cd84bb94159d5f633e1d608318b4d249332f"
+    },
+    {
+      "path": "mods/ra/maps/soviet-11b/rules.yaml",
+      "size": 1518,
+      "sha256": "c4a70cd7f094ec4080e89392f9c6fdd598bcd0e2ba3ea7b5e9e2087666df7eee"
+    },
+    {
+      "path": "mods/ra/maps/soviet-13a/rules.yaml",
+      "size": 1446,
+      "sha256": "795ddf783bef77cbde6f813ce30631717be19f248c183f13808dd4aec2337be4"
+    },
+    {
+      "path": "mods/ra/maps/soviet-13b/rules.yaml",
+      "size": 1446,
+      "sha256": "60621513a23937587671e0c0a7b80e72191feced0bb43fbb9c0962573c54f10d"
+    },
+    {
+      "path": "mods/ra/maps/soviet-soldier-volkov-n-chitzkoi/rules.yaml",
+      "size": 2958,
+      "sha256": "c9530fc29e45859de407035a136fdf54284aecfa7e8a26b0c52d35e14cea2607"
+    },
+    {
+      "path": "mods/ra/maps/survival01/rules.yaml",
+      "size": 2525,
+      "sha256": "faa5aa911687892f973f1b4047ab67761d25852d5c50359c7224730718a0a4d4"
+    },
+    {
+      "path": "mods/ra/maps/survival02/rules.yaml",
+      "size": 1888,
+      "sha256": "57e93922e2c34a04ed537c4b296972640b9da979b11aafe2680245fca67d5e34"
+    },
+    {
+      "path": "mods/ra/maps/top-o-the-world/map.ftl",
+      "size": 201,
+      "sha256": "18e19308b47dfc8426ab610a4a13d53d1fe57aea113011226bc2437b1885f9d3"
+    },
+    {
+      "path": "mods/ra/maps/top-o-the-world/rules.yaml",
+      "size": 2154,
+      "sha256": "85fd28ad12c7f63dd6a2283b6faed77d1ee39120a8d9212e1f72d6c1f39aa7a9"
+    },
+    {
+      "path": "mods/ra/missions.yaml",
+      "size": 1042,
+      "sha256": "bc33af4e66b4541b1565c65436e02110a3a2c3ff1765d4e778ede89e773695ae"
+    },
+    {
+      "path": "mods/ra/mod.yaml",
+      "size": 7238,
+      "sha256": "a40f368c2dc65eb2e8d2519c12f0af291a4f4d111eea15a3debd9f7e9cf93e34"
+    }
+  ]
 }
