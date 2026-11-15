@@ -1,0 +1,61 @@
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, atreides02a.lua, atreides02a-AI.lua
+	MissionData:
+		Briefing: 渗透帝国盆地，壮大我们的部队，直到足以清除当地的哈克南势力。\n\n哈克南正通过空运补充兵力，务必警惕。利用前哨站的雷达侦测来自意外方向的进攻。\n\n开采香料时要小心。香料丘会从沙中长出。它虽然是香料的重要来源，却会伤害或摧毁任何撞上去的单位。\n\n祝你好运。
+		BriefingVideo: A_BR02_E.VQA
+	MapOptions:
+		TechLevel: low
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.barracks:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.light:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.heavy:
+	Buildable:
+		Prerequisites: ~disabled
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+heavy_factory:
+	Buildable:
+		Prerequisites: ~disabled
+
+medium_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled
+
+wall:
+	Buildable:
+		Prerequisites: ~disabled
+
+outpost:
+	Buildable:
+		Prerequisites: barracks

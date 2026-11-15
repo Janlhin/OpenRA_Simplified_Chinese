@@ -1,0 +1,63 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, soviet01.lua
+	MissionData:
+		Briefing: 一群可笑的抵抗者把自己封堵在这座村庄里。\n\n斯大林决定拿他们做个榜样。把他们全部杀死，摧毁他们的家园。你会有雅克飞机可用来给这些叛徒一个教训。
+		BackgroundVideo: prolog.vqa
+		BriefingVideo: soviet1.vqa
+		StartVideo: flare.vqa
+		WinVideo: snstrafe.vqa
+		LossVideo: sfrozen.vqa
+
+V01:
+	SpawnActorOnDeath:
+		Actor: healcrate
+
+powerproxy.paratroopers:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E1,E1,E1,E2,E2
+
+^CivBuilding:
+	MustBeDestroyed:
+
+JEEP:
+	FireWarheadsOnDeath:
+	ProximityExternalCondition@JAMMER:
+		Range: 10c0
+		ValidRelationships: Enemy, Neutral
+		Condition: jammed
+
+YAK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MIG:
+	Buildable:
+		Prerequisites: ~disabled
+
+AFLD:
+	AirstrikePower@spyplane:
+		Prerequisites: ~disabled
+	ParatroopersPower@paratroopers:
+		Prerequisites: ~disabled
+	-RallyPoint:
+	CommandBarBlacklist:
+		DisableStop: true
+	-Sellable:
+	Demolishable:
+		-Condition:
+
+DOME:
+	CaptureManager:
+		-BeingCapturedCondition:
+	-Sellable:
+	Demolishable:
+		-Condition:
+
+POWR:
+	CaptureManager:
+		-BeingCapturedCondition:
+	-Sellable:
+	Demolishable:
+		-Condition:

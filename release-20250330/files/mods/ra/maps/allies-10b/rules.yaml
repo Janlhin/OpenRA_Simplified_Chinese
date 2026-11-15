@@ -1,0 +1,20 @@
+World:
+	LuaScript:
+		Scripts: allies10b.lua, campaign.lua, utils.lua
+	MissionData:
+		StartVideo: elevator.vqa
+		WinVideo: dud.vqa
+		LossVideo: trinity.vqa
+		Briefing: 综合设施既已被渗透，就必须让发射控制中心失效。让工程师到达各控制中心，在导弹抵达目标之前关闭它们。\n\n如果留敌方技工一命，他们可以帮助定位控制中心。
+
+3TNK:
+	AutoTarget:
+		InitialStanceAI: HoldFire
+
+4TNK:
+	AutoTarget:
+		InitialStanceAI: HoldFire
+
+CHAN:
+	Targetable:
+		TargetTypes: GroundActor, Infantry, NoAutoTarget

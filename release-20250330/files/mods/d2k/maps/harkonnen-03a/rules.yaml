@@ -1,0 +1,57 @@
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, harkonnen03a.lua, harkonnen03a-AI.lua
+	MissionData:
+		Briefing: 进攻并摧毁塔布尔穴地的阿特雷德斯基地。全力出击，清除一切抵抗。\n\n本次突击可以使用更重的四轮导弹车——升级你的轻型工厂即可使用。
+		BriefingVideo: H_BR03_E.VQA
+	MapOptions:
+		TechLevel: low
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+heavy_factory:
+	Buildable:
+		Prerequisites: ~disabled
+
+medium_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled
+
+outpost:
+	Buildable:
+		Prerequisites: barracks
+
+quad:
+	Buildable:
+		Prerequisites: upgrade.light
+
+trooper:
+	Buildable:
+		Prerequisites: upgrade.barracks
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.heavy:
+	Buildable:
+		Prerequisites: ~disabled

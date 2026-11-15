@@ -1,0 +1,67 @@
+Player:
+	PlayerResources:
+		DefaultCash: 7000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, atreides05.lua, atreides05-AI.lua
+	MissionData:
+		Briefing: 据我们的间谍消息，弗雷曼人被关押在塔布尔穴地的最西北角。杀穿哈克南的阵线，解救人质。\n\n在发动主攻之前先侦察地形。我们的工程师必须抵达兵营并将其完整占领。基地其余部分可以夷为平地。\n\n此外，有传言称该区域存在非法走私活动。一批大宗走私货物即将运抵走私者的星港。在货物抵达之前占领星港，为阿特雷德斯的战争事业夺取它。\n\n警告：走私者有雇佣兵盟友，他们可能会来增援。\n\n祝你好运。
+		BriefingVideo: A_BR05_E.VQA
+	MapOptions:
+		TechLevel: medium
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+frigate:
+	Aircraft:
+		LandableTerrainTypes: Sand, Rock, Transition, Spice, SpiceSand, Dune, Concrete
+
+barracks.harkonnen:
+	Inherits: barracks
+	Buildable:
+		Prerequisites: ~disabled
+	-MustBeDestroyed:
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled
+
+grenadier:
+	Buildable:
+		Prerequisites: ~disabled
+
+mpsardaukar:
+	Buildable:
+		Prerequisites: ~disabled
+
+large_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled
+
+research_centre:
+	Buildable:
+		Prerequisites: outpost, heavy_factory, upgrade.heavy
+
+siege_tank:
+	Buildable:
+		Prerequisites: ~disabled
+
+missile_tank:
+	Buildable:
+		Prerequisites: upgrade.heavy, research_centre

@@ -1,0 +1,41 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, nod06a.lua
+	MusicPlaylist:
+		StartingMusic: rout
+		VictoryMusic: nod_win1
+	MissionData:
+		Briefing: GDI 运入了一台核引爆器，试图拉拢当地几位政治领袖。渗透基地并窃取引爆器。会有一架直升机在指定着陆点接应你。拿到装置后，寻找着陆信号弹。
+		BriefingVideo: nod6.vqa
+		StartVideo: sundial.vqa
+		LossVideo: banner.vqa
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+			tough: options-difficulty.tough
+		Default: normal
+
+Player:
+	EnemyWatcher:
+	PlayerResources:
+		DefaultCash: 0
+
+^Infantry:
+	AnnounceOnSeen:
+
+HARV:
+	Harvester:
+		SearchFromProcRadius: 64
+
+FLARE:
+	Tooltip:
+		ShowOwnerRow: false
+
+TRAN:
+	-Selectable:
+	Interactable:

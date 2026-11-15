@@ -1,0 +1,43 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, soviet07.lua
+	MissionData:
+		Briefing: 盟军渗透了我们的一座核反应堆！他们动了堆芯，30 分钟内就会发生熔毁。绝不能让他们得逞！\n\n进入基地，找到任何幸存的技术人员。带他们到 4 座冷却站启动冷却，然后启动主计算机。安保系统已激活，务必小心。\n\n遇到盟军，格杀勿论。
+		BriefingVideo: soviet7.vqa
+		StartVideo: countdwn.vqa
+		WinVideo: averted.vqa
+		LossVideo: nukestok.vqa
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+Player:
+	LobbyPrerequisiteCheckbox@GLOBALBOUNTY:
+		Enabled: False
+		Locked: True
+
+CAMERA:
+	RevealsShroud:
+		Range: 6c0
+
+FTUR:
+	Valued:
+		Cost: 0
+	Power:
+		Amount: 0
+	CaptureManager:
+		-BeingCapturedCondition:
+	-Sellable:
+	Demolishable:
+		-Condition:
+
+PBOX:
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:

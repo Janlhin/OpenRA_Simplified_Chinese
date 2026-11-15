@@ -1,0 +1,61 @@
+Player:
+	PlayerResources:
+		DefaultCash: 6000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, ordos06a.lua, ordos06a-AI.lua
+	MissionData:
+		Briefing: 星港必须受到保护。其他一切努力都是次要的。任何家族都不得干扰我们的伊克斯武器抵达。\n\n一旦掌握这项非法科技，我们就能让对手陷入混乱并碾碎他们。在那之前，活下去。
+		BriefingVideo: O_BR06_E.VQA
+	MapOptions:
+		TechLevel: medium
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+frigate:
+	Aircraft:
+		LandableTerrainTypes: Sand, Rock, Transition, Spice, SpiceSand, Dune, Concrete
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled
+
+starport:
+	Buildable:
+		Prerequisites: heavy_factory, outpost
+
+missile_tank:
+	Buildable:
+		Prerequisites: ~heavy.missile_tank, upgrade.heavy, research_centre
+
+grenadier:
+	Buildable:
+		Prerequisites: ~disabled
+
+stealth_raider:
+	Buildable:
+		Prerequisites: ~disabled
+
+sardaukar:
+	Buildable:
+		Prerequisites: ~disabled
+
+large_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled

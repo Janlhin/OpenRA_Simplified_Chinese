@@ -1,0 +1,195 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, allies05a.lua, allies05a-AI.lua
+	MissionData:
+		Briefing: 营救谭雅。\n\n伪装之后，你的间谍可以越过任何敌方单位而不被发现，狗除外。把他派进附近苏联基地的武器工厂，在那里他可以劫持一辆卡车并放出谭雅。\n\n在谭雅的协助下，清掉岛上的防空火力，让支努干能够飞抵并把她接走。\n\n然后摧毁所有残余的苏联建筑与单位。
+		BriefingVideo: ally5.vqa
+		StartVideo: tanya1.vqa
+		WinVideo: tanya2.vqa
+		LossVideo: grvestne.vqa
+	MapOptions:
+		TechLevel: medium
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+			tough: options-difficulty.tough
+		Default: normal
+
+Camera.Small:
+	Inherits: CAMERA
+	RevealsShroud:
+		Range: 4c0
+
+TSLA:
+	Buildable:
+		Prerequisites: ~disabled
+
+SAM:
+	Buildable:
+		Prerequisites: ~disabled
+
+LST:
+	-Selectable:
+	Targetable:
+		TargetTypes: GroundActor, WaterActor
+	Interactable:
+
+LST.IN:
+	Inherits: LST
+	RenderSprites:
+		Image: LST
+	Cargo:
+		Types: disabled
+
+TRAN:
+	-Selectable:
+	RevealsShroud:
+		Range: 4c0
+	Targetable@GROUND:
+		TargetTypes: GroundActor
+	Interactable:
+
+TRAN.IN:
+	Inherits: TRAN
+	RenderSprites:
+		Image: TRAN
+	Cargo:
+		Types: disabled
+
+TRUK.mission:
+	Inherits: TRUK
+	WithFacingSpriteBody:
+	-SpawnActorOnDeath:
+	RevealsShroud:
+		Range: 4c0
+		ValidRelationships: Ally, Enemy
+		RequiresCondition: hijacked
+	ExternalCondition@hijacked:
+		Condition: hijacked
+	RenderSprites:
+		Image: TRUK
+
+SPY:
+	Infiltrates:
+		Types: Mission Objectives
+
+WEAP:
+	-InfiltrateForSupportPower:
+	Targetable:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure
+
+WEAP.infiltratable:
+	Inherits: WEAP
+	Buildable:
+		Prerequisites: ~disabled
+	Targetable@Spy:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure, Mission Objectives
+	RenderSprites:
+		Image: WEAP
+	ProvidesPrerequisite:
+		Prerequisite: weap
+
+MISS:
+	Tooltip:
+		Name: actor-prison-name
+	Targetable:
+		TargetTypes: GroundActor, C4, DetonateAttack, Structure, Mission Objectives
+	AttackOmni:
+	Armament:
+		Weapon: PrisonColt
+
+E1.Autotarget:
+	Inherits: E1
+	Buildable:
+		Prerequisites: ~disabled
+	RevealsShroud:
+		Range: 8c0
+	AutoTarget:
+		ScanRadius: 7
+	RenderSprites:
+		Image: E1
+
+E2.Autotarget:
+	Inherits: E2
+	Buildable:
+		Prerequisites: ~disabled
+	RevealsShroud:
+		Range: 8c0
+	AutoTarget:
+		ScanRadius: 7
+	RenderSprites:
+		Image: E2
+
+AFLD:
+	AirstrikePower@spyplane:
+		Prerequisites: ~disabled
+	ParatroopersPower@paratroopers:
+		Prerequisites: ~disabled
+
+FCOM:
+	MustBeDestroyed:
+
+4TNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MCV:
+	Buildable:
+		Prerequisites: ~disabled
+
+MNLY:
+	Buildable:
+		Prerequisites: ~disabled
+
+TTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+FTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+DTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+QTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MSLO:
+	Buildable:
+		Prerequisites: ~disabled
+
+SPEN:
+	Buildable:
+		Prerequisites: ~disabled
+
+IRON:
+	Buildable:
+		Prerequisites: ~disabled
+
+STEK:
+	Buildable:
+		Prerequisites: ~disabled
+
+E6:
+	Buildable:
+		Prerequisites: ~disabled
+
+THF:
+	Buildable:
+		Prerequisites: ~disabled
+
+SHOK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MIG:
+	Buildable:
+		Prerequisites: ~disabled

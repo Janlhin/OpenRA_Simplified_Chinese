@@ -1,0 +1,69 @@
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, ordos04.lua, ordos04-AI.lua
+	MissionData:
+		Briefing: 塔布尔穴地的走私者必须被解决。占领他们家人避难的哨所作为要挟。孩子们的性命能确保他们父亲的忠诚。用工程师进入并占领该建筑。\n\n走私者的新伙伴哈克南可能会试图干预。哈克南火力强大，但我们最近获得了足以应对的坦克。\n\n确保我们的投资得到明智的使用。
+		BriefingVideo: O_BR04_E.VQA
+	MapOptions:
+		TechLevel: low
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+medium_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled
+
+outpost:
+	Buildable:
+		Prerequisites: barracks
+	ExternalCondition@lua:
+		Condition: modified
+	Tooltip:
+		RequiresCondition: !modified
+	Tooltip@Modified:
+		Name: actor-outpost-modified-name
+		RequiresCondition: modified
+		ShowOwnerRow: false
+
+quad:
+	Buildable:
+		Prerequisites: upgrade.light
+
+trooper:
+	Buildable:
+		Prerequisites: upgrade.barracks
+
+engineer:
+	Buildable:
+		Prerequisites: upgrade.barracks
+
+repair_pad:
+	Buildable:
+		Prerequisites: heavy_factory, upgrade.heavy
+
+mcv:
+	Buildable:
+		Prerequisites: repair_pad, upgrade.heavy
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled

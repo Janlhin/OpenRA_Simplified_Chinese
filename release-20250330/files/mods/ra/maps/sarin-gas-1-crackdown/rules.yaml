@@ -1,0 +1,114 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, crackdown.lua, crackdown-AI.lua
+	MissionData:
+		Briefing: 一支运送沙林神经毒气的苏联车队停靠在河边的前哨站加油。这是摧毁这批沙林货物、并消除该区域苏联威胁的绝佳机会。\n\n用你的部队摧毁车队卡车与基地。绝不能让任何一辆车队卡车逃走。\n\n苏联把车队信息存放在他们的雷达中心。如果派间谍渗透该设施，也许能帮我们找出车队的逃跑路线。
+		WinVideo: allymorf.vqa
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+Player:
+	PlayerResources:
+		DefaultCash: 5000
+
+APC:
+	Buildable:
+		Prerequisites: ~vehicles.allies
+
+E3:
+	Buildable:
+		Prerequisites: ~infantry.allies
+
+3TNK:
+	Buildable:
+		Prerequisites: ~vehicles.soviet
+
+V2RL:
+	Buildable:
+		Prerequisites: ~vehicles.soviet
+
+TTNK:
+	Buildable:
+		Prerequisites: tsla, ~vehicles.soviet
+
+2TNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+ARTY:
+	Buildable:
+		Prerequisites: ~disabled
+
+MRJ:
+	Buildable:
+		Prerequisites: ~disabled
+
+THF:
+	Buildable:
+		Prerequisites: ~disabled
+
+MSUB:
+	Buildable:
+		Prerequisites: ~disabled
+
+CA:
+	Buildable:
+		Prerequisites: ~disabled
+
+ATEK:
+	Buildable:
+		Prerequisites: ~disabled
+
+APWR:
+	Buildable:
+		Prerequisites: ~disabled
+
+GAP:
+	Buildable:
+		Prerequisites: ~disabled
+
+PDOX:
+	Buildable:
+		Prerequisites: ~disabled
+
+MSLO:
+	Buildable:
+		Prerequisites: ~disabled
+
+AGUN:
+	Buildable:
+		Prerequisites: ~disabled
+
+HPAD:
+	Buildable:
+		Prerequisites: ~disabled
+
+TRUK:
+	-SpawnActorOnDeath:
+
+MGG:
+	Buildable:
+		Prerequisites: ~disabled
+
+FTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+CTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+STNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+E7:
+	Buildable:
+		Prerequisites: ~disabled

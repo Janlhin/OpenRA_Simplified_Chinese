@@ -1,0 +1,95 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, personal-war.lua
+	MissionData:
+		WinVideo: toofar.vqa
+		LossVideo: bmap.vqa
+		Briefing: 战火正迅速逼近雅典，斯塔夫罗斯坚持要回希腊的家乡查看损毁情况。\n\n你必须护送斯塔夫罗斯穿过城镇，抵达附近的一座友军前哨站。到达后，把他安全撤出。\n\n万一出了什么状况，不惜一切手段把斯塔夫罗斯送到安全处。他必须活着。
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+INSERTIONDROP:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E7, GNRL
+	AlwaysVisible:
+
+INSERTIONDROPHARD:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E7.noautotarget, GNRL.noautotarget
+	AlwaysVisible:
+
+RIFLEDROP:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E1, E1, E1, E1, E1
+	AlwaysVisible:
+
+LST.Reinforcement:
+	Inherits: LST
+	RejectsOrders:
+	-Buildable:
+	-Selectable:
+	RenderSprites:
+		Image: lst
+	Interactable:
+
+GNRL:
+	Valued:
+		Cost: 1000
+	Tooltip:
+		Name: actor-stavros-name
+	Armament:
+		Weapon: SilencedPPK
+	Passenger:
+		CargoType: VIP
+
+GNRL.noautotarget:
+	Inherits: GNRL
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
+	RenderSprites:
+		Image: GNRL
+
+E7:
+	Passenger:
+		CargoType: VIP
+
+TRUK:
+	SpawnActorOnDeath:
+		Actor: healcrate
+
+TRAN:
+	-Selectable:
+	RevealsShroud:
+		Range: 4c0
+	Targetable@GROUND:
+		TargetTypes: GroundActor
+	Interactable:
+	Health:
+		HP: 5000
+	Cargo:
+		Types: VIP
+		MaxWeight: 2
+
+BADR.Bomber:
+	Aircraft:
+		Speed: 373
+	Tooltip:
+		Name: actor-strategic-bomber-name
+	RenderSprites:
+		Image: U2
+
+MIG:
+	Aircraft:
+		IdleBehavior: LeaveMap

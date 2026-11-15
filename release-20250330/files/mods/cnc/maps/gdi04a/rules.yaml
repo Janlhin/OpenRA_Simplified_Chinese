@@ -1,0 +1,16 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, gdi04a.lua
+	MusicPlaylist:
+		StartingMusic: fist226m
+	MissionData:
+		Briefing: Nod 缴获了 GDI 的机密财产。\n\n你必须找到并夺回被窃的装备。\n\n它正由一只货运箱运送。\n\n使用新型装甲运兵车，安全地把步兵送过 Nod 部队的封锁。
+		BackgroundVideo: bkground.vqa
+		BriefingVideo: gdi4b.vqa
+		StartVideo: nitejump.vqa
+		WinVideo: burdet1.vqa
+		LossVideo: gameover.vqa
+
+Player:
+	PlayerResources:
+		DefaultCash: 0

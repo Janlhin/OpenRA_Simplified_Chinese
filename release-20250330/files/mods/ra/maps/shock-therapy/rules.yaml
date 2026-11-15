@@ -1,0 +1,26 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, shock-therapy.lua
+	MissionData:
+		WinVideo: sovtstar.vqa
+		LossVideo: sovcemet.vqa
+		Briefing: 一座边境小镇一直在公开支持盟军的事业。这些人不再是苏联人，而是我们伟大帝国的敌人。既然是敌人，就必须消灭。\n\n带上斯大林的精英电击兵，展示苏联军队的铁血威力。毫无疑问，这群乌合之众会向该区域微不足道的盟军求援。\n\n无论他们能凑出多么可悲的支援，都不够用。碾碎他们——不要让任何东西挡住你的路。
+
+SHOCKDROP:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: SHOK, SHOK, SHOK, SHOK, SHOK
+	AlwaysVisible:
+
+LST.Reinforcement:
+	Inherits: LST
+	RejectsOrders:
+	-Buildable:
+	-Selectable:
+	RenderSprites:
+		Image: lst
+	Interactable:
+
+powerproxy.parabombs:
+	AirstrikePower:
+		DisplayBeacon: False

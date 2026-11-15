@@ -1,0 +1,87 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, in-the-nick-of-time.lua
+	MissionData:
+		WinVideo: cronfail.vqa
+		LossVideo: sfrozen.vqa
+		Briefing: 局势危急！苏联已占领北方一座小型研究基地。冲突中，一台超时空传送仪严重受损。我们担心它会爆炸。\n\n基地里有一批在占领时被俘的科学家。必须在超时空传送仪爆炸之前把他们救出来。杀回基地，把他们带出来。\n\n小心——进出基地只有一条路，一座孤桥。为确保撤离，必须守住它。
+
+LST.Reinforcement:
+	Inherits: LST
+	RejectsOrders:
+	-Buildable:
+	-Selectable:
+	RenderSprites:
+		Image: lst
+	Interactable:
+
+TRAN.Reinforcement:
+	Inherits: TRAN
+	RevealsShroud:
+		Range: 0c0
+	-RevealsShroud@GAPGEN:
+	RejectsOrders:
+	-Selectable:
+	RenderSprites:
+		Image: tran
+	Interactable:
+
+PARADROP1:
+	ParatroopersPower:
+		DropItems: E2, E2, E2, E3, E3
+	AlwaysVisible:
+
+PARADROP2:
+	ParatroopersPower:
+		DropItems: E1, E1, SHOK, E4, E4
+	AlwaysVisible:
+
+PARADROP3:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: 1TNK, 2TNK
+	AlwaysVisible:
+
+V01:
+	SpawnActorOnDeath:
+		Actor: healcrate
+
+1TNK:
+	Buildable:
+		Prerequisites: ~vehicles.soviet
+
+2TNK:
+	Buildable:
+		Prerequisites: ~vehicles.soviet
+
+4TNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+QTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MCV:
+	Buildable:
+		Prerequisites: ~disabled
+
+FTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+APC:
+	Buildable:
+		Prerequisites: ~disabled
+
+E7:
+	Buildable:
+		Prerequisites: ~disabled
+
+E7.noautotarget:
+	Buildable:
+		Prerequisites: ~disabled
+
+MIG:
+	Buildable:
+		Prerequisites: ~disabled

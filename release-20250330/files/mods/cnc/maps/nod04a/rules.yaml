@@ -1,0 +1,28 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, nod04a.lua
+	MusicPlaylist:
+		StartingMusic: warfare
+		VictoryMusic: nod_win1
+	MissionData:
+		Briefing: GDI 正试图转移一座同情我们的村庄。拦截车队并摧毁它。确保没有村民存活——这将成为对其他可能反抗我们的原住民的警告。
+		BriefingVideo: nod4a.vqa
+		LossVideo: nodlose.vqa
+
+Player:
+	EnemyWatcher:
+	PlayerResources:
+		DefaultCash: 0
+
+^Vehicle:
+	AnnounceOnSeen:
+
+^Tank:
+	AnnounceOnSeen:
+
+TRAN:
+	RejectsOrders:
+	-Selectable:
+	RevealsShroud:
+		Range: 5c0
+	Interactable:

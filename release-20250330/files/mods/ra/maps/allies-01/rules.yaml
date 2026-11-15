@@ -1,0 +1,44 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, allies01.lua
+	MissionData:
+		Briefing: 从苏联综合体内的指挥部营救爱因斯坦。\n\n找到他后，用直升机把他从信号弹所在位置撤出。\n\n爱因斯坦与谭雅必须不惜一切代价存活。\n\n当心苏联的磁暴线圈。\n\n指挥谭雅摧毁最西侧的那几座发电厂，使其断电。
+		BackgroundVideo: prolog.vqa
+		BriefingVideo: ally1.vqa
+		StartVideo: landing.vqa
+		WinVideo: snowbomb.vqa
+		LossVideo: bmap.vqa
+
+TRAN.Extraction:
+	Inherits: TRAN
+	RevealsShroud:
+		Range: 0c0
+	-RevealsShroud@GAPGEN:
+	RejectsOrders:
+	-Selectable:
+	Cargo:
+		Types: Einstein
+		MaxWeight: 1
+	RenderSprites:
+		Image: tran
+	Interactable:
+
+TRAN.Insertion:
+	Inherits: TRAN.Extraction
+	Cargo:
+		MaxWeight: 0
+
+EINSTEIN:
+	Passenger:
+		CargoType: Einstein
+
+C8:
+	Inherits@2: ^ArmedCivilian
+
+JEEP:
+	Cargo:
+		Types: Infantry, Einstein
+
+TSLA:
+	Power:
+		Amount: -150

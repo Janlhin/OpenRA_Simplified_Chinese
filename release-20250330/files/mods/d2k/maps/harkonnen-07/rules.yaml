@@ -1,0 +1,88 @@
+Player:
+	PlayerResources:
+		DefaultCash: 6000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, harkonnen07.lua, harkonnen07-AI.lua
+	MissionData:
+		Briefing: 你的目标是阿特雷德斯的高科技工厂——那是公爵联合帝国部队的计划中薄弱的一环。没有这座设施，帝国的搬运机很快就会失修，无法继续往战场运送增援。\n\n阿特雷德斯兵力众多且工事坚固——正面强攻必定失败。不过，他们阵地西侧有一座建造厂孤立且防守薄弱。一支小型突击队已空运深入敌后。占领那座建造厂，用它来对付阿特雷德斯。
+		BriefingVideo: H_BR07_E.VQA
+	MapOptions:
+		TechLevel: nopowers
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+^Palettes:
+	IndexedPlayerPalette:
+		PlayerIndex:
+			Atreides Main Base: 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128
+			Atreides Small Base: 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128
+	FixedPlayerColorShift:
+		BasePalette: player
+		PlayerIndex:
+			Atreides Main Base: 0.274, -0.275, 1, 0.32, 0.34
+			Atreides Small Base: 0.274, -0.275, 1, 0.32, 0.34
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+combat_tank_a:
+	Buildable:
+		Prerequisites: ~heavy_factory, ~player.atreides
+
+combat_tank_h:
+	Buildable:
+		Prerequisites: ~heavy_factory, ~player.harkonnen
+
+combat_tank_a.starport:
+	Buildable:
+		Prerequisites: ~starport, ~player.atreides
+
+combat_tank_h.starport:
+	Buildable:
+		Prerequisites: ~starport, ~player.harkonnen
+
+sonic_tank:
+	Buildable:
+		Prerequisites: ~heavy_factory, research_centre, ~techlevel.high, ~player.atreides
+
+devastator:
+	Buildable:
+		Prerequisites: ~heavy_factory, research_centre, ~techlevel.high, ~player.harkonnen
+
+high_tech_factory:
+	AirstrikePower:
+		Prerequisites: upgrade.hightech
+
+upgrade.hightech:
+	Buildable:
+		Prerequisites: ~hightech.atreides
+
+palace:
+	Buildable:
+		Prerequisites: ~disabled
+
+sardaukar:
+	Buildable:
+		Prerequisites: ~barracks, ~player.corrino
+
+mpsardaukar:
+	Buildable:
+		Prerequisites: ~disabled
+
+grenadier:
+	Buildable:
+		Prerequisites: ~disabled
+
+thumper:
+	Buildable:
+		Prerequisites: ~disabled

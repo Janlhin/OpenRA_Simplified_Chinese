@@ -1,0 +1,57 @@
+Player:
+	PlayerResources:
+		DefaultCash: 3000
+
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, atreides03a.lua, atreides03a-AI.lua
+	MissionData:
+		Briefing: 尽快把阿特雷德斯部队扩充到作战实力。防范突袭，并确保香料产量。\n\n奥多斯部队装甲较薄但数量众多。为对付他们，你被授权生产四轮导弹车——它的反车辆能力比三轮摩托更强。升级你的轻型工厂以生产这些单位。\n\n以压倒性的力量回应任何挑衅。\n\n祝你好运。
+		BriefingVideo: A_BR03_E.VQA
+	MapOptions:
+		TechLevel: low
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: easy
+
+carryall.reinforce:
+	Cargo:
+		MaxWeight: 10
+
+concreteb:
+	Buildable:
+		Prerequisites: ~disabled
+
+heavy_factory:
+	Buildable:
+		Prerequisites: ~disabled
+
+medium_gun_turret:
+	Buildable:
+		Prerequisites: ~disabled
+
+outpost:
+	Buildable:
+		Prerequisites: barracks
+
+quad:
+	Buildable:
+		Prerequisites: upgrade.light
+
+trooper:
+	Buildable:
+		Prerequisites: upgrade.barracks
+
+upgrade.conyard:
+	Buildable:
+		Prerequisites: ~disabled
+
+upgrade.heavy:
+	Buildable:
+		Prerequisites: ~disabled

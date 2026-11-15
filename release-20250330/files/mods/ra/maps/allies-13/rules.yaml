@@ -5,7 +5,7 @@ World:
 		BackgroundVideo: spy.vqa
 		WinVideo: apcescpe.vqa
 		LossVideo: bmap.vqa
-		Briefing: LANDCOM 16 HQS.\nTOP SECRET.\nTO: FIELD COMMANDER A9\n\nCONGRATULATIONS. CAPTURING TECH CENTERS HAS REVEALED AN UNDERGROUND WEAPONS FACILITY. PLACE EXPLOSIVE CHARGES ON ALL GENERATORS. RESULTING EXPOSIONS SHOULD DESTROY FACILITY.\nGET OUT BEFORE NERVE GAS IS USED.\n\nTRANSMISSION ENDS.
+		Briefing: 陆指 16 司令部。\n\n绝密。\n\n致：战地指挥官 A9\n\n祝贺。占领科技中心后发现了一处地下武器设施。在所有发电机上安放炸药。由此产生的爆炸应能摧毁该设施。在神经毒气被使用之前撤离。\n\n通讯结束。
 	ScriptLobbyDropdown@difficulty:
 		ID: difficulty
 		Label: dropdown-difficulty.label
@@ -17,7 +17,7 @@ World:
 		Default: normal
 	TimeLimitManager:
 		CountdownLabel: MISSION_TEXT
-		CountdownText: 沙林毒气将在 {0} 后释放
+		CountdownText: Sarin gas released in {0}
 	StartGameNotification:
 		Notification: MissionTimerInitialised
 

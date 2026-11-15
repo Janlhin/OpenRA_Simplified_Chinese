@@ -1,0 +1,73 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, production-disruption.lua
+	MissionData:
+		WinVideo: battle.vqa
+		LossVideo: slntsrvc.vqa
+		Briefing: 苏联正在建造一型能够发射海对地导弹的新型潜艇。它会带来怎样的灾难，不用我们多说。\n\n带一支小队渗透他们的电网。电网一断，增援随后就到。然后北上摧毁潜艇船坞，阻止这类潜艇的继续建造。\n\n如果有潜艇已经建成，绝不能让它逃走！
+	StartGameNotification:
+		Notification: MissionTimerInitialised
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+powerproxy.chronoshift:
+	AlwaysVisible:
+	ChronoshiftPower:
+		Dimensions: 1, 1
+		Footprint: x
+
+powerproxy.parabombs:
+	AirstrikePower:
+		DisplayBeacon: False
+
+CHALK1:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E1, E1, E1, E1, E1
+	AlwaysVisible:
+
+CHALK2:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E3, E3, E3, E3, MEDI
+	AlwaysVisible:
+
+CHALK3:
+	ParatroopersPower:
+		DisplayBeacon: False
+		DropItems: E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1, E1
+		SquadSize: 4
+	AlwaysVisible:
+
+CTNK:
+	Chronoshiftable:
+		ChronoshiftSound:
+
+LST.Reinforcement:
+	Inherits: LST
+	RejectsOrders:
+	-Buildable:
+	-Selectable:
+	RenderSprites:
+		Image: lst
+	Interactable:
+
+MSUB:
+	-Cloak:
+	-GrantConditionOnDamageState@UNCLOAK:
+	-Targetable@UNDERWATER:
+	Targetable:
+		-RequiresCondition:
+
+TSLA:
+	ExternalCondition@NOACTORSONSELL:
+		Condition: no-actors-on-sell
+	SpawnActorsOnSell:
+		RequiresCondition: !no-actors-on-sell

@@ -1,225 +1,235 @@
-﻿模块,键,英文原文,状态
-"mods\cnc\fluent\chrome.ftl","button-editor-world-root-copy","",缺译文
-"mods\cnc\fluent\chrome.ftl","button-editor-world-root-paste","",缺译文
-"mods\cnc\fluent\chrome.ftl","button-editor-world-root-undo","",缺译文
-"mods\cnc\fluent\chrome.ftl","button-editor-world-root-redo","",缺译文
-"mods\cnc\fluent\chrome.ftl","label-bg-title","[CREATE NEW FILE]",缺译文
-"mods\cnc\fluent\chrome.ftl","label-debug-panel-title","Debug Options",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-instant-build","Instant Build Speed",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-enable-tech","Build Everything",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-build-anywhere","Build Anywhere",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-unlimited-power","Unlimited Power",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-instant-charge","Instant Charge Time",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-disable-visibility-checks","Disable Visibility Checks",缺译文
-"mods\cnc\fluent\chrome.ftl","button-debug-panel-give-cash","Give $20,000",缺译文
-"mods\cnc\fluent\chrome.ftl","button-debug-panel-grow-resources","Grow Resources",缺译文
-"mods\cnc\fluent\chrome.ftl","button-debug-panel-give-exploration","Clear Shroud",缺译文
-"mods\cnc\fluent\chrome.ftl","button-debug-panel-reset-exploration","Reset Shroud",缺译文
-"mods\cnc\fluent\chrome.ftl","label-debug-panel-visualizations-title","Visualizations",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-unit-paths","Show Unit Paths",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-customterrain-overlay","Show Custom Terrain",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-actor-tags","Show Actor Tags",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-combatoverlay","Show Combat Geometry",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-geometry","Show Render Geometry",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-terrain-overlay","Show Terrain Geometry",缺译文
-"mods\cnc\fluent\chrome.ftl","checkbox-debug-panel-show-screenmap","Show Screen Map",缺译文
-"mods\cnc\fluent\chrome.ftl","label-main-menu-mainmenu-title","Main Menu",缺译文
-"mods\cnc\fluent\chrome.ftl","button-bg-system-maps-tab","Official Maps",缺译文
-"mods\cnc\fluent\chrome.ftl","button-bg-remote-maps-tab","Server Maps",缺译文
-"mods\cnc\fluent\chrome.ftl","button-bg-user-maps-tab","Custom Maps",缺译文
-"mods\cnc\fluent\chrome.ftl","button-profile-header-logout","Logout",缺译文
-"mods\cnc\fluent\chrome.ftl","label-generate-keys-desc-a","Connect to a forum account to identify",缺译文
-"mods\cnc\fluent\chrome.ftl","label-generate-keys-desc-b","yourself to other players, join private",缺译文
-"mods\cnc\fluent\chrome.ftl","label-generate-keys-desc-c","servers, and display badges.",缺译文
-"mods\cnc\fluent\chrome.ftl","button-generate-keys-key","Connect to an OpenRA forum account",缺译文
-"mods\cnc\fluent\chrome.ftl","label-generating-keys-desc-a","Generating authentication key pair.",缺译文
-"mods\cnc\fluent\chrome.ftl","label-generating-keys-desc-b","This will take several seconds...",缺译文
-"mods\cnc\fluent\chrome.ftl","label-register-fingerprint-desc-a","An authentication key has been copied to your",缺译文
-"mods\cnc\fluent\chrome.ftl","label-register-fingerprint-desc-b","clipboard. Add this to your User Control Panel",缺译文
-"mods\cnc\fluent\chrome.ftl","label-register-fingerprint-desc-c","on the OpenRA forum then press Continue.",缺译文
-"mods\cnc\fluent\chrome.ftl","label-fingerprint-not-found-desc-a","Your authentication key is not connected",缺译文
-"mods\cnc\fluent\chrome.ftl","label-fingerprint-not-found-desc-b","to an OpenRA forum account.",缺译文
-"mods\common\fluent\chrome.ftl","button-editor-world-root-copy","",缺译文
-"mods\common\fluent\chrome.ftl","button-editor-world-root-paste","",缺译文
-"mods\common\fluent\chrome.ftl","button-editor-world-root-undo","",缺译文
-"mods\common\fluent\chrome.ftl","button-editor-world-root-redo","",缺译文
-"mods\common\fluent\chrome.ftl","label-gamesave-browser-panel-title","[CREATE NEW FILE]",缺译文
-"mods\common\fluent\chrome.ftl","label-debug-panel-title","Debug Options",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-instant-build","Instant Build Speed",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-enable-tech","Build Everything",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-build-anywhere","Build Anywhere",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-unlimited-power","Unlimited Power",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-instant-charge","Instant Charge Time",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-disable-visibility-checks","Disable Visibility Checks",缺译文
-"mods\common\fluent\chrome.ftl","button-debug-panel-give-cash","Give $20,000",缺译文
-"mods\common\fluent\chrome.ftl","button-debug-panel-grow-resources","Grow Resources",缺译文
-"mods\common\fluent\chrome.ftl","button-debug-panel-give-exploration","Clear Shroud",缺译文
-"mods\common\fluent\chrome.ftl","button-debug-panel-reset-exploration","Reset Shroud",缺译文
-"mods\common\fluent\chrome.ftl","label-debug-panel-visualizations-title","Visualizations",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-unit-paths","Show Unit Paths",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-customterrain-overlay","Show Custom Terrain",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-actor-tags","Show Actor Tags",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-combatoverlay","Show Combat Geometry",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-geometry","Show Render Geometry",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-terrain-overlay","Show Terrain Geometry",缺译文
-"mods\common\fluent\chrome.ftl","checkbox-debug-panel-show-screenmap","Show Screen Map",缺译文
-"mods\common\fluent\chrome.ftl","button-mapchooser-panel-system-maps-tab","Official Maps",缺译文
-"mods\common\fluent\chrome.ftl","button-mapchooser-panel-remote-maps-tab","Server Maps",缺译文
-"mods\common\fluent\chrome.ftl","button-mapchooser-panel-user-maps-tab","Custom Maps",缺译文
-"mods\common\fluent\chrome.ftl","button-profile-header-logout","Logout",缺译文
-"mods\common\fluent\chrome.ftl","label-generate-keys-desc-a","Connect to a forum account to identify",缺译文
-"mods\common\fluent\chrome.ftl","label-generate-keys-desc-b","yourself to other players, join private",缺译文
-"mods\common\fluent\chrome.ftl","label-generate-keys-desc-c","servers, and display badges.",缺译文
-"mods\common\fluent\chrome.ftl","button-generate-keys-key","Connect to an OpenRA forum account",缺译文
-"mods\common\fluent\chrome.ftl","label-generating-keys-desc-a","Generating authentication key pair.",缺译文
-"mods\common\fluent\chrome.ftl","label-generating-keys-desc-b","This will take several seconds...",缺译文
-"mods\common\fluent\chrome.ftl","label-register-fingerprint-desc-a","An authentication key has been copied to your",缺译文
-"mods\common\fluent\chrome.ftl","label-register-fingerprint-desc-b","clipboard. Add this to your User Control Panel",缺译文
-"mods\common\fluent\chrome.ftl","label-register-fingerprint-desc-c","on the OpenRA forum then press Continue.",缺译文
-"mods\common\fluent\chrome.ftl","label-fingerprint-not-found-desc-a","Your authentication key is not connected",缺译文
-"mods\common\fluent\chrome.ftl","label-fingerprint-not-found-desc-b","to an OpenRA forum account.",缺译文
-"mods\common\fluent\common.ftl","notification-option-changed","{ $player } changed { $name } to { $value }.",缺译文
-"mods\common\fluent\common.ftl","notification-option-locked","{ $option } cannot be changed.",缺译文
-"mods\common\fluent\common.ftl","notification-game-saved","Game saved.",缺译文
-"mods\common\fluent\common.ftl","label-downloading","Downloading { $title }",缺译文
-"mods\common\fluent\common.ftl","label-fetching-mirror-list","Fetching list of mirrors...",缺译文
-"mods\common\fluent\common.ftl","label-downloading-from","Downloading from { $host } { $received } { $suffix }",缺译文
-"mods\common\fluent\common.ftl","label-downloading-from-progress","Downloading from { $host } { $received } / { $total } { $suffix } ({ $progress }%)",缺译文
-"mods\common\fluent\common.ftl","label-unknown-host","unknown host",缺译文
-"mods\common\fluent\common.ftl","label-download-failed","Download failed",缺译文
-"mods\common\fluent\common.ftl","label-verifying-archive","Verifying archive...",缺译文
-"mods\common\fluent\common.ftl","label-archive-validation-failed","Archive validation failed",缺译文
-"mods\common\fluent\common.ftl","label-extracting-archive","Extracting...",缺译文
-"mods\common\fluent\common.ftl","label-extracting-archive-entry","Extracting { $entry }",缺译文
-"mods\common\fluent\common.ftl","label-archive-extraction-failed","Archive extraction failed",缺译文
-"mods\common\fluent\common.ftl","label-mirror-selection-failed","Online mirror is not available. Please install from an original disc.",缺译文
-"mods\common\fluent\common.ftl","label-detecting-sources","Detecting drives",缺译文
-"mods\common\fluent\common.ftl","label-checking-sources","Checking Sources",缺译文
-"mods\common\fluent\common.ftl","label-searching-source-for","Searching for { $title }",缺译文
-"mods\common\fluent\common.ftl","label-content-package-installation","Select which content packages you want to install:",缺译文
-"mods\common\fluent\common.ftl","label-game-sources","Game Sources",缺译文
-"mods\common\fluent\common.ftl","label-digital-installs","Digital Installs",缺译文
-"mods\common\fluent\common.ftl","label-game-content-not-found","Game Content Not Found",缺译文
-"mods\common\fluent\common.ftl","label-alternative-content-sources","Please insert or install one of the following content sources:",缺译文
-"mods\common\fluent\common.ftl","label-installing-content","Installing Content",缺译文
-"mods\common\fluent\common.ftl","label-copying-filename","Copying { $filename }",缺译文
-"mods\common\fluent\common.ftl","label-copying-filename-progress","Copying { $filename } ({ $progress }%)",缺译文
-"mods\common\fluent\common.ftl","label-installation-failed","Installation Failed",缺译文
-"mods\common\fluent\common.ftl","label-check-install-log","Refer to install.log in the logs directory for details.",缺译文
-"mods\common\fluent\common.ftl","label-extracting-filename","Extracting { $filename }",缺译文
-"mods\common\fluent\common.ftl","label-extracting-filename-progress","Extracting { $filename } ({ $progress }%)",缺译文
-"mods\common\fluent\common.ftl","button-manual-install","Manual Install",缺译文
-"mods\common\fluent\common.ftl","description-exits-overlay","Displays exits for factories.",缺译文
-"mods\common\fluent\common.ftl","support-power-timer","{ $player }'s { $support-power }: { $time }",缺译文
-"mods\common\fluent\common.ftl","label-disabled-spawn","Disabled spawn",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","label-available-spawn","Available spawn",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-copied-tiles","",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-added-resource","",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-added-marker-tiles","",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-removed-marker-tiles","",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-cleared-selected-marker-tiles","Cleared { $amount } marker tiles of type { $type }",占位符不一致，保留英文
-"mods\common\fluent\common.ftl","notification-cleared-all-marker-tiles","Cleared { $amount } marker tiles",占位符不一致，保留英文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-pause-tooltip","Pause",缺译文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-play-tooltip","Play",缺译文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-slow","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-regular","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-fast","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-replay-player-maximum","",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-cash-header","Cash",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-power-header","Power",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-kills-header","Kills",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-deaths-header","Deaths",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-assets-destroyed-header","Destroyed",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-assets-lost-header","Lost",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-experience-header","Score",缺译文
-"mods\d2k\fluent\chrome.ftl","label-basic-stats-actions-min-header","APM",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-cash-header","Cash",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-income-header","Income",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-assets-header","Assets",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-earned-header","Earned",缺译文
-"mods\d2k\fluent\chrome.ftl","label-economy-stats-spent-header","Spent",缺译文
-"mods\d2k\fluent\chrome.ftl","label-production-stats-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-production-stats-header","Production",缺译文
-"mods\d2k\fluent\chrome.ftl","label-support-powers-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-support-powers-header","Support Powers",缺译文
-"mods\d2k\fluent\chrome.ftl","label-army-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-army-header","Army",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-player-header","Player",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-assets-destroyed-header","Destroyed",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-assets-lost-header","Lost",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-units-killed-header","U. Killed",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-units-dead-header","U. Lost",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-buildings-killed-header","B. Killed",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-buildings-dead-header","B. Lost",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-army-value-header","Army Value",缺译文
-"mods\d2k\fluent\chrome.ftl","label-combat-stats-vision-header","Vision",缺译文
-"mods\d2k\fluent\chrome.ftl","label-mute-indicator","Audio Muted",缺译文
-"mods\d2k\fluent\chrome.ftl","supportpowers-support-powers-palette","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-command-bar-attack-move","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-command-bar-scatter","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-command-bar-stop","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-command-bar-queue-orders","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-stance-bar-attackanything","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-stance-bar-defend","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-stance-bar-returnfire","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-stance-bar-holdfire","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-top-buttons-options-tooltip","Options",缺译文
-"mods\d2k\fluent\chrome.ftl","productionpalette-sidebar-production-palette","",缺译文
-"mods\d2k\fluent\chrome.ftl","button-production-types-scroll-up-tooltip","Scroll up",缺译文
-"mods\d2k\fluent\chrome.ftl","button-production-types-scroll-down-tooltip","Scroll down",缺译文
-"mods\ra\fluent\chrome.ftl","label-gamesave-loading-screen-title","Loading Saved Game",缺译文
-"mods\ra\fluent\chrome.ftl","label-gamesave-loading-screen-desc","Press Escape to cancel loading and return to the main menu",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-pause-tooltip","Pause",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-play-tooltip","Play",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-slow","",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-regular","",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-fast","",缺译文
-"mods\ra\fluent\chrome.ftl","button-observer-widgets-maximum","",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-cash-header","Cash",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-power-header","Power",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-kills-header","Kills",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-deaths-header","Deaths",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-assets-destroyed-header","Destroyed",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-assets-lost-header","Lost",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-experience-header","Score",缺译文
-"mods\ra\fluent\chrome.ftl","label-basic-stats-actions-min-header","APM",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-cash-header","Cash",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-income-header","Income",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-assets-header","Assets",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-earned-header","Earned",缺译文
-"mods\ra\fluent\chrome.ftl","label-economy-stats-spent-header","Spent",缺译文
-"mods\ra\fluent\chrome.ftl","label-production-stats-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-production-stats-header","Production",缺译文
-"mods\ra\fluent\chrome.ftl","label-support-powers-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-support-powers-header","Support Powers",缺译文
-"mods\ra\fluent\chrome.ftl","label-army-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-army-header","Army",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-player-header","Player",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-assets-destroyed-header","Destroyed",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-assets-lost-header","Lost",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-units-killed-header","U. Killed",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-units-dead-header","U. Lost",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-buildings-killed-header","B. Killed",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-buildings-dead-header","B. Lost",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-army-value-header","Army Value",缺译文
-"mods\ra\fluent\chrome.ftl","label-combat-stats-vision-header","Vision",缺译文
-"mods\ra\fluent\chrome.ftl","label-mute-indicator","Audio Muted",缺译文
-"mods\ra\fluent\chrome.ftl","button-top-buttons-options-tooltip","Options",缺译文
-"mods\ra\fluent\chrome.ftl","supportpowers-support-powers-palette","",缺译文
-"mods\ra\fluent\chrome.ftl","button-command-bar-attack-move","",缺译文
-"mods\ra\fluent\chrome.ftl","button-command-bar-guard","",缺译文
-"mods\ra\fluent\chrome.ftl","button-command-bar-scatter","",缺译文
-"mods\ra\fluent\chrome.ftl","button-command-bar-stop","",缺译文
-"mods\ra\fluent\chrome.ftl","button-command-bar-queue-orders","",缺译文
-"mods\ra\fluent\chrome.ftl","button-stance-bar-attackanything","",缺译文
-"mods\ra\fluent\chrome.ftl","button-stance-bar-defend","",缺译文
-"mods\ra\fluent\chrome.ftl","button-stance-bar-returnfire","",缺译文
-"mods\ra\fluent\chrome.ftl","button-stance-bar-holdfire","",缺译文
-"mods\ra\fluent\chrome.ftl","productionpalette-sidebar-production-palette","",缺译文
-"mods\ra\fluent\chrome.ftl","button-production-types-scroll-up-tooltip","Scroll up",缺译文
-"mods\ra\fluent\chrome.ftl","button-production-types-scroll-down-tooltip","Scroll down",缺译文
-"mods\ra\fluent\rules.ftl","meta-mine-name","Mine",缺译文
+﻿模块,键,英文原文,归类
+"cnc/fluent/chrome.ftl","label-openra","OpenRA","上游有此键但值仍是英文"
+"cnc/fluent/chrome.ftl","label-actor-edit-panel-id","ID","上游有此键但值仍是英文"
+"cnc/fluent/chrome.ftl","button-editor-world-root-copy","","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-editor-world-root-paste","","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-editor-world-root-undo","","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-editor-world-root-redo","","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-bg-title","[CREATE NEW FILE]","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-debug-panel-title","Debug Options","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-instant-build","Instant Build Speed","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-enable-tech","Build Everything","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-build-anywhere","Build Anywhere","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-unlimited-power","Unlimited Power","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-instant-charge","Instant Charge Time","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-disable-visibility-checks","Disable Visibility Checks","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-debug-panel-give-cash","Give $20,000","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-debug-panel-grow-resources","Grow Resources","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-debug-panel-give-exploration","Clear Shroud","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-debug-panel-reset-exploration","Reset Shroud","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-debug-panel-visualizations-title","Visualizations","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-unit-paths","Show Unit Paths","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-customterrain-overlay","Show Custom Terrain","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-actor-tags","Show Actor Tags","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-combatoverlay","Show Combat Geometry","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-geometry","Show Render Geometry","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-terrain-overlay","Show Terrain Geometry","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","checkbox-debug-panel-show-screenmap","Show Screen Map","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-basic-stats-actions-min-header","APM","上游有此键但值仍是英文"
+"cnc/fluent/chrome.ftl","label-main-menu-mainmenu-title","Main Menu","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-bg-system-maps-tab","Official Maps","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-bg-remote-maps-tab","Server Maps","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-bg-user-maps-tab","Custom Maps","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-profile-header-logout","Logout","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-generate-keys-desc-a","Connect to a forum account to identify","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-generate-keys-desc-b","yourself to other players, join private","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-generate-keys-desc-c","servers, and display badges.","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","button-generate-keys-key","Connect to an OpenRA forum account","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-generating-keys-desc-a","Generating authentication key pair.","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-generating-keys-desc-b","This will take several seconds...","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-register-fingerprint-desc-a","An authentication key has been copied to your","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-register-fingerprint-desc-b","clipboard. Add this to your User Control Panel","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-register-fingerprint-desc-c","on the OpenRA forum then press Continue.","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-fingerprint-not-found-desc-a","Your authentication key is not connected","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-fingerprint-not-found-desc-b","to an OpenRA forum account.","上游该键不存在（playtest 也无）"
+"cnc/fluent/chrome.ftl","label-window-resolution-container-x","x","上游有此键但值仍是英文"
+"common/fluent/chrome.ftl","label-openra","OpenRA","上游有此键但值仍是英文"
+"common/fluent/chrome.ftl","button-editor-world-root-copy","","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-editor-world-root-paste","","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-editor-world-root-undo","","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-editor-world-root-redo","","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-gamesave-browser-panel-title","[CREATE NEW FILE]","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-debug-panel-title","Debug Options","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-instant-build","Instant Build Speed","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-enable-tech","Build Everything","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-build-anywhere","Build Anywhere","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-unlimited-power","Unlimited Power","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-instant-charge","Instant Charge Time","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-disable-visibility-checks","Disable Visibility Checks","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-debug-panel-give-cash","Give $20,000","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-debug-panel-grow-resources","Grow Resources","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-debug-panel-give-exploration","Clear Shroud","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-debug-panel-reset-exploration","Reset Shroud","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-debug-panel-visualizations-title","Visualizations","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-unit-paths","Show Unit Paths","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-customterrain-overlay","Show Custom Terrain","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-actor-tags","Show Actor Tags","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-combatoverlay","Show Combat Geometry","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-geometry","Show Render Geometry","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-terrain-overlay","Show Terrain Geometry","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","checkbox-debug-panel-show-screenmap","Show Screen Map","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-mapchooser-panel-system-maps-tab","Official Maps","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-mapchooser-panel-remote-maps-tab","Server Maps","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-mapchooser-panel-user-maps-tab","Custom Maps","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-directconnect-panel-port",":","上游有此键但值仍是英文"
+"common/fluent/chrome.ftl","button-profile-header-logout","Logout","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-generate-keys-desc-a","Connect to a forum account to identify","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-generate-keys-desc-b","yourself to other players, join private","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-generate-keys-desc-c","servers, and display badges.","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","button-generate-keys-key","Connect to an OpenRA forum account","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-generating-keys-desc-a","Generating authentication key pair.","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-generating-keys-desc-b","This will take several seconds...","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-register-fingerprint-desc-a","An authentication key has been copied to your","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-register-fingerprint-desc-b","clipboard. Add this to your User Control Panel","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-register-fingerprint-desc-c","on the OpenRA forum then press Continue.","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-fingerprint-not-found-desc-a","Your authentication key is not connected","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-fingerprint-not-found-desc-b","to an OpenRA forum account.","上游该键不存在（playtest 也无）"
+"common/fluent/chrome.ftl","label-window-resolution-container-x","x","上游有此键但值仍是英文"
+"common/fluent/common.ftl","notification-option-changed","{ $player } changed { $name } to { $value }.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","notification-option-locked","{ $option } cannot be changed.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","notification-game-saved","Game saved.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-downloading","Downloading { $title }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-fetching-mirror-list","Fetching list of mirrors...","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-downloading-from","Downloading from { $host } { $received } { $suffix }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-downloading-from-progress","Downloading from { $host } { $received } / { $total } { $suffix } ({ $progress }%)","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-unknown-host","unknown host","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-download-failed","Download failed","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-verifying-archive","Verifying archive...","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-archive-validation-failed","Archive validation failed","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-extracting-archive","Extracting...","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-extracting-archive-entry","Extracting { $entry }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-archive-extraction-failed","Archive extraction failed","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-mirror-selection-failed","Online mirror is not available. Please install from an original disc.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-detecting-sources","Detecting drives","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-checking-sources","Checking Sources","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-searching-source-for","Searching for { $title }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-content-package-installation","Select which content packages you want to install:","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-game-sources","Game Sources","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-digital-installs","Digital Installs","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-game-content-not-found","Game Content Not Found","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-alternative-content-sources","Please insert or install one of the following content sources:","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-installing-content","Installing Content","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-copying-filename","Copying { $filename }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-copying-filename-progress","Copying { $filename } ({ $progress }%)","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-installation-failed","Installation Failed","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-check-install-log","Refer to install.log in the logs directory for details.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-extracting-filename","Extracting { $filename }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-extracting-filename-progress","Extracting { $filename } ({ $progress }%)","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","button-manual-install","Manual Install","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","label-disabled-spawn","Disabled spawn","上游有译文但我没用上"
+"common/fluent/common.ftl","label-available-spawn","Available spawn","上游有译文但我没用上"
+"common/fluent/common.ftl","-incompatible-replay-recorded","It was recorded with","上游有译文但我没用上"
+"common/fluent/common.ftl","label-internet-server-nat-C","):","上游有此键但值仍是英文"
+"common/fluent/common.ftl","description-exits-overlay","Displays exits for factories.","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","notification-copied-tiles","","上游有译文但我没用上"
+"common/fluent/common.ftl","notification-added-resource","","上游有译文但我没用上"
+"common/fluent/common.ftl","notification-added-marker-tiles","","上游有译文但我没用上"
+"common/fluent/common.ftl","notification-removed-marker-tiles","","上游有译文但我没用上"
+"common/fluent/common.ftl","notification-cleared-selected-marker-tiles","Cleared { $amount } marker tiles of type { $type }","上游有译文但我没用上"
+"common/fluent/common.ftl","notification-cleared-all-marker-tiles","Cleared { $amount } marker tiles","上游有译文但我没用上"
+"common/fluent/common.ftl","support-power-timer","{ $player }'s { $support-power }: { $time }","上游该键不存在（playtest 也无）"
+"common/fluent/common.ftl","enumerated-bot-name","","上游有此键但值仍是英文"
+"d2k/fluent/chrome.ftl","button-replay-player-pause-tooltip","Pause","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-replay-player-play-tooltip","Play","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-replay-player-slow","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-replay-player-regular","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-replay-player-fast","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-replay-player-maximum","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-cash-header","Cash","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-power-header","Power","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-kills-header","Kills","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-deaths-header","Deaths","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-assets-destroyed-header","Destroyed","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-assets-lost-header","Lost","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-experience-header","Score","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-basic-stats-actions-min-header","APM","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-cash-header","Cash","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-income-header","Income","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-assets-header","Assets","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-earned-header","Earned","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-economy-stats-spent-header","Spent","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-production-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-production-stats-header","Production","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-support-powers-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-support-powers-header","Support Powers","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-army-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-army-header","Army","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-assets-destroyed-header","Destroyed","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-assets-lost-header","Lost","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-units-killed-header","U. Killed","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-units-dead-header","U. Lost","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-buildings-killed-header","B. Killed","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-buildings-dead-header","B. Lost","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-army-value-header","Army Value","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-combat-stats-vision-header","Vision","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","label-mute-indicator","Audio Muted","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","supportpowers-support-powers-palette","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-command-bar-attack-move","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-command-bar-scatter","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-command-bar-stop","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-command-bar-queue-orders","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-stance-bar-attackanything","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-stance-bar-defend","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-stance-bar-returnfire","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-stance-bar-holdfire","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-top-buttons-options-tooltip","Options","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","productionpalette-sidebar-production-palette","","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-production-types-scroll-up-tooltip","Scroll up","上游该键不存在（playtest 也无）"
+"d2k/fluent/chrome.ftl","button-production-types-scroll-down-tooltip","Scroll down","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-gamesave-loading-screen-title","Loading Saved Game","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-gamesave-loading-screen-desc","Press Escape to cancel loading and return to the main menu","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-pause-tooltip","Pause","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-play-tooltip","Play","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-slow","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-regular","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-fast","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-observer-widgets-maximum","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-cash-header","Cash","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-power-header","Power","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-kills-header","Kills","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-deaths-header","Deaths","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-assets-destroyed-header","Destroyed","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-assets-lost-header","Lost","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-experience-header","Score","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-basic-stats-actions-min-header","APM","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-cash-header","Cash","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-income-header","Income","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-assets-header","Assets","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-earned-header","Earned","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-economy-stats-spent-header","Spent","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-production-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-production-stats-header","Production","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-support-powers-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-support-powers-header","Support Powers","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-army-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-army-header","Army","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-player-header","Player","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-assets-destroyed-header","Destroyed","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-assets-lost-header","Lost","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-units-killed-header","U. Killed","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-units-dead-header","U. Lost","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-buildings-killed-header","B. Killed","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-buildings-dead-header","B. Lost","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-army-value-header","Army Value","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-combat-stats-vision-header","Vision","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","label-mute-indicator","Audio Muted","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-top-buttons-options-tooltip","Options","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","supportpowers-support-powers-palette","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-command-bar-attack-move","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-command-bar-guard","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-command-bar-scatter","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-command-bar-stop","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-command-bar-queue-orders","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-stance-bar-attackanything","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-stance-bar-defend","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-stance-bar-returnfire","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-stance-bar-holdfire","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","productionpalette-sidebar-production-palette","","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-production-types-scroll-up-tooltip","Scroll up","上游该键不存在（playtest 也无）"
+"ra/fluent/chrome.ftl","button-production-types-scroll-down-tooltip","Scroll down","上游该键不存在（playtest 也无）"
+"ra/fluent/rules.ftl","meta-mine-name","Mine","上游该键不存在（playtest 也无）"

@@ -1,0 +1,111 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, gdi01.lua
+	MusicPlaylist:
+		StartingMusic: aoi
+	MissionData:
+		Briefing: 使用提供的单位保护移动建造车（MCV）。\n\n左键点击选中移动建造车，再右键点击它以展开。\n\n从发电厂开始建设你的基地。\n\n组建起一支可观的部队后，搜索并消灭周边区域内的所有敌方 Nod 单位。
+		BackgroundVideo: intro2.vqa
+		BriefingVideo: gdi1.vqa
+		StartVideo: landing.vqa
+		WinVideo: consyard.vqa
+		LossVideo: gameover.vqa
+
+NUKE:
+	-Sellable:
+	Demolishable:
+		-Condition:
+	Buildable:
+		BuildLimit: 1
+
+PYLE:
+	-Sellable:
+	Demolishable:
+		-Condition:
+	Buildable:
+		BuildLimit: 1
+
+FACT:
+	-Sellable:
+
+PROC:
+	Buildable:
+		Prerequisites: ~disabled
+
+SILO:
+	Buildable:
+		Prerequisites: ~disabled
+
+WEAP:
+	Buildable:
+		Prerequisites: ~disabled
+
+HQ:
+	Buildable:
+		Prerequisites: ~disabled
+
+NUK2:
+	Buildable:
+		Prerequisites: ~disabled
+
+FIX:
+	Buildable:
+		Prerequisites: ~disabled
+
+HPAD:
+	Buildable:
+		Prerequisites: ~disabled
+
+EYE:
+	Buildable:
+		Prerequisites: ~disabled
+
+GUN:
+	Buildable:
+		Prerequisites: ~disabled
+
+GTWR:
+	Buildable:
+		Prerequisites: ~disabled
+
+ATWR:
+	Buildable:
+		Prerequisites: ~disabled
+
+SBAG:
+	-Crushable:
+	Buildable:
+		Prerequisites: ~disabled
+
+CYCL:
+	-Crushable:
+	Buildable:
+		Prerequisites: ~disabled
+
+BRIK:
+	Buildable:
+		Prerequisites: ~disabled
+
+E2:
+	Buildable:
+		Prerequisites: ~disabled
+
+E3:
+	Buildable:
+		Prerequisites: ~disabled
+
+E6:
+	Buildable:
+		Prerequisites: ~disabled
+
+RMBO:
+	Buildable:
+		Prerequisites: ~disabled
+
+BOAT:
+	Health:
+		HP: 150000
+	AutoTarget:
+		InitialStance: AttackAnything
+	RejectsOrders:
+		Except: Attack

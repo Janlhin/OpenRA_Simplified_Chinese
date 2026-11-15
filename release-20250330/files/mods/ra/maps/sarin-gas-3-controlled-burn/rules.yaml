@@ -1,0 +1,79 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, controlledburn.lua, controlledburn-AI.lua
+	MissionData:
+		WinVideo: apcescpe.vqa
+		LossVideo: tesla.vqa
+		Briefing: 我们已渗透进入苏联的沙林设施。但主入口被一道磁暴线圈之墙守住。在打掉它们之前，我们无法投入大部队。\n\n渗透东面的电网，或摧毁发电厂。完成之后增援就会抵达。\n\n摧毁苏联营地，但所有沙林加工建筑必须完整占领——我们不能冒化学泄漏的风险。
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			easy: options-difficulty.easy
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+Player:
+	PlayerResources:
+		DefaultCash: 7500
+
+HARV:
+	-MustBeDestroyed:
+
+APC:
+	Buildable:
+		Prerequisites: ~vehicles.allies
+
+MGG:
+	Buildable:
+		Prerequisites: ~disabled
+
+FTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+DTRK:
+	Buildable:
+		Prerequisites: ~disabled
+
+CTNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+STNK:
+	Buildable:
+		Prerequisites: ~disabled
+
+MSLO:
+	Buildable:
+		Prerequisites: ~disabled
+
+ATEK:
+	Buildable:
+		Prerequisites: ~disabled
+
+BIO:
+	Tooltip:
+		Name: actor-sarin-processing-plant-name
+
+E7:
+	Buildable:
+		Prerequisites: ~disabled
+
+E3:
+	Buildable:
+		Prerequisites: ~tent
+
+MH60:
+	Buildable:
+		Prerequisites: ~disabled
+
+TRAN:
+	Buildable:
+		Prerequisites: ~disabled
+
+HELI:
+	Buildable:
+		Prerequisites: ~hpad

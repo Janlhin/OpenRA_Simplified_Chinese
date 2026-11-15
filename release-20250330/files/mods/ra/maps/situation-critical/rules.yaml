@@ -1,0 +1,83 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, situation-critical.lua
+	MissionData:
+		WinVideo: flare.vqa
+		LossVideo: nukestok.vqa
+		Briefing: 我们部队中的一支激进派系窃取了一件生物武器，威胁要用在盟军阵地上。该武器极不稳定，一旦释放可能毁掉我们所有人。\n\n设施必须摧毁，但首先要让武器失效。摧毁岛上的防御，然后用沃尔科夫护送我们的科学家抵达生物研究中心。如果在武器失效之前这两者中任何一人被杀，任务即告失败。\n\n科学家完成任务后，摧毁基地。
+
+VOLK:
+	Inherits: GNRL
+	-AutoTarget:
+	-AutoTargetPriority@DEFAULT:
+	-AutoTargetPriority@ATTACKANYTHING:
+	AttackMove:
+		-AssaultMoveCondition:
+	Valued:
+		Cost: 1200
+	Tooltip:
+		Name: actor-volk-name
+	Health:
+		HP: 15000
+	Armor:
+		Type: Heavy
+	RevealsShroud:
+		Range: 6c0
+	Demolition:
+	Mobile:
+		Voice: Action
+	AttackFrontal:
+		Voice: Action
+		FacingTolerance: 0
+	AttackMove:
+		Voice: Action
+	Passenger:
+		Voice: Action
+	Guard:
+		Voice: Action
+	Voiced:
+		VoiceSet: GenericVoice
+	Armament:
+		Weapon: VolkovWeapon
+	RenderSprites:
+		Image: GNRL
+
+LST.Reinforcement:
+	Inherits: LST
+	RejectsOrders:
+	-Buildable:
+	-Selectable:
+	RenderSprites:
+		Image: lst
+	Interactable:
+
+MSLO:
+	Power:
+		Amount: 0
+	-WithColoredOverlay@IDISABLE:
+	-NukePower:
+
+SAM:
+	-WithColoredOverlay@IDISABLE:
+
+BADR.Bomber:
+	Aircraft:
+		Speed: 373
+	Tooltip:
+		Name: actor-strategic-bomber-name
+	RenderSprites:
+		Image: U2
+
+powerproxy.parabombs:
+	AirstrikePower:
+		DisplayBeacon: False
+
+DELPHI:
+	Tooltip:
+		Name: actor-scientist-name
+	Infiltrates:
+		Types: ScientistInfiltrate
+
+BIO:
+	Targetable:
+		TargetTypes: GroundActor, Structure, C4, DetonateAttack, ScientistInfiltrate

@@ -1,0 +1,55 @@
+World:
+	LuaScript:
+		Scripts: campaign.lua, utils.lua, downunder.lua
+	MissionData:
+		Briefing: 我们追踪车队的路线来到一处地下设施。我们怀疑这里是通往苏联主要沙林工厂的隐秘入口。\n\n带领部队穿过隧道，清除遇到的一切抵抗。小心——苏联在这里进行各种研究，我们不知道他们会用什么来对付你。\n\n用间谍侦察并渗透工厂，窃取车辆。\n\n当你的部队抵达设施另一端的出口时，任务完成。
+		WinVideo: spy.vqa
+		LossVideo: execute.vqa
+	ScriptLobbyDropdown@difficulty:
+		ID: difficulty
+		Label: dropdown-difficulty.label
+		Description: dropdown-difficulty.description
+		Values:
+			normal: options-difficulty.normal
+			hard: options-difficulty.hard
+		Default: normal
+
+Player:
+	PlayerResources:
+		DefaultCash: 0
+
+SPY:
+	RevealsShroud:
+		Range: 7c0
+
+4TNK:
+	AutoTarget:
+		InitialStanceAI: Defend
+
+TSLA:
+	Health:
+		HP: 300000
+
+GNRL:
+	Tooltip:
+		Name: actor-officer-name
+
+C5:
+	-Wanders:
+
+C6:
+	-Wanders:
+
+CHAN:
+	-Wanders:
+
+DTRK:
+	Cargo:
+		Types: Infantry
+		MaxWeight: 1
+	RevealsShroud:
+		Range: 4c0
+		ValidRelationships: Neutral
+		RequiresCondition: mission
+	ExternalCondition@mission:
+		Condition: mission
