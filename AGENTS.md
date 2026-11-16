@@ -20,6 +20,8 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 
 **仓库侧** Windows 脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`、`.cmd`。
 发布包内的纯 CMD 备用入口以 `.tpl` 模板入库，由打包脚本现场生成（见 `DECISIONS.md` D-011）。
+这是**已登记的豁免**：玩家侧有没装 PowerShell 的机器，双击即装是真实需求；仓库本身仍然零 `.bat` / `.cmd`，
+模板纯 ASCII、不得调用 PS 宿主，由 `scripts/check-scripts.ps1` 硬校验（映射见 `docs/COMPLIANCE.md` §3）。
 
 ## 3. 禁止清单
 

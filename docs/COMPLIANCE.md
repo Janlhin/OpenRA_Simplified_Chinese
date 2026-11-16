@@ -42,6 +42,7 @@
 |---|---|---|---|
 | 禁止 `cmd` / `.bat`，统一 `pwsh` | ✅ | `AGENTS.md` §2、`src/setup.ps1` | `scripts/check-scripts.ps1` + CI |
 | 仓库内 `.bat` / `.cmd` 数量为 0 | ✅ | 同上 | 同上 |
+| 发布包内现场生成的纯 CMD 入口 | ➖ 已登记豁免 | 玩家侧存在没有 PowerShell 的机器，双击即装是真实需求（D-010 / D-011）；仓库本身仍零 `.bat` / `.cmd`，模板纯 ASCII、不调用 PS 宿主、只进 zip 不入库 | `scripts/check-scripts.ps1`（模板数 = 3、纯 ASCII、无 PS 宿主、哈希同源）+ `tools/build_release.py --verify` |
 | 脚本语法与编码基线 | ✅ | 全部 `.ps1` 以 PowerShell AST 解析；`.ps1` 统一 CRLF（`.gitattributes`） | `scripts/check-scripts.ps1` |
 | Git 钩子为 `pwsh` 薄壳 | ✅ | `.githooks/pre-commit`、`.githooks/commit-msg` | `scripts/install-hooks.ps1` |
 
@@ -89,6 +90,7 @@
 | 版本号不一致、目录名 ≠ `engineVersion` | ✔ `check-versions.ps1` | ✔ | ✔ 变更说明与回滚项 | ✔ 打 tag 前复查 |
 | 顶层出现未登记条目 / 缺必需目录 | ✔ `check-layout.ps1` | ✔ | ➖ | ➖ |
 | 仓库出现 `.bat` / `.cmd`、脚本语法错 | ✔ `check-scripts.ps1` | ✔ | ➖ | ➖ |
+| 发布包内 CMD 入口不合规（非纯 ASCII / 调用 PS 宿主 / 模板被增删） | ✔ `check-scripts.ps1` | ✔ | ✔ 制品可复现项（`build_release.py --verify`） | ➖ |
 | 字体混进 `files/` | ✔ `check-scripts.ps1` | ✔ | ✔ 依赖与许可项 | ➖ |
 | 敏感信息（密钥 / 令牌 / 内嵌凭据）入库 | ✔ `check-secrets.ps1` | ✔ | ✔ 敏感信息项 | ➖ |
 | 治理文档缺字段、`.md`/`.adoc` 并存、出现第二份规则载体 | ✔ `check-docs.ps1` | ✔ | ➖ | ✔ 评审 diff |

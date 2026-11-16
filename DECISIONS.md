@@ -206,3 +206,17 @@
 - **影响范围**：`scripts/pre-release.ps1`、`docs/MAINTAINING.md` 发版步骤、`docs/COMPLIANCE.md` 第 5 节、
   `docs/CHANGELOG.md` 2.0.0 条目补「已知问题 / 回滚」。
 - **复审条件**：拿到代码签名证书，或决定用 Sigstore 无密钥签名时重开本条目；VirusTotal 需要商用授权时另议配额。
+### D-015 · 2026-11-16 · 发布包纯 CMD 入口登记为长期豁免（玩家需求）
+
+- **决策**：`禁 .bat / .cmd` 这条在**仓库侧**继续严格执行（`git ls-files` 中零条），
+  **发布包内**的纯 CMD 入口按 D-010 / D-011 继续保留，并正式登记为长期豁免，不再当作待清理的冲突项。
+- **背景**：玩家侧大量机器的 PowerShell 执行策略与双击体验都不友好（`.ps1` 默认被记事本打开），
+  用户明确提出「没 PowerShell 也要能双击装」。仓库里另存 `.tpl` 模板、打包时现场生成，等于把
+  「仓库洁净」与「玩家可用」拆成两件事，不必二选一。
+- **被采纳**：① 豁免只对**发布包内生成物**生效，模板本身必须纯 ASCII、不得出现 `powershell` / `pwsh`；
+  ② 模板数与内容由 `scripts/check-scripts.ps1` 硬校验（数量、ASCII、哈希与 `apply-hotfix.ps1` 同源），
+  打包再由 `tools/build_release.py --verify` 复核；③ `docs/COMPLIANCE.md` §3 与校验矩阵各留一行，写明这是豁免而非遗漏。
+- **被否决**：① 为了条款好看而删掉 CMD 入口（玩家装不上等于把功能做没了）；
+  ② 把 `.bat` 直接提交进仓库（污染仓库基线，且无法做纯 ASCII / 无 PS 宿主校验）。
+- **影响范围**：`docs/COMPLIANCE.md` §3 与矩阵、`AGENTS.md` §2、`tools/cmd-templates/`、`tools/build_release.py`。
+- **复审条件**：若 OpenRA 官方安装器或玩家环境普遍自带可用的 pwsh 宿主，重议并移除该豁免。
