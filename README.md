@@ -124,7 +124,7 @@ OpenRA_Simplified_Chinese\
 ├─ 🧪 scripts\                            唯一验收入口 verify.ps1 与各项守卫
 ├─ 🪝 .githooks\                          pre-commit / commit-msg 薄壳
 ├─ 📘 docs\                               ANATOMY · MAINTAINING · CONTRIBUTING · CHANGELOG
-│   ├─ VERSIONING.md · COMPLIANCE.md      版本号规则 / 规范落地矩阵
+│   ├─ VERSIONING.md · COMPLIANCE.md      版本号规则 / 工程校验自查表
 │   └─ archive\rasc-ref\                  译名对齐的历史资料（已归档）
 └─ ⚙️ .github\                            CI 与 issue / PR 模板
 ```
@@ -137,7 +137,7 @@ OpenRA_Simplified_Chinese\
 | ✍️ 想改一句译文 | [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) |
 | 🕒 每个版本改了什么 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | 🔢 版本号怎么定、怎么发版 | [`docs/VERSIONING.md`](docs/VERSIONING.md) |
-| 🧭 工程规范条款在本仓库如何落地 | [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) |
+| 🧭 每条工程校验项落在哪、由谁拦 | [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) |
 | 🌐 引擎侧本地化（多语言）的现状、路线与待办 | [`docs/LOCALIZATION-ROADMAP.md`](docs/LOCALIZATION-ROADMAP.md) |
 | 🧾 为什么这样设计、否决过什么 | [`DECISIONS.md`](DECISIONS.md) |
 | 📋 还有哪些事没做、怎样算做完 | [`TASKS.md`](TASKS.md) |

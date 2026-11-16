@@ -1,6 +1,6 @@
 # AGENTS.md — 本仓库的 AI 协作入口
 
-> 这是**目录**，不是手册。规则正文在 `docs/` 与外部规范族里，靠链接到达。
+> 这是**目录**，不是手册。规则正文只写在 `docs/` 里，靠链接到达。
 > 本文件行数上限 **150 行**；超限即视为「把正文搬进来」，必须拆到独立文档再改为链接。
 
 ## 1. 项目一句话
@@ -81,5 +81,5 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 | 每个版本改了什么 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | 决策记录 / 任务队列 / 第三方来源 | [`DECISIONS.md`](DECISIONS.md) · [`TASKS.md`](TASKS.md) · [`MANIFEST.md`](MANIFEST.md) |
 
-> 规范族（《用 AI 做项目》七份）由维护者在仓库外持有；本仓库只通过
-> [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) 的条款映射引用它，不复制正文。
+> 工程约束只在本仓库的 `AGENTS.md` 与 `docs/` 内维护；每条落在哪、由谁拦，见
+> [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md)。
