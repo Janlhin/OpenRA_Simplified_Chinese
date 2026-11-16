@@ -64,8 +64,10 @@
 |---|---|---|---|
 | SemVer 2.0.0 正则与三处一致 | ✅ | `docs/VERSIONING.md` | `scripts/check-versions.ps1` |
 | tag 与版本一致、tag 不改 | ✅ | 同上 | 同上（在 tag 上运行时校验） |
-| 发布前七项检查（可复现 / 清单 / 签名 / 许可 / 敏感信息 / 扫描 / 说明与回滚） | ✅ | `scripts/pre-release.ps1`：七项一键执行，结论归档 `dist/pre-release-*.json`；扫描先查哈希再决定上传 | 退出码 0；签名项如实记为「未验证」（D-014） |
+| 发布前七项检查（可复现 / 清单 / 签名 / 许可 / 敏感信息 / 扫描 / 说明与回滚） | ✅ | `scripts/pre-release.ps1`：七项一键执行，结论归档 `dist/pre-release-*.json` | 退出码 0；签名与扫描两项登记豁免（D-016），其余五项硬门禁 |
 | CHANGELOG 含变更 / 已知问题 / 回滚 | ✅ | `docs/CHANGELOG.md` 模板 | `scripts/check-versions.ps1`（版本+日期） |
+| 签名与来源（代码签名 / Sigstore / GPG） | ➖ 已登记豁免 | 维护者决定不接入（D-016）；发布说明不得声称有签名 | — |
+| 恶意软件扫描（VirusTotal） | ➖ 已登记豁免 | 维护者决定不接入（D-016）；即使有 `VT_API_KEY` 也只查哈希、永不上传 | `pre-release.ps1` 记为「不适用（已登记豁免）」 |
 | 制品的 SHA256 与发布说明 | ✅ | Release 正文 | 发版清单第 7 步 |
 
 ## 6. 度量与豁免

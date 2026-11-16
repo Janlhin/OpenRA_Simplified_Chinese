@@ -128,8 +128,8 @@ git add -A && git commit -m "..." && git push
    （可复现 / 完整性清单 / 签名 / 依赖与许可 / 敏感信息 / 恶意软件扫描 / 说明与回滚），
    结论归档到 `dist/pre-release-x.y.z.json`。
    - `-Rebuild` 先重建一次再与手上的 zip 比 SHA-256；不加则只做包自校验
-   - 扫描**先查哈希**：命中 VirusTotal 已有报告就不上传；未命中时才加 `-Upload`（上传即披露，只传对外分发的 zip）
-   - 签名项当前未接入，统计为「未验证」；发布说明照抄归档里的原话，不写「已通过病毒检测」
+   - 签名与 VirusTotal 两项按 D-016 不接入，记「已登记豁免」；发布说明不得声称已签名或「已通过病毒检测」
+   - 若手工设置了 `VT_API_KEY`，脚本也只做哈希查询（`GET /api/v3/files/{sha256}`），**永不上传制品**
 6. 打 tag 并推送：`git tag -a vX.Y.Z -m "…" && git push origin vX.Y.Z`
 7. 在 GitHub 上以该 tag 创建 Release，把 `dist/*.zip` 作为附件上传；说明直接抄
    `CHANGELOG.md` 对应版本那一节。
