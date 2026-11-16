@@ -138,6 +138,7 @@ OpenRA_Simplified_Chinese\
 | 🕒 每个版本改了什么 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | 🔢 版本号怎么定、怎么发版 | [`docs/VERSIONING.md`](docs/VERSIONING.md) |
 | 🧭 每条工程校验项落在哪、由谁拦 | [`docs/COMPLIANCE.md`](docs/COMPLIANCE.md) |
+| 🚦 发版前七项自检怎么跑 | [`docs/MAINTAINING.md`](docs/MAINTAINING.md#发新版本) |
 | 🌐 引擎侧本地化（多语言）的现状、路线与待办 | [`docs/LOCALIZATION-ROADMAP.md`](docs/LOCALIZATION-ROADMAP.md) |
 | 🧾 为什么这样设计、否决过什么 | [`DECISIONS.md`](DECISIONS.md) |
 | 📋 还有哪些事没做、怎样算做完 | [`TASKS.md`](TASKS.md) |
@@ -158,11 +159,19 @@ OpenRA_Simplified_Chinese\
 ```powershell
 pwsh -NoLogo -NoProfile -File scripts/verify.ps1        # 全量
 pwsh -NoLogo -NoProfile -File scripts/verify.ps1 -Fast  # 提交前快检
+python tools/build_release.py                           # 打包，出 dist/*.zip
+pwsh -NoLogo -NoProfile -File scripts/pre-release.ps1 -Rebuild  # 发版前七项自检
 ```
 
 检查项只在 `scripts/verify.ps1` 维护一份：载荷与 `manifest.json` 逐字节一致、Fluent 规范、
 地图文案结构、文档链接与锚点、生成物（`安装说明.txt`、README 附录）未被手改、字形覆盖、
-发布包自校验、版本号三处一致、五个治理文档字段完整。CI 调用的也是同一条命令。
+发布包自校验、版本号三处一致、五个治理文档字段完整、脚本与文档基线、敏感信息扫描。
+CI 调用的也是同一条命令。
+
+发版另跑 `scripts/pre-release.ps1`：七项（可复现 / 完整性清单 / 签名 / 依赖与许可 / 敏感信息 /
+恶意软件扫描 / 说明与回滚）一键执行，结论归档到 `dist/pre-release-<版本>.json`。其中签名与
+VirusTotal 两项按 `DECISIONS.md` D-016 **不接入**，每次都记「已登记豁免」，发布说明不得声称
+已签名或「已通过病毒检测」。
 
 首次参与贡献：建本地校验环境并装钩子。
 
