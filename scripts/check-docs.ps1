@@ -137,6 +137,19 @@ foreach ($kw in '技术栈', '验收', '已知限制') {
     if ($readme -notmatch $kw) { $errors.Add("README.md 缺少必填内容：$kw") }
 }
 
+# 9) 清理阈值告警：越过阈值时排一次清理（TASKS.md T-009），不得反过来抬高数字
+#    CHANGELOG.md 是只增的发布史（按年份另立文件才叫清理），不参与行数阈值
+$docFiles = @(Get-ChildItem -LiteralPath (Join-Path $root 'docs') -File -Filter '*.md' |
+    Where-Object { $_.Name -ne 'CHANGELOG.md' })
+$bigDocs = @($docFiles | Where-Object { @(Get-Content -LiteralPath $_.FullName -Encoding utf8).Count -gt 400 })
+if ($bigDocs.Count -gt 0) {
+    $names = @($bigDocs | ForEach-Object { "$($_.Name)（$(@(Get-Content -LiteralPath $_.FullName -Encoding utf8).Count) 行）" })
+    Write-Host "  ! 文档超阈值（>400 行）：$($names -join '、') —— 按 TASKS.md T-009 排一次清理" -ForegroundColor Yellow
+}
+if ($docFiles.Count -gt 25) {
+    Write-Host "  ! docs/ 文档数 $($docFiles.Count) 超阈值 25 —— 按 TASKS.md T-009 排一次清理" -ForegroundColor Yellow
+}
+
 if ($errors.Count -eq 0) {
     Write-Host "  ✓ 五个文档结构完整（AGENTS $(($agentsLines).Count) 行，D-$($decisionBlocks.Count) / T-$($taskBlocks.Count) / MANIFEST $($rows.Count) 条）" -ForegroundColor DarkGreen
     exit 0
