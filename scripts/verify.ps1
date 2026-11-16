@@ -86,6 +86,7 @@ Step-Pwsh 'scripts/check-versions.ps1'
 Step-Pwsh 'scripts/check-docs.ps1'
 Step-Pwsh 'scripts/check-layout.ps1'
 Step-Pwsh 'scripts/check-scripts.ps1'
+Step-Pwsh 'scripts/check-secrets.ps1'
 Step-Python 'tools/verify_manifest.py'
 Step-Python 'tools/lint_ftl.py' @('playtest-20261026/files/mods')
 Step-Python 'tools/struct_check_maps.py' @('playtest-20261026/files/mods')

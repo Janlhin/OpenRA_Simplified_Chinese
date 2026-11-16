@@ -101,25 +101,10 @@ if ($LASTEXITCODE -eq 0) {
 }
 else { Add-Item '依赖与许可' 'fail' "verify_manifest.py 退出码 $LASTEXITCODE（许可或载荷不自洽）" }
 
-# 5) 敏感信息：扫已入库的文本文件
-$textExt = '.ps1', '.py', '.md', '.yml', '.yaml', '.json', '.ftl', '.txt', '.sh', '.tpl', '.gitattributes', '.gitignore'
-$patterns = @(
-    '-----BEGIN [A-Z ]*PRIVATE KEY-----',
-    'gh[pousr]_[A-Za-z0-9]{30,}',
-    'AKIA[0-9A-Z]{16}',
-    'xox[baprs]-[A-Za-z0-9-]{10,}',
-    "(?i)\b(api[_-]?key|secret|password|passwd|token)\s*[:=]\s*['""][^'""\s]{12,}['""]"
-)
-$tracked = @(& git -C $root ls-files)
-$hits = @()
-foreach ($f in ($tracked | Where-Object { $textExt -contains [IO.Path]::GetExtension($_) -or [IO.Path]::GetFileName($_) -in '.gitattributes', '.gitignore' })) {
-    $text = [IO.File]::ReadAllText((Join-Path $root $f))
-    foreach ($p in $patterns) {
-        if ($text -match $p) { $hits += $f; break }
-    }
-}
-if ($hits.Count -eq 0) { Add-Item '敏感信息' 'ok' "$($tracked.Count) 个入库文件，未见密钥 / 令牌 / 内嵌凭据" }
-else { Add-Item '敏感信息' 'fail' "疑似敏感信息：$($hits -join '、')" }
+# 5) 敏感信息：与本地钩子用同一份脚本，避免两套特征表
+& pwsh -NoLogo -NoProfile -File (Join-Path $root 'scripts/check-secrets.ps1') | Out-Null
+if ($LASTEXITCODE -eq 0) { Add-Item '敏感信息' 'ok' 'scripts/check-secrets.ps1 零命中（与 verify.ps1 同一份特征表）' }
+else { Add-Item '敏感信息' 'fail' "scripts/check-secrets.ps1 退出码 $LASTEXITCODE" }
 
 # 6) 恶意软件扫描：先查哈希，再决定上传
 $key = $env:VT_API_KEY
