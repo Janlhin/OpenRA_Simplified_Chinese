@@ -76,7 +76,27 @@
 | AI 代码审查通道 | ➖ | 未接入；接入前须完成历史 PR 回放测误报率（规范要求） |
 | 豁免流程 | ✅ | 任何跳过校验的提交必须在 `DECISIONS.md` 新增条目说明理由与补救 |
 
-## 7. 复核方式
+## 7. 校验矩阵（缺陷类型 × 拦截层）
+
+同一类缺陷至少要两条独立路径能拦住它——本地钩子漏了，CI 还有一次；CI 绿了，发布前自检还有一次。
+`➖` 表示该层**不适合**拦这类缺陷（不是豁免）。任何一行出现「只有一个 ✔」，就要补一层，而不是删掉那一列。
+
+| 缺陷类型 | 本地钩子（`pre-commit`） | CI | 发布前自检 | 运行期 / 人工 |
+|---|---|---|---|---|
+| 载荷与 `manifest.json` 不一致 | ✔ `verify_manifest.py` | ✔ | ✔ 依赖与许可项 | ✔ 安装器装完自校验 |
+| Fluent 违规（BOM / CRLF / 括号）、译文键缺失 | ✔ `lint_ftl.py`、`struct_check_maps.py` | ✔ | ➖ | ➖ |
+| 生成物被手改（`安装说明.txt`、README 附录） | ✔ `build_install_txt.py --check`、`build_readme_inventory.py --check` | ✔ | ➖ | ➖ |
+| 版本号不一致、目录名 ≠ `engineVersion` | ✔ `check-versions.ps1` | ✔ | ✔ 变更说明与回滚项 | ✔ 打 tag 前复查 |
+| 顶层出现未登记条目 / 缺必需目录 | ✔ `check-layout.ps1` | ✔ | ➖ | ➖ |
+| 仓库出现 `.bat` / `.cmd`、脚本语法错 | ✔ `check-scripts.ps1` | ✔ | ➖ | ➖ |
+| 字体混进 `files/` | ✔ `check-scripts.ps1` | ✔ | ✔ 依赖与许可项 | ➖ |
+| 敏感信息（密钥 / 令牌 / 内嵌凭据）入库 | ✔ `check-secrets.ps1` | ✔ | ✔ 敏感信息项 | ➖ |
+| 治理文档缺字段、`.md`/`.adoc` 并存、出现第二份规则载体 | ✔ `check-docs.ps1` | ✔ | ➖ | ✔ 评审 diff |
+| 文档断链、锚点失效 | ✔ `check_links.py` | ✔ | ➖ | ➖ |
+| 提交信息不合规、单提交 > 400 行 | ✔ `commit-msg` 钩子 | ➖ | ➖ | ✔ 评审 diff |
+| 制品不可复现、缺 SHA256、扫描结论未归档 | ➖ | ✔ CI 构建 | ✔ `pre-release.ps1` | ✔ Release 说明与 `MANIFEST.md` |
+
+## 8. 复核方式
 
 ```bash
 pwsh -NoLogo -NoProfile -File scripts/verify.ps1
