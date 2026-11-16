@@ -23,6 +23,10 @@
 - **CI 与脚本路径全部跟着改**：`verify_manifest` / `build_manifest` / `lint_ftl` / `struct_check_maps` / `check_font_coverage` / `check_links` / `check-scripts` / `check-layout` / `verify.ps1` / PR 模板；
   `build_release.py` 的 profile 名改为线目录名（`playtest-20261026`、`release-20250330`），默认 profile = `playtest-20261026`。
 - **文本载荷零改动**：两条线的译文与 1.6.1 完全一致，这次只动版本号、目录与打包/校验链路。
+- **已知问题**：没有难度选项的任务（`allies-01`、`soviet-01` 等）难度下拉被禁用却仍显示灰字「普通」，英文原版同样如此；
+  `playtest-20261026` 线在中文战役简报下仍可能闪退，靠随包 `hotfix\` 绕过（根因在引擎侧，见 `TASKS.md` T-007）。
+- **回滚**：包内安装器自带还原——`setup.bat 还原`，或 `install.ps1 -Uninstall`（从最近一次备份还原游戏文本与字体）；
+  也可以直接删除补丁目录后由游戏自身校验修复。
 
 ## 1.6.1 — 2026-11-10
 

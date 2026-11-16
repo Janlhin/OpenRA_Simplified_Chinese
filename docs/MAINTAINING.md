@@ -124,8 +124,14 @@ git add -A && git commit -m "..." && git push
 3. 若动过 `playtest-20261026/安装说明.md`，先 `python tools/build_install_txt.py` 重新生成 `.txt`。
 4. 构建发布包：`python tools/build_release.py --verify`
    （产出 `dist/OpenRA_Simplified_Chinese-x.y.z.zip`，并打印 SHA-256——写进 Release 说明）
-5. 打 tag 并推送：`git tag -a vX.Y.Z -m "…" && git push origin vX.Y.Z`
-6. 在 GitHub 上以该 tag 创建 Release，把 `dist/*.zip` 作为附件上传；说明直接抄
+5. 发布前七项自检：`pwsh -NoLogo -NoProfile -File scripts/pre-release.ps1 -Rebuild`
+   （可复现 / 完整性清单 / 签名 / 依赖与许可 / 敏感信息 / 恶意软件扫描 / 说明与回滚），
+   结论归档到 `dist/pre-release-x.y.z.json`。
+   - `-Rebuild` 先重建一次再与手上的 zip 比 SHA-256；不加则只做包自校验
+   - 扫描**先查哈希**：命中 VirusTotal 已有报告就不上传；未命中时才加 `-Upload`（上传即披露，只传对外分发的 zip）
+   - 签名项当前未接入，统计为「未验证」；发布说明照抄归档里的原话，不写「已通过病毒检测」
+6. 打 tag 并推送：`git tag -a vX.Y.Z -m "…" && git push origin vX.Y.Z`
+7. 在 GitHub 上以该 tag 创建 Release，把 `dist/*.zip` 作为附件上传；说明直接抄
    `CHANGELOG.md` 对应版本那一节。
 
 ### 发布包里放什么

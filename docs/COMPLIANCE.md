@@ -63,7 +63,7 @@
 |---|---|---|---|
 | SemVer 2.0.0 正则与三处一致 | ✅ | `docs/VERSIONING.md` | `scripts/check-versions.ps1` |
 | tag 与版本一致、tag 不改 | ✅ | 同上 | 同上（在 tag 上运行时校验） |
-| 发布前七项检查（可复现 / 清单 / 许可 / 敏感信息 / 扫描 / 说明与回滚） | 🔜 | 部分由 `build_release.py --verify` 覆盖；VirusTotal 与签名见 `TASKS.md` | — |
+| 发布前七项检查（可复现 / 清单 / 签名 / 许可 / 敏感信息 / 扫描 / 说明与回滚） | ✅ | `scripts/pre-release.ps1`：七项一键执行，结论归档 `dist/pre-release-*.json`；扫描先查哈希再决定上传 | 退出码 0；签名项如实记为「未验证」（D-014） |
 | CHANGELOG 含变更 / 已知问题 / 回滚 | ✅ | `docs/CHANGELOG.md` 模板 | `scripts/check-versions.ps1`（版本+日期） |
 | 制品的 SHA256 与发布说明 | ✅ | Release 正文 | 发版清单第 7 步 |
 

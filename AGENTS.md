@@ -15,6 +15,7 @@ OpenRA（`playtest-20261026`）的简体中文文本补丁：只替换 Fluent �
 | 提交前快速校验 | `pwsh -NoLogo -NoProfile -File scripts/verify.ps1 -Fast` | 退出码 0 |
 | 重建载荷清单 | `python tools/build_manifest.py` | `playtest-20261026/bin/manifest.json` 的差异可逐条解释 |
 | 打包 | `python tools/build_release.py` | 生成 `dist/*.zip` 且自校验通过 |
+| 发布前七项自检 | `pwsh -NoLogo -NoProfile -File scripts/pre-release.ps1 -Rebuild` | 退出码 0，归档 `dist/pre-release-*.json` 与 Release 说明一致 |
 | 安装 Git 钩子 | `pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1` | `git config core.hooksPath` = `.githooks` |
 
 **仓库侧** Windows 脚本一律 **PowerShell 7.4+（`pwsh`）**，禁止 `cmd`、`.bat`、`.cmd`。
