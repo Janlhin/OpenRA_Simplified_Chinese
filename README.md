@@ -267,6 +267,7 @@ pwsh -NoLogo -NoProfile -File scripts/install-hooks.ps1
 ## 📄 许可
 
 - 本补丁：**GPL-3.0-or-later**，全文见 [`LICENSE`](LICENSE)
+- 项目身份、派生关系与素材归属等附加说明见 [`NOTICE.md`](NOTICE.md)
 - 随包字体 Noto Sans SC：**SIL OFL 1.1**，全文见 [`LICENSE-OFL.txt`](LICENSE-OFL.txt)
 - 原始英文文案版权归 OpenRA 项目（GPL-3.0）所有
 
