@@ -17,8 +17,8 @@ $root = Split-Path -Parent $PSScriptRoot
 # 顶层白名单（与 README「🧱 仓库结构」一致）
 $allowed = @(
     '.gitattributes', '.gitignore', '.github', '.githooks',
-    'AGENTS.md', 'DECISIONS.md', 'LICENSE', 'LICENSE-OFL.txt', 'MANIFEST.md',
-    'README.md', 'TASKS.md', 'docs', 'fonts', 'playtest-20261026', 'release-20250330', 'scripts', 'src', 'tools'
+    'AGENTS.md', 'CHANGELOG.md', 'DECISIONS.md', 'LICENSE', 'LICENSE-OFL.txt', 'MANIFEST.md',
+    'NOTICE.md', 'README.md', 'TASKS.md', 'docs', 'fonts', 'playtest-20261026', 'release-20250330', 'scripts', 'src', 'tools'
 )
 $required = @('README.md', 'AGENTS.md', 'DECISIONS.md', 'TASKS.md', 'MANIFEST.md',
     'src', 'playtest-20261026', 'fonts', 'tools', 'scripts', 'docs')
