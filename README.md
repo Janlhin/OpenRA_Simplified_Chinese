@@ -107,6 +107,7 @@ OpenRA_Simplified_Chinese\
 ├─ 📋 TASKS.md                            任务队列（含可机器判定的完成判据）
 ├─ 📦 MANIFEST.md                         第三方字体/源码的来源、SHA256 与许可
 ├─ ⚖️ LICENSE · LICENSE-OFL.txt           补丁 GPL-3.0 / 字体 SIL OFL 1.1
+├─ 📝 NOTICE.md                           项目身份、派生关系与素材归属附加说明
 ├─ 📦 playtest-20261026\                  playtest 线（2.0.0）
 │   ├─ files\mods\                        208 个文本载荷（覆盖树）
 │   ├─ bin\manifest.json                  这一条的清单：version / engineVersion / files[]
