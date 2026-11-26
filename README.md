@@ -108,6 +108,7 @@ OpenRA_Simplified_Chinese\
 ├─ 📦 MANIFEST.md                         第三方字体/源码的来源、SHA256 与许可
 ├─ ⚖️ LICENSE · LICENSE-OFL.txt           补丁 GPL-3.0 / 字体 SIL OFL 1.1
 ├─ 📝 NOTICE.md                           项目身份、派生关系与素材归属附加说明
+├─ 📜 CHANGELOG.md                        未发布改动（Unreleased）；版本史在 docs/CHANGELOG.md
 ├─ 📦 playtest-20261026\                  playtest 线（2.0.0）
 │   ├─ files\mods\                        208 个文本载荷（覆盖树）
 │   ├─ bin\manifest.json                  这一条的清单：version / engineVersion / files[]
@@ -135,6 +136,8 @@ OpenRA_Simplified_Chinese\
 | 🧩 给官方稳定版（Release）装中文 | [`release-20250330/README.md`](release-20250330/README.md) |
 | 🗂️ 每个文件是什么、载荷怎么构成 | [`docs/ANATOMY.md`](docs/ANATOMY.md) |
 | 🔧 怎么重建载荷、怎么发版、CI 有哪些门禁 | [`docs/MAINTAINING.md`](docs/MAINTAINING.md) |
+| 📦 安装 / 卸载 / 回滚 / 版本兼容 / 校验和 | [`docs/release-and-rollback.md`](docs/release-and-rollback.md) |
+| 🚦 发布前检查清单 | [`docs/release-checklist.md`](docs/release-checklist.md) |
 | ✍️ 想改一句译文 | [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) |
 | 🕒 每个版本改了什么 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | 🔢 版本号怎么定、怎么发版 | [`docs/VERSIONING.md`](docs/VERSIONING.md) |
